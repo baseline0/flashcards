@@ -151,7 +151,6 @@
         .card-container {
             perspective: 1000px;
             cursor: pointer;
-            user-select: none;
         }
 
         .card {
@@ -160,6 +159,7 @@
             border-radius: 12px;
             padding: 40px;
             min-height: 300px;
+            max-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -167,6 +167,7 @@
             text-align: center;
             transition: all 0.3s ease;
             position: relative;
+            overflow-y: auto;
         }
 
         .card:hover {
@@ -655,23 +656,21 @@
                 if (!contentElement) return;
 
                 const card = contentElement.parentElement;
-                const maxWidth = card.offsetWidth - 80; // Account for padding
-                const maxHeight = card.offsetHeight - 140; // Account for label and hint
+                const maxWidth = card.offsetWidth - 80;
+                const maxHeight = card.offsetHeight - 120; // Account for label and hint
 
-                let fontSize = 32; // Start at 2rem (32px)
+                let fontSize = 32;
                 contentElement.style.fontSize = fontSize + "px";
 
-                // Reduce font size until content fits
-                while ((contentElement.scrollWidth > maxWidth || contentElement.scrollHeight > maxHeight) && fontSize > 12) {
-                    fontSize -= 2;
+                // Reduce font only if content is too wide (scrolls horizontally)
+                // Don't reduce for height since card can scroll
+                while (contentElement.scrollWidth > maxWidth && fontSize > 14) {
+                    fontSize -= 1;
                     contentElement.style.fontSize = fontSize + "px";
                 }
 
-                // Ensure minimum font size
-                if (fontSize < 14) {
-                    fontSize = 14;
-                    contentElement.style.fontSize = fontSize + "px";
-                }
+                // Minimum 14px for readability
+                contentElement.style.fontSize = Math.max(fontSize, 14) + "px";
             }
 
             async rateCard(rating) {
