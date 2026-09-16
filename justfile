@@ -13,8 +13,8 @@ server:
 # Run flashcards locally (start server + open browser)
 run: server
     @echo ""
-    @echo "🚀 Flashcards running at http://127.0.0.1:8000"
-    @echo "📚 API docs: http://127.0.0.1:8000/docs"
+    @echo "🚀 Flashcards running at:"
+    @echo "📚 Interactive UI: http://127.0.0.1:8000/docs"
     @echo ""
 
 # Study insurance flashcards (P&C + underwriting)
