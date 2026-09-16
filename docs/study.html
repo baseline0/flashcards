@@ -198,6 +198,7 @@
             max-width: 100%;
             overflow-wrap: break-word;
             hyphens: auto;
+            user-select: text;
         }
 
         .card-hint {
@@ -606,7 +607,7 @@
                 document.getElementById("progressFill").style.width = `${progress}%`;
 
                 const cardHtml = `
-                    <div class="card ${this.isFlipped ? "flipped" : ""}" onclick="app.toggleFlip()">
+                    <div class="card ${this.isFlipped ? "flipped" : ""}" onclick="app.handleCardClick(event)">
                         <div class="card-label">${this.isFlipped ? "Answer" : "Question"}</div>
                         <div class="card-content">${this.isFlipped ? card.back : card.front}</div>
                         ${card.tags && card.tags.length > 0 ? `<div class="card-tags">${card.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>` : ""}
@@ -644,6 +645,15 @@
                     controls.remove();
                 }
                 studyArea.innerHTML += controlsHtml;
+            }
+
+            handleCardClick(event) {
+                // Don't flip if user is selecting text
+                const selection = window.getSelection();
+                if (selection.toString().length > 0) {
+                    return;
+                }
+                this.toggleFlip();
             }
 
             toggleFlip() {
