@@ -6,11 +6,16 @@ set shell := ["bash", "-c"]
 default:
     @just --list
 
-# Start local server (FastAPI + Uvicorn) - requires py-fsrs dependency
+# Start local server (FastAPI + Uvicorn)
 server:
-    @echo "⚠️  Note: requires py-fsrs dependency (currently unresolved)"
-    @echo "Starting server on http://127.0.0.1:8000..."
     uv run uvicorn flashcards.server.app:app --reload --host 127.0.0.1 --port 8000
+
+# Run flashcards locally (start server + open browser)
+run: server
+    @echo ""
+    @echo "🚀 Flashcards running at http://127.0.0.1:8000"
+    @echo "📚 API docs: http://127.0.0.1:8000/docs"
+    @echo ""
 
 # Study insurance flashcards (P&C + underwriting)
 insurance:
