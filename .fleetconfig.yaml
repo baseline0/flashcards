@@ -1,0 +1,58 @@
+# Fleet Configuration for flashcards repo
+# Spaced repetition engine for arbitrary glossaries
+
+type: application
+description: "Modular spaced repetition engine for flashcard generation and SRS"
+visibility: public
+enabled: true
+test-strategy: pytest
+maintainers:
+  - mark@alexiuk.dev
+
+# Fleet philosophy: code-as-docs
+documentation:
+  philosophy: "code-as-docs"
+  markdown_policy: "ADRs only; deployment runbooks; minimal README"
+  standards_reference: "agent-tooling/STANDARDS.md#code-as-docs"
+
+category: "learning-tools"
+maturity: stable
+
+fixable-categories:
+  - fix
+  - style
+  - config
+  - testing-standards
+
+non-approvable-categories:
+  - code
+  - arch
+
+requirements:
+  python: ">=3.13"
+  pydantic: ">=2.0"
+  sqlalchemy: ">=2.0"
+
+ci:
+  test_levels:
+    - unit
+    - integration
+  min_coverage: 80
+
+standards:
+  testing:
+    framework: pytest
+    required: true
+
+  code_as_docs:
+    required: true
+    rules:
+      - function_docstrings: required
+      - class_docstrings: required
+      - type_hints: mandatory
+      - test_names_describe_behavior: required
+      - markdown_minimal: required
+
+guard-rails:
+  max-files-per-operation: 50
+  max-lines-changed: 1000
