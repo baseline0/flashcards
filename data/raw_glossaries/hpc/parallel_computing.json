@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Parallel Computing",
+    "body": "A type of computation in which many calculations or processes are carried out simultaneously. Exploits the principle that large problems can often be divided into smaller ones, which are then solved in parallel.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Parallel_computing",
+      "source_name": "Wikipedia: Parallel Computing",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MPI (Message Passing Interface)",
+    "body": "A standardized and portable message-passing system designed for parallel computers. Allows processes running on different nodes in a cluster to communicate by sending and receiving messages.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Message_Passing_Interface",
+      "source_name": "Wikipedia: Message Passing Interface",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "GPU (Graphics Processing Unit)",
+    "body": "A specialized electronic circuit designed to rapidly manipulate and change memory to accelerate the creation of images. In HPC, GPUs are used to accelerate data-parallel computations.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Graphics_processing_unit",
+      "source_name": "Wikipedia: Graphics Processing Unit",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "CUDA (Compute Unified Device Architecture)",
+    "body": "A parallel computing platform and API developed by NVIDIA that allows software to use certain types of GPUs (Graphics Processing Units) for general purpose processing. Enables developers to use C/C++/Fortran to write GPU kernels.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/CUDA",
+      "source_name": "Wikipedia: CUDA",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Supercomputer",
+    "body": "An extremely fast computer that performs at the highest operational rates compared to general-purpose computers. Measured in FLOPS (Floating Point Operations Per Second), typically in the petaFLOPS range or higher.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Supercomputer",
+      "source_name": "Wikipedia: Supercomputer",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Distributed Memory",
+    "body": "In parallel computing, each processor has its own private memory and communicates with other processors by sending and receiving messages. Contrasts with shared memory where all processors access the same memory pool.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Distributed_memory",
+      "source_name": "Wikipedia: Distributed Memory",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  }
+]

@@ -14,7 +14,19 @@ class CardType(str, Enum):
 
 
 class GlossaryEntry(BaseModel):
-    """Raw input: glossary entry from any domain."""
+    """Raw input: glossary entry from any domain.
+
+    Metadata should include source information for compliance:
+    - source_url: Where the term originated
+    - source_name: Human-readable source
+    - license: CC-BY-4.0, MIT, Apache-2.0, proprietary, public-domain
+    - attribution_required: bool
+    - attribution_text: How to credit the source
+    - fair_use_justification: (Tier 2 only) Fair use reasoning
+    - commercial_use: Whether flashcards can be used commercially
+    - scraped_date: ISO-8601 date when term was obtained
+    - tier: 1 (open-access), 2 (fair-use), 3 (prohibited)
+    """
 
     id: str | None = None
     domain: str

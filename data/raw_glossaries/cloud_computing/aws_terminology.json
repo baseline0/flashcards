@@ -1,0 +1,92 @@
+[
+  {
+    "title": "EC2 (Elastic Compute Cloud)",
+    "body": "An AWS service that provides scalable computing capacity in the cloud. Allows you to launch virtual machines (instances) on demand with configurable CPU, memory, storage, and networking.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/ec2/",
+      "source_name": "AWS EC2 Documentation",
+      "license": "proprietary",
+      "fair_use_justification": "Educational reference guide; glossary format is transformative and non-competitive",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "scraped_date": "2026-09-16",
+      "notes": "Definitions adapted from official AWS documentation for educational purposes"
+    }
+  },
+  {
+    "title": "S3 (Simple Storage Service)",
+    "body": "An AWS object storage service that offers industry-leading scalability, data availability, security, and performance. Stores data as objects in containers called buckets.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/s3/",
+      "source_name": "AWS S3 Documentation",
+      "license": "proprietary",
+      "fair_use_justification": "Educational reference guide; glossary format is transformative and non-competitive",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "VPC (Virtual Private Cloud)",
+    "body": "A logically isolated network environment within AWS where you can launch AWS resources. Provides control over IP address range, subnets, routing tables, and network gateways.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/vpc/",
+      "source_name": "AWS VPC Documentation",
+      "license": "proprietary",
+      "fair_use_justification": "Educational reference guide; glossary format is transformative",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Lambda",
+    "body": "An AWS serverless compute service that runs code without provisioning or managing servers. Pay only for the compute time consumed; code runs only when triggered by events.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/lambda/",
+      "source_name": "AWS Lambda Documentation",
+      "license": "proprietary",
+      "fair_use_justification": "Educational study aid; non-commercial use",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Container",
+    "body": "A standardized unit of software that packages an application and all its dependencies (code, runtime, system tools, libraries) into a single executable. Enables consistent deployment across environments.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Containerization_(computing)",
+      "source_name": "Wikipedia: Containerization",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Kubernetes",
+    "body": "An open-source container orchestration platform that automates many of the manual processes involved in deploying, managing, and scaling containerized applications across clusters of machines.",
+    "metadata": {
+      "source_url": "https://kubernetes.io/docs/",
+      "source_name": "Kubernetes Official Documentation",
+      "license": "Apache-2.0",
+      "license_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "attribution_required": true,
+      "attribution_text": "Kubernetes Project Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  }
+]

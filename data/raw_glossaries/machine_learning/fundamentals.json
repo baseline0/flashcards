@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Epoch",
+    "body": "One complete pass through the entire training dataset. During each epoch, the model sees and learns from every training example exactly once before weights are updated.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Epoch_(computing)",
+      "source_name": "Wikipedia: Epoch (Computing)",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Gradient Descent",
+    "body": "An optimization algorithm used to minimize a loss function by iteratively moving in the direction of steepest descent. Parameters are updated in the negative direction of the gradient.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Gradient_descent",
+      "source_name": "Wikipedia: Gradient Descent",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Backpropagation",
+    "body": "An algorithm for calculating gradients of the loss function with respect to the weights in a neural network. Efficiently computes gradients by recursively applying the chain rule through network layers.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Backpropagation",
+      "source_name": "Wikipedia: Backpropagation",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Overfitting",
+    "body": "A condition in machine learning where a model learns the training data too well, including its noise and peculiarities, resulting in poor generalization to unseen data. The model memorizes rather than learns patterns.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Overfitting",
+      "source_name": "Wikipedia: Overfitting",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Regularization",
+    "body": "A technique used to prevent overfitting by adding a penalty term to the loss function. Common methods include L1 (Lasso), L2 (Ridge) regularization, and dropout, which constrain model complexity.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Regularization_(mathematics)",
+      "source_name": "Wikipedia: Regularization",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Transformer",
+    "body": "A deep learning architecture based on self-attention mechanisms that allows models to weigh different parts of input data differently. Powers modern LLMs like GPT and BERT.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Transformer_(machine_learning)",
+      "source_name": "Wikipedia: Transformer (Machine Learning)",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Accuracy",
+    "body": "A classification metric that measures the proportion of correct predictions (both true positives and true negatives) to the total number of predictions. Defined as (TP + TN) / (TP + TN + FP + FN).",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Accuracy_and_precision",
+      "source_name": "Wikipedia: Accuracy and Precision",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "F1 Score",
+    "body": "The harmonic mean of precision and recall, providing a single metric that balances both false positives and false negatives. Useful when class distribution is imbalanced. Defined as 2 * (precision * recall) / (precision + recall).",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/F-score",
+      "source_name": "Wikipedia: F-score",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  }
+]
