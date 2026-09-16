@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Deductible",
+    "body": "The amount an insured must pay out of pocket before the insurance company pays a claim. For example, if you have a $500 deductible on your auto policy and suffer $2,000 in damage, you pay $500 and the insurer pays $1,500.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "title": "Premium",
+    "body": "The amount of money an insured pays to an insurance company, typically on a monthly or annual basis, in exchange for coverage under an insurance policy.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "title": "Liability Coverage",
+    "body": "Insurance protection that covers the insured's legal responsibility for bodily injury or property damage caused to others. It typically covers medical expenses, lost wages, and legal defense costs.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Collision Coverage",
+    "body": "Auto insurance that pays for damage to the insured's vehicle caused by collision with another vehicle or object, regardless of fault. This coverage is subject to the stated deductible.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Comprehensive Coverage",
+    "body": "Auto insurance that covers damage to the insured's vehicle from causes other than collision, such as theft, vandalism, weather, animal strikes, or falling objects.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Policy Limit",
+    "body": "The maximum amount an insurance company will pay for a covered claim under an insurance policy. Policies often have multiple limits (per-claim and per-year) and layers of coverage.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "title": "Exclusion",
+    "body": "A provision in an insurance policy that specifically states what is NOT covered by the policy. Common exclusions include acts of war, intentional acts, or certain high-risk activities.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Copay",
+    "body": "A fixed amount an insured person pays for a covered service, typically for health insurance claims. The insurance company pays the remaining eligible expenses up to the policy limit.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "title": "Underwriting",
+    "body": "The process by which an insurance company evaluates an applicant's risk, determines whether to issue a policy, and sets the premium. This involves reviewing medical history, driving record, property details, etc.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Claim",
+    "body": "A formal request by an insured person to the insurance company for payment of benefits under the terms of the insurance policy for a covered loss or event.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "title": "Adjuster",
+    "body": "A professional employed or authorized by an insurance company to investigate claims, verify policy coverage, determine liability, and estimate the cost of damages or losses.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Subrogation",
+    "body": "The legal right of an insurance company to pursue a third party that is responsible for a loss in order to recover money it paid to the insured for that loss.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced"
+    }
+  },
+  {
+    "title": "Riders/Endorsements",
+    "body": "Amendments or additions to a standard insurance policy that modify coverage, add coverage for specific risks, or exclude certain items. Examples include adding flood coverage or increasing liability limits.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "title": "Actuarial Science",
+    "body": "The mathematical discipline that uses statistics, financial mathematics, and probability theory to evaluate insurance risk and uncertainty. Actuaries design insurance products and set premiums.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced"
+    }
+  },
+  {
+    "title": "Coinsurance",
+    "body": "A provision in an insurance policy where both the insured and the insurer share the cost of a covered loss after the deductible is met. For example, 80/20 coinsurance means the insurer pays 80% and the insured pays 20%.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate"
+    }
+  }
+]

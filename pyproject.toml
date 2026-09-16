@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flashcards"
+version = "0.1.0"
+description = "Modular spaced repetition engine for arbitrary glossaries"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [
+    { name = "Mark Alexiuk", email = "malexiuk@gmail.com" },
+]
+
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "sqlalchemy>=2.0.23",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "py-fsrs>=0.27.0",
+    "genanki>=0.13.1",
+    "jinja2>=3.1.2",
+    "python-multipart>=0.0.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.3",
+    "pytest-asyncio>=0.23.2",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.8",
+    "mypy>=1.7.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/flashcards"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --tb=short"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.13"
+strict = false
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
