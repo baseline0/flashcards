@@ -1,0 +1,210 @@
+[
+  {
+    "title": "Model Context Protocol (MCP)",
+    "body": "An open standard for AI agents to safely access external tools and data. MCP enables Claude and other AI models to call specialized server implementations (MCPs) through a standardized protocol, similar to how web browsers use HTTP.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io",
+      "source_name": "Model Context Protocol",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Server",
+    "body": "A program that implements the MCP protocol and exposes capabilities (tools, resources, prompts) to AI agents. Examples: rope-mcp (code refactoring), vscode-workspace-mcp (file operations), anthropic/filesystem-mcp (file system access).",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/servers",
+      "source_name": "MCP Servers",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Client",
+    "body": "The AI agent or application that connects to MCP servers and uses their capabilities. Example: Claude Code uses rope-mcp and vscode-workspace-mcp for code refactoring and file operations.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/clients",
+      "source_name": "MCP Clients",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Tool",
+    "body": "A callable function exposed by an MCP server. Tools are actions the AI can perform: examples include 'extract_method' (rope-mcp), 'search_files' (vscode-mcp), 'read_file' (filesystem-mcp). Tools have inputs, outputs, and descriptions.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/tools",
+      "source_name": "MCP Tools",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Resource",
+    "body": "A data artifact exposed by an MCP server (not a function). Resources are read-only and include metadata like URIs and MIME types. Example: a vector database index, a configuration file, or documentation accessible to the AI.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/resources",
+      "source_name": "MCP Resources",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Prompt",
+    "body": "Reusable prompt templates exposed by an MCP server. Prompts can include dynamic arguments and are used to guide AI behavior for domain-specific tasks. Example: a code review prompt template with arguments for language and style guide.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/prompts",
+      "source_name": "MCP Prompts",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Rope (rope-mcp)",
+    "body": "An MCP server for Python code refactoring. Provides tools like 'extract_method', 'rename', 'move', 'inline', and 'change_signature'. Built on the rope library, it enables safe automated refactoring of Python code.",
+    "metadata": {
+      "source_url": "https://github.com/anthropics/mcp-servers/tree/main/src/rope-mcp",
+      "source_name": "Rope MCP",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "VSCode Workspace MCP (vscode-workspace-mcp)",
+    "body": "An MCP server for file and workspace operations. Provides tools like 'read_file', 'write_file', 'list_directory', 'search_in_files', and 'get_file_info'. Enables AI agents to safely navigate and modify file systems.",
+    "metadata": {
+      "source_url": "https://github.com/anthropics/mcp-servers/tree/main/src/vscode-workspace-mcp",
+      "source_name": "VSCode Workspace MCP",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Coordinator",
+    "body": "A component that routes tasks to appropriate MCP servers based on task type and available capabilities. Decides which MCP to use for a given task, handles fallback strategies when MCPs are unavailable, and logs usage telemetry.",
+    "metadata": {
+      "source_url": "https://github.com/baseline0/fleet-ops",
+      "source_name": "Fleet-ops MCPCoordinator",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Registry",
+    "body": "A registry that tracks available MCP servers, their capabilities, health status, and metadata. Used by MCPCoordinator to discover which MCP to route a task to based on task type or required capability.",
+    "metadata": {
+      "source_url": "https://github.com/baseline0/fleet-ops",
+      "source_name": "Fleet-ops MCPRegistry",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Capability",
+    "body": "A specific operation or feature that an MCP server can perform. Examples: 'extract_method' (rope-mcp capability), 'read_file' (workspace-mcp capability). MCPCoordinator uses capabilities to match tasks to appropriate servers.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/capabilities",
+      "source_name": "MCP Capabilities",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Fallback Strategy",
+    "body": "A plan for handling tasks when the preferred MCP is unavailable. Strategies: 'claude' (use Claude's native capabilities), 'local_tools' (use CLI tools like grep/find), 'skip' (safely abort the task). MCPCoordinator selects strategy based on task type.",
+    "metadata": {
+      "source_url": "https://github.com/baseline0/fleet-ops",
+      "source_name": "Fleet-ops Fallback Strategies",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Audit Trail",
+    "body": "An append-only log (JSONL format) that records every MCP invocation: timestamp, task type, MCP name, agent persona, success/failure, and fallback strategy used. Used for compliance, debugging, and understanding agent behavior.",
+    "metadata": {
+      "source_url": "https://github.com/baseline0/fleet-ops",
+      "source_name": "Fleet-ops Audit Trail",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "Agent Persona",
+    "body": "A predefined role for an AI agent with specific authorization levels and task restrictions. Examples: ORCHESTRATOR (L1, can modify infrastructure), FEATURE_BUILDER (L2, can build features), COMPLIANCE_FIXER (L3, can only fix violations). Personas enforce governance.",
+    "metadata": {
+      "source_url": "https://github.com/baseline0/fleet-ops",
+      "source_name": "Fleet-ops Agent Personas",
+      "license": "MIT",
+      "attribution_required": false,
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Transport",
+    "body": "The communication mechanism between MCP client and server. MCP supports stdio (standard input/output), HTTP, and WebSocket transports. Enables flexible deployment: local processes, remote services, or embedded servers.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/transports",
+      "source_name": "MCP Transports",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  },
+  {
+    "title": "MCP Type/Category",
+    "body": "Classification of MCP servers by domain: REFACTORING (code transformation), WORKSPACE (file operations), ANALYSIS (code inspection), INTEGRATION (third-party APIs), DATA (databases), CUSTOM (user-defined). Used to organize and discover MCPs.",
+    "metadata": {
+      "source_url": "https://modelcontextprotocol.io/docs/concepts/types",
+      "source_name": "MCP Types",
+      "license": "CC-BY-4.0",
+      "attribution_required": false,
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-16"
+    }
+  }
+]
