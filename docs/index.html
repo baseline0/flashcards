@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Modular Spaced Repetition Engine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .ctas {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid var(--border);
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tech-badge {
+            background: linear-gradient(135deg, var(--light), white);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border);
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: var(--dark);
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        .routes {
+            display: grid;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .route {
+            background: #f9fafb;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+
+        .route-method {
+            font-weight: 600;
+            color: var(--primary);
+            font-family: monospace;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .ctas {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 Flashcards</h1>
+            <p class="subtitle">Modular spaced repetition engine for arbitrary glossaries</p>
+            <div class="ctas">
+                <a href="https://github.com/baseline0/flashcards" class="btn btn-primary">View on GitHub</a>
+                <a href="#quick-start" class="btn btn-secondary">Quick Start</a>
+            </div>
+        </header>
+
+        <section class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Multi-Domain</h3>
+                <p>Learn from any glossary: insurance, philosophy, science, history, and more.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Smart Scheduling</h3>
+                <p>FSRS spaced repetition algorithm optimizes review timing for retention.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3>Extensible</h3>
+                <p>Pluggable card generators, parsers, and exporters for custom workflows.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Local-First</h3>
+                <p>SQLite database, no external APIs. Everything runs on your machine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📤</div>
+                <h3>Export Ready</h3>
+                <p>Generate Anki decks, JSON, and more formats for flexible study.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Built for Python 3.13</h3>
+                <p>Modern Python with FastAPI, SQLAlchemy 2.0, and Pydantic v2.</p>
+            </div>
+        </section>
+
+        <div class="section">
+            <h2>Architecture</h2>
+            <pre>[ Raw Glossaries ] → [ Parsers ] → [ Card Generators ] → [ SQLite ] → [ FastAPI ]
+   (JSON, MD, etc.)                  (Strategy Pattern)               (Study UI)
+                                                          ↓
+                                                    [ FSRS Engine ]</pre>
+        </div>
+
+        <div class="section" id="quick-start">
+            <h2>Quick Start</h2>
+            <pre><code># Install dependencies
+uv sync
+
+# Run tests
+pytest tests/
+
+# Start server
+uvicorn src.flashcards.server.app:app --reload</code></pre>
+            <p style="margin-top: 20px;">Visit <code>http://localhost:8000/docs</code> for interactive API documentation.</p>
+        </div>
+
+        <div class="section">
+            <h2>Demo: Property & Casualty Insurance</h2>
+            <p style="margin-bottom: 20px;">The project includes a complete demo with 15 insurance terms. Load and study them:</p>
+            <div class="routes">
+                <div class="route">
+                    <div class="route-method">POST /api/deck/load</div>
+                    <p>Load glossary and generate cards</p>
+                    <code style="display: block; margin-top: 8px;">?domain=insurance&category=property&glossary_name=property_and_casualty</code>
+                </div>
+                <div class="route">
+                    <div class="route-method">GET /api/deck/study</div>
+                    <p>Get shuffled deck for studying</p>
+                    <code style="display: block; margin-top: 8px;">?domain=insurance&shuffle=true</code>
+                </div>
+                <div class="route">
+                    <div class="route-method">POST /api/card/review</div>
+                    <p>Record user review and update FSRS metrics</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-badge">Python 3.13</div>
+                <div class="tech-badge">FastAPI</div>
+                <div class="tech-badge">SQLAlchemy 2.0</div>
+                <div class="tech-badge">Pydantic v2</div>
+                <div class="tech-badge">SQLite</div>
+                <div class="tech-badge">py-fsrs</div>
+                <div class="tech-badge">genanki</div>
+                <div class="tech-badge">pytest</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Project Structure</h2>
+            <pre><code>flashcards/
+├── src/flashcards/
+│   ├── core/          # Config, database setup
+│   ├── domains/       # Pydantic schemas, SQLAlchemy models
+│   ├── ingestion/     # Glossary parsers (JSON, Markdown, etc.)
+│   ├── generators/    # Card synthesis engines
+│   ├── srs/           # FSRS scheduler
+│   ├── exporters/     # Output formats (Anki, JSON)
+│   └── server/        # FastAPI app and routes
+├── data/raw_glossaries/ # Glossary source files
+├── tests/             # Unit tests (11 passing)
+└── pyproject.toml     # Dependencies and config</code></pre>
+        </div>
+
+        <div class="section">
+            <h2>Next Steps</h2>
+            <div class="grid-2">
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">Add Glossaries</h3>
+                    <p>Drop JSON files into <code>data/raw_glossaries/{domain}/</code> and they'll be available via the API.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">Create Generators</h3>
+                    <p>Extend <code>BaseCardGenerator</code> to transform glossaries into domain-specific card types.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">Build Scrapers</h3>
+                    <p>Integrate with NAIC, academic databases, and other authoritative glossary sources.</p>
+                </div>
+                <div>
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">Deploy UI</h3>
+                    <p>Add HTMX templates for a lightweight web interface to study decks.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built for learning. Open source. <a href="https://github.com/baseline0/flashcards" style="color: var(--primary);">Contribute on GitHub</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">© 2024 Mark Alexiuk • MIT License</p>
+        </footer>
+    </div>
+</body>
+</html>
