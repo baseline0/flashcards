@@ -148,9 +148,48 @@
             transition: width 0.3s ease;
         }
 
+        .card-wrapper {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+        }
+
         .card-container {
             perspective: 1000px;
             cursor: pointer;
+            flex: 1;
+        }
+
+        .card-nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-next {
+            background: var(--primary);
+            color: white;
+            padding: 12px 16px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: 600;
+            min-width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-next:hover {
+            background: var(--secondary);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .card {
@@ -435,6 +474,23 @@
                 padding: 30px 20px;
             }
 
+            .card-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .card-nav {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .btn-next {
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+                min-width: auto;
+                padding: 10px 20px;
+            }
+
             .controls {
                 flex-wrap: wrap;
             }
@@ -481,10 +537,15 @@
                     </div>
                 </div>
 
-                <div id="cardArea" class="card-container">
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        <p>Loading cards...</p>
+                <div class="card-wrapper">
+                    <div id="cardArea" class="card-container">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <p>Loading cards...</p>
+                        </div>
+                    </div>
+                    <div class="card-nav">
+                        <button class="btn btn-next" onclick="app.skipCard()" title="Next card">→</button>
                     </div>
                 </div>
 
