@@ -31,18 +31,20 @@
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 20px 30px;
             border-bottom: 1px solid var(--border);
-            margin-bottom: 40px;
+            flex-shrink: 0;
         }
 
         h1 {
@@ -65,15 +67,21 @@
 
         .screen {
             display: none;
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
         }
 
         .screen.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
 
         .deck-selector {
             display: grid;
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            flex: 1;
         }
 
         .deck-card {
@@ -106,8 +114,8 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            height: 100vh;
-            overflow: hidden;
+            flex: 1;
+            padding: 30px;
         }
 
         .deck-header {
@@ -233,7 +241,7 @@
         }
 
         .card-content {
-            font-size: clamp(1rem, 5vw, 2rem);
+            font-size: clamp(1.2rem, 6vw, 3.5rem);
             font-weight: 500;
             line-height: 1.8;
             word-wrap: break-word;
@@ -404,10 +412,12 @@
 
         .summary {
             background: white;
-            padding: 40px;
+            padding: 60px 40px;
             border-radius: 12px;
             border: 1px solid var(--border);
             text-align: center;
+            max-width: 600px;
+            margin: auto;
         }
 
         .summary h2 {
@@ -733,20 +743,19 @@
 
                 const card = contentElement.parentElement;
                 const maxWidth = card.offsetWidth - 80;
-                const maxHeight = card.offsetHeight - 120; // Account for label and hint
 
-                let fontSize = 32;
+                // Start with larger font
+                let fontSize = Math.min(56, Math.floor(card.offsetWidth / 12));
                 contentElement.style.fontSize = fontSize + "px";
 
-                // Reduce font only if content is too wide (scrolls horizontally)
-                // Don't reduce for height since card can scroll
-                while (contentElement.scrollWidth > maxWidth && fontSize > 14) {
-                    fontSize -= 1;
+                // Reduce font only if content overflows width
+                while (contentElement.scrollWidth > maxWidth && fontSize > 16) {
+                    fontSize -= 2;
                     contentElement.style.fontSize = fontSize + "px";
                 }
 
-                // Minimum 14px for readability
-                contentElement.style.fontSize = Math.max(fontSize, 14) + "px";
+                // Minimum 16px for readability
+                contentElement.style.fontSize = Math.max(fontSize, 16) + "px";
             }
 
             async rateCard(rating) {
