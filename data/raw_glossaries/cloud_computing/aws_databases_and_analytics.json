@@ -1,0 +1,152 @@
+[
+  {
+    "title": "RDS (Relational Database Service)",
+    "body": "An AWS managed database service that handles database administration tasks like provisioning, patching, and backups. Supports MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server with automatic failover and read replicas.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/rds/",
+      "source_name": "AWS RDS Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "databases"
+    }
+  },
+  {
+    "title": "DynamoDB",
+    "body": "A fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. Supports key-value and document data models with automatic sharding and replication across multiple availability zones.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/dynamodb/",
+      "source_name": "AWS DynamoDB Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "databases"
+    }
+  },
+  {
+    "title": "Redshift",
+    "body": "AWS's data warehouse service designed for fast analytical queries on large datasets. Uses columnar storage and parallel query execution; optimized for OLAP (Online Analytical Processing) workloads, not transactional systems.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/redshift/",
+      "source_name": "AWS Redshift Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "advanced",
+      "category": "databases"
+    }
+  },
+  {
+    "title": "IAM (Identity and Access Management)",
+    "body": "An AWS service for managing user access and permissions. Allows creation of users, groups, roles, and policies to control who can access which AWS resources and what actions they can perform.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/iam/",
+      "source_name": "AWS IAM Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "security"
+    }
+  },
+  {
+    "title": "CloudWatch",
+    "body": "An AWS monitoring and observability service for collecting metrics, logs, and alarms from AWS resources and applications. Enables tracking of resource utilization, application performance, and operational health.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/cloudwatch/",
+      "source_name": "AWS CloudWatch Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "monitoring"
+    }
+  },
+  {
+    "title": "SNS (Simple Notification Service)",
+    "body": "A fully managed pub/sub messaging service for sending notifications (SMS, email, HTTP) and distributing messages to multiple subscribers. Decouples applications and enables asynchronous communication.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/sns/",
+      "source_name": "AWS SNS Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "messaging"
+    }
+  },
+  {
+    "title": "SQS (Simple Queue Service)",
+    "body": "A fully managed message queue service that decouples producer and consumer applications. Enables asynchronous processing, load leveling, and reliable message delivery with automatic retry and dead-letter queues.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/sqs/",
+      "source_name": "AWS SQS Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "intermediate",
+      "category": "messaging"
+    }
+  },
+  {
+    "title": "AWS Well-Architected Framework",
+    "body": "A set of best practices and design principles for AWS architectures across five pillars: Operational Excellence, Security, Reliability, Performance Efficiency, and Cost Optimization. Guides design decisions and reviews.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/wellarchitected/",
+      "source_name": "AWS Well-Architected Framework",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "advanced",
+      "category": "architecture"
+    }
+  },
+  {
+    "title": "Availability Zone (AZ)",
+    "body": "One or more discrete data centers with redundant power, networking, and connectivity within an AWS Region. Applications can be distributed across multiple AZs for high availability and disaster recovery.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+      "source_name": "AWS EC2 Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "beginner",
+      "category": "infrastructure"
+    }
+  },
+  {
+    "title": "Region",
+    "body": "A geographic area containing multiple Availability Zones. AWS has regions worldwide; applications should be deployed across multiple regions for compliance and disaster recovery. Each region is independent.",
+    "metadata": {
+      "source_url": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html",
+      "source_name": "AWS EC2 Documentation",
+      "license": "proprietary",
+      "attribution_required": true,
+      "attribution_text": "Amazon Web Services",
+      "tier": 2,
+      "commercial_use": false,
+      "difficulty": "beginner",
+      "category": "infrastructure"
+    }
+  }
+]

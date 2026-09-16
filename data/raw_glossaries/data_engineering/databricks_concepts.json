@@ -1,0 +1,146 @@
+[
+  {
+    "title": "Databricks Platform",
+    "body": "An unified data analytics platform built on Apache Spark that combines data engineering, data science, and business analytics. Provides integrated workspace for SQL, Python, Scala, R with collaborative notebooks and workflow orchestration.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "beginner",
+      "category": "platform"
+    }
+  },
+  {
+    "title": "Delta Lake",
+    "body": "An open-source storage format built on Parquet that brings ACID transaction guarantees to data lakes. Enables schema enforcement, time travel, and unified batch/streaming processing; cornerstone of Databricks Lakehouse architecture.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "storage"
+    }
+  },
+  {
+    "title": "Unity Catalog",
+    "body": "Databricks' centralized metadata governance layer providing fine-grained access control, data lineage tracking, and unified governance across workspaces and clouds. Enables RBAC at table, row, and column level.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "governance"
+    }
+  },
+  {
+    "title": "Databricks SQL",
+    "body": "A native SQL engine optimized for analytical queries on data lakes. Provides sub-second query latency, automatic optimization, and full SQL compatibility with Delta Lake tables.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "sql"
+    }
+  },
+  {
+    "title": "Databricks Jobs",
+    "body": "Fully managed job scheduler for running notebooks, JAR files, Python scripts, or SQL queries on Databricks clusters. Supports scheduled runs, retry logic, notifications, and integration with external orchestrators.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "orchestration"
+    }
+  },
+  {
+    "title": "Databricks Workflows",
+    "body": "A directed acyclic graph (DAG)-based workflow orchestration system for coordinating multi-job pipelines. Replaces legacy job clusters with support for job dependencies, error handling, and notifications.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "orchestration"
+    }
+  },
+  {
+    "title": "MLflow",
+    "body": "An open-source ML platform for managing the ML lifecycle: experiment tracking, model versioning, model registry, and model serving. Integrates with Databricks for collaborative ML development.",
+    "metadata": {
+      "source": "Databricks/MLflow Documentation",
+      "difficulty": "intermediate",
+      "category": "ml"
+    }
+  },
+  {
+    "title": "Lakehouse Architecture",
+    "body": "A data architecture combining the benefits of data lakes (scalability, cost) and data warehouses (ACID guarantees, SQL performance). Delta Lake is the foundation; enables unified ETL and analytics.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "architecture"
+    }
+  },
+  {
+    "title": "Medallion Architecture",
+    "body": "A best-practice data organization pattern with three layers: Bronze (raw data), Silver (cleaned/deduplicated), Gold (business-ready). Common in Databricks Lakehouses for progressive data refinement.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "architecture"
+    }
+  },
+  {
+    "title": "Schema Inference and Enforcement",
+    "body": "Delta Lake automatically infers schemas from Parquet files and enforces them on writes. Prevents accidental schema changes and ensures data quality; enforced schemas can be modified with ALTER TABLE.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "data_quality"
+    }
+  },
+  {
+    "title": "Time Travel (Data Versioning)",
+    "body": "Delta Lake's capability to query previous versions of data using timestamps or version numbers. Enables audit trails, data recovery, and temporal analysis without additional snapshot tables.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "storage"
+    }
+  },
+  {
+    "title": "Z-Order Clustering",
+    "body": "A data layout optimization technique that co-locates related data to improve query performance. Particularly effective for queries filtering on multiple columns; automatically optimized by Databricks.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "performance"
+    }
+  },
+  {
+    "title": "Photon Engine",
+    "body": "Databricks' optimized query execution engine written in C++ for vectorized execution. Provides 3-8x performance improvement over standard Spark SQL for analytics workloads.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "advanced",
+      "category": "performance"
+    }
+  },
+  {
+    "title": "Cluster",
+    "body": "A set of computation resources in Databricks: driver node (coordinates) + worker nodes (execute tasks). Can be all-purpose (interactive), job clusters (short-lived for jobs), or GPU clusters (ML workloads).",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "beginner",
+      "category": "infrastructure"
+    }
+  },
+  {
+    "title": "Notebook",
+    "body": "Databricks' collaborative development environment supporting multiple languages (SQL, Python, Scala, R) in a single document. Includes cell-by-cell execution, visualization, and version control.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "beginner",
+      "category": "development"
+    }
+  },
+  {
+    "title": "Secrets API",
+    "body": "Databricks' secure credential storage system for managing passwords, API keys, tokens. Secrets are stored in encrypted backend and accessed via API; prevents hardcoding credentials in notebooks.",
+    "metadata": {
+      "source": "Databricks Documentation",
+      "difficulty": "intermediate",
+      "category": "security"
+    }
+  }
+]

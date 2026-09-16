@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Underwriting",
+    "body": "The process by which an insurance company evaluates an applicant's risk, determines whether to issue a policy, and sets the premium. Involves reviewing medical history, driving record, property details, and other risk factors.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate",
+      "category": "underwriting"
+    }
+  },
+  {
+    "title": "Risk Assessment",
+    "body": "The evaluation of potential losses an insurer might face from issuing a policy. Uses statistical models, historical data, and expert judgment to classify applicants into risk categories and determine appropriate pricing.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "underwriting"
+    }
+  },
+  {
+    "title": "Actuarial Science",
+    "body": "The mathematical discipline that uses statistics, financial mathematics, and probability theory to evaluate insurance risk and uncertainty. Actuaries design insurance products, set premiums, and ensure financial stability.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "underwriting"
+    }
+  },
+  {
+    "title": "Claim",
+    "body": "A formal request by an insured person to the insurance company for payment of benefits under the terms of the insurance policy for a covered loss or event.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "beginner",
+      "category": "claims"
+    }
+  },
+  {
+    "title": "Claims Lifecycle",
+    "body": "The complete process from claim submission through settlement: reporting, investigation, validation, adjustment, and payment. Can span days to months depending on complexity and dispute.",
+    "metadata": {
+      "source": "Insurance Industry",
+      "difficulty": "intermediate",
+      "category": "claims"
+    }
+  },
+  {
+    "title": "Adjuster",
+    "body": "A professional employed or authorized by an insurance company to investigate claims, verify policy coverage, determine liability, and estimate the cost of damages or losses.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate",
+      "category": "claims"
+    }
+  },
+  {
+    "title": "Claim Investigation",
+    "body": "The process of examining evidence, conducting interviews, reviewing documentation, and determining the validity and extent of a claim. Includes site inspections, medical review, and third-party verification.",
+    "metadata": {
+      "source": "Insurance Industry",
+      "difficulty": "intermediate",
+      "category": "claims"
+    }
+  },
+  {
+    "title": "Fraud Detection",
+    "body": "The identification and prevention of fraudulent insurance claims through statistical analysis, pattern matching, network analysis, and investigative techniques. Protects insurers from intentional misrepresentation or false claims.",
+    "metadata": {
+      "source": "Insurance Industry",
+      "difficulty": "advanced",
+      "category": "fraud"
+    }
+  },
+  {
+    "title": "Claims Denials",
+    "body": "When an insurance company refuses to pay a claim because it does not meet policy terms, is outside coverage, or is fraudulent. Must be documented with clear reasoning and policy references.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate",
+      "category": "claims"
+    }
+  },
+  {
+    "title": "Reinsurance",
+    "body": "Insurance purchased by insurance companies to protect themselves from catastrophic losses. A reinsurer assumes a portion of the original insurer's risk in exchange for a premium, enabling risk distribution.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "risk_management"
+    }
+  },
+  {
+    "title": "Loss Ratio",
+    "body": "A key metric calculated as claims paid divided by premiums collected. For example, a 0.75 loss ratio means the insurer pays $0.75 in claims for every $1.00 in premiums. Used to assess profitability and pricing adequacy.",
+    "metadata": {
+      "source": "Insurance Industry",
+      "difficulty": "advanced",
+      "category": "underwriting"
+    }
+  },
+  {
+    "title": "Regulatory Compliance",
+    "body": "Adherence to state and federal insurance laws, including rate approval, reserve requirements, solvency standards, and consumer protection regulations. Enforced by state insurance commissioners.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "governance"
+    }
+  },
+  {
+    "title": "Reserve (Insurance Reserve)",
+    "body": "Money set aside by an insurance company to pay future claims that have been incurred but not yet paid. Includes reserves for known claims (case reserves) and incurred-but-not-reported (IBNR) claims.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "risk_management"
+    }
+  },
+  {
+    "title": "Policy Holder Rights",
+    "body": "Legal entitlements of an insured person under an insurance policy, including the right to clear disclosure, timely claim processing, appeal of denials, and protection under consumer protection laws.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "intermediate",
+      "category": "governance"
+    }
+  },
+  {
+    "title": "Subrogation",
+    "body": "The legal right of an insurance company to pursue a third party that is responsible for a loss in order to recover money it paid to the insured for that loss. Allows risk transfer.",
+    "metadata": {
+      "source": "NAIC",
+      "difficulty": "advanced",
+      "category": "risk_management"
+    }
+  }
+]
