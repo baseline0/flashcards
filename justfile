@@ -14,7 +14,9 @@ server:
 run: server
     @echo ""
     @echo "🚀 Flashcards running at:"
-    @echo "📚 Interactive UI: http://127.0.0.1:8000/docs"
+    @echo "📚 Study Interface: http://127.0.0.1:8000/study"
+    @echo "📖 Landing Page: http://127.0.0.1:8000/"
+    @echo "🔧 API Docs: http://127.0.0.1:8000/docs"
     @echo ""
 
 # Study insurance flashcards (P&C + underwriting)
