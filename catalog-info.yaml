@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: flashcards
+  description: Spaced-repetition learning application (deck management, review scheduling, analytics)
+  links:
+    - url: https://github.com/baseline0/flashcards
+      title: Repository
+    - url: https://github.com/baseline0/flashcards/blob/main/BOUNDARIES.md
+      title: Charter
+spec:
+  type: service
+  owner: malexiuk@gmail.com
+  dependsOn:
+    - component:fleet-base
+  providesApis:
+    - GET /api/decks
+    - POST /api/cards
+    - GET /api/reviews
+  consumesApis: []
+  lifecycle: production
