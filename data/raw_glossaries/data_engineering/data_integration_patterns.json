@@ -1,0 +1,392 @@
+[
+  {
+    "title": "Change Data Capture (CDC)",
+    "body": "Technique for identifying and capturing changes (inserts, updates, deletes) to data in source systems in real-time. Enables efficient data replication without full table scans. Critical for feeding data lakes with fresh transactional data.",
+    "metadata": {
+      "source": "Data Integration Best Practices",
+      "source_url": "https://en.wikipedia.org/wiki/Change_data_capture",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Data Integration Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["CDC", "real_time", "incremental", "data_capture"],
+      "related_concepts": ["Streaming", "Replication", "Data Freshness"]
+    }
+  },
+  {
+    "title": "Debezium",
+    "body": "Open-source CDC platform that connects to databases (PostgreSQL, MySQL, Oracle, MongoDB) and streams changes to Kafka or other targets. Provides exactly-once semantics and schema evolution handling.",
+    "metadata": {
+      "source": "Debezium Official Documentation",
+      "source_url": "https://debezium.io/",
+      "license": "Apache 2.0",
+      "attribution": "Debezium Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration_tool",
+      "keywords": ["debezium", "cdc", "kafka", "open_source"],
+      "related_concepts": ["CDC", "Kafka", "Streaming", "Fivetran"]
+    }
+  },
+  {
+    "title": "Fivetran",
+    "body": "Managed cloud data integration platform supporting 400+ pre-built connectors. Simplifies data movement from SaaS apps, databases, and data warehouses to lakes/warehouses. Handles CDC, schema management, and quality validation.",
+    "metadata": {
+      "source": "Fivetran Official Documentation",
+      "source_url": "https://www.fivetran.com/",
+      "license": "Proprietary",
+      "attribution": "Fivetran",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration_tool",
+      "keywords": ["fivetran", "managed_connector", "cdc", "integration"],
+      "related_concepts": ["CDC", "Data Integration", "Stitch", "Talend"]
+    }
+  },
+  {
+    "title": "Data Integration",
+    "body": "Process of combining data from multiple heterogeneous sources into a unified view. Includes extraction (from source systems), transformation (cleaning, enriching), and loading (into target systems). Core capability of data pipelines.",
+    "metadata": {
+      "source": "Data Warehouse and ETL Best Practices",
+      "source_url": "https://en.wikipedia.org/wiki/Data_integration",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["data_integration", "etl", "combination", "unification"],
+      "related_concepts": ["ETL", "ELT", "Data Pipeline"]
+    }
+  },
+  {
+    "title": "ETL (Extract, Transform, Load)",
+    "body": "Traditional data pipeline pattern: Extract data from sources, Transform (clean, enrich, aggregate) in a staging area, Load into target warehouse. Slower than ELT but ensures data quality before loading.",
+    "metadata": {
+      "source": "Data Warehouse Patterns",
+      "source_url": "https://en.wikipedia.org/wiki/Extract,_transform,_load",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["ETL", "pattern", "transformation", "staging"],
+      "related_concepts": ["ELT", "Data Pipeline", "Transformation"]
+    }
+  },
+  {
+    "title": "ELT (Extract, Load, Transform)",
+    "body": "Modern data pipeline pattern: Extract from sources, Load into target (raw zone), Transform using target system's compute. Faster than ETL; leverages cloud warehouse's power. Common in Databricks/Snowflake architectures.",
+    "metadata": {
+      "source": "Modern Data Stack Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Extract,_transform,_load",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Modern Data Stack Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["ELT", "pattern", "modern", "cloud_warehouse"],
+      "related_concepts": ["ETL", "Data Pipeline", "Transformation"]
+    }
+  },
+  {
+    "title": "Managed Connectors",
+    "body": "Pre-built, maintainable integrations provided by data platforms (Databricks, Fivetran, Stitch) that handle complex source systems. Eliminate custom code for common sources like Salesforce, ServiceNow, or Stripe.",
+    "metadata": {
+      "source": "Data Integration Platforms",
+      "source_url": "https://docs.databricks.com/integrations/",
+      "license": "Fair use",
+      "attribution": "Databricks, Data Integration Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["managed_connectors", "pre_built", "integration", "platform"],
+      "related_concepts": ["Data Integration", "Fivetran", "Databricks"]
+    }
+  },
+  {
+    "title": "Data Sharing (Delta Sharing)",
+    "body": "Databricks' protocol for securely sharing live Delta tables across organizations and clouds without copying data. Enables controlled, auditable data access between companies while maintaining single source of truth.",
+    "metadata": {
+      "source": "Databricks Delta Sharing Documentation",
+      "source_url": "https://docs.databricks.com/data-sharing/",
+      "license": "Proprietary (Databricks)",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["delta_sharing", "data_sharing", "secure_access", "cross_org"],
+      "related_concepts": ["Delta Lake", "Governance", "Cross-Cloud"]
+    }
+  },
+  {
+    "title": "Kafka",
+    "body": "Distributed event streaming platform. Acts as a central hub for real-time data pipelines. Sources publish events (changes) to topics; consumers (data lakes, analytics systems) subscribe and process streams.",
+    "metadata": {
+      "source": "Apache Kafka Official Documentation",
+      "source_url": "https://kafka.apache.org/",
+      "license": "Apache 2.0",
+      "attribution": "Apache Software Foundation",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["kafka", "streaming", "events", "pub_sub"],
+      "related_concepts": ["Event Streaming", "CDC", "Real-Time Data"]
+    }
+  },
+  {
+    "title": "Event Streaming",
+    "body": "Continuous flow of events (state changes) from source systems. Used for real-time data pipelines, triggered actions, and audit trails. Kafka is the de facto platform for event streaming.",
+    "metadata": {
+      "source": "Event Streaming Architecture",
+      "source_url": "https://en.wikipedia.org/wiki/Event_stream_processing",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["event_streaming", "real_time", "pipeline"],
+      "related_concepts": ["Kafka", "Stream Processing", "CDC"]
+    }
+  },
+  {
+    "title": "Stream Processing",
+    "body": "Real-time analysis and transformation of data streams. Frameworks like Spark Structured Streaming, Flink, or Kafka Streams process events as they arrive, enabling real-time analytics and decision-making.",
+    "metadata": {
+      "source": "Stream Processing Architecture",
+      "source_url": "https://en.wikipedia.org/wiki/Stream_processing",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["stream_processing", "real_time", "transformation"],
+      "related_concepts": ["Spark Streaming", "Event Streaming", "Real-Time Analytics"]
+    }
+  },
+  {
+    "title": "Spark Structured Streaming",
+    "body": "Apache Spark API for stream processing with batch-like programming model. Handles incremental micro-batching of streaming data, enables stateful aggregations and joins with batch data.",
+    "metadata": {
+      "source": "Apache Spark Documentation",
+      "source_url": "https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html",
+      "license": "Apache 2.0",
+      "attribution": "Apache Software Foundation",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["spark_streaming", "structured", "micro_batch"],
+      "related_concepts": ["Spark", "Stream Processing", "Databricks"]
+    }
+  },
+  {
+    "title": "Exactly-Once Semantics (EOS) / Exactly-Once Processing",
+    "body": "Guarantee that each message is processed exactly once, not lost and not duplicated. Critical for data integrity in financial systems. Debezium and Kafka provide EOS; Spark defaults to at-least-once.",
+    "metadata": {
+      "source": "Stream Processing Guarantees",
+      "source_url": "https://en.wikipedia.org/wiki/Idempotence",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Stream Processing Community",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "streaming",
+      "keywords": ["exactly_once", "semantics", "guarantee", "deduplication"],
+      "related_concepts": ["Idempotency", "Data Integrity", "Transactions"]
+    }
+  },
+  {
+    "title": "At-Least-Once Semantics",
+    "body": "Guarantee that each message is processed at least once (may be duplicated). Simpler than exactly-once but requires idempotent processing. Common in cost-sensitive systems.",
+    "metadata": {
+      "source": "Stream Processing Guarantees",
+      "source_url": "https://en.wikipedia.org/wiki/Idempotence",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["at_least_once", "semantics", "deduplication", "idempotent"],
+      "related_concepts": ["Exactly-Once", "Idempotency", "Stream Processing"]
+    }
+  },
+  {
+    "title": "Idempotency / Idempotent Processing",
+    "body": "Property where processing the same message multiple times produces the same result as processing once. Essential for fault-tolerant systems. Example: INSERT … ON CONFLICT DO UPDATE.",
+    "metadata": {
+      "source": "Stream Processing Best Practices",
+      "source_url": "https://en.wikipedia.org/wiki/Idempotence",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Stream Processing Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["idempotency", "fault_tolerance", "retries"],
+      "related_concepts": ["At-Least-Once", "Error Handling", "Reliability"]
+    }
+  },
+  {
+    "title": "Data Freshness",
+    "body": "How recent/up-to-date data in a system is compared to the source. Real-time streaming achieves high freshness; daily batch updates have lower freshness. Critical for time-sensitive decisions.",
+    "metadata": {
+      "source": "Data Pipeline Architecture",
+      "source_url": "https://en.wikipedia.org/wiki/Data_freshness",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["freshness", "latency", "recency", "real_time"],
+      "related_concepts": ["Latency", "Real-Time", "Batch Processing"]
+    }
+  },
+  {
+    "title": "Latency (in Data Pipelines)",
+    "body": "Time delay between when data is created in source system and when it's available for analysis. Streaming achieves low latency (seconds); batch has higher latency (hours/days). Trade-off with cost and complexity.",
+    "metadata": {
+      "source": "Data Architecture Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Latency_(engineering)",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["latency", "delay", "freshness", "performance"],
+      "related_concepts": ["Throughput", "Data Freshness", "Performance"]
+    }
+  },
+  {
+    "title": "Throughput",
+    "body": "Volume of data processed per unit time (records/sec, MB/sec). Determines pipeline capacity and cost. Batch processing achieves high throughput; real-time streaming prioritizes latency over throughput.",
+    "metadata": {
+      "source": "Performance Metrics",
+      "source_url": "https://en.wikipedia.org/wiki/Throughput",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["throughput", "performance", "volume", "capacity"],
+      "related_concepts": ["Latency", "Scalability", "Cost"]
+    }
+  },
+  {
+    "title": "Schema Evolution",
+    "body": "Handling changes to data structure over time (new fields, changed types). CDC systems like Debezium track schema changes; data warehouses (Delta Lake) support schema inference and additive changes.",
+    "metadata": {
+      "source": "Data Pipeline Patterns",
+      "source_url": "https://en.wikipedia.org/wiki/Schema_evolution",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Data Engineering Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["schema_evolution", "schema_change", "versioning"],
+      "related_concepts": ["Schema Management", "Delta Lake", "Compatibility"]
+    }
+  },
+  {
+    "title": "Data Validation / Data Quality",
+    "body": "Checks ensuring data meets quality standards (completeness, uniqueness, format, range). Integrated into pipelines via frameworks like Great Expectations or dbt tests to catch issues early.",
+    "metadata": {
+      "source": "Data Quality Best Practices",
+      "source_url": "https://docs.getdbt.com/docs/building-a-dbt-project/tests",
+      "license": "CC BY 4.0",
+      "attribution": "dbt Project, Data Quality Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["data_quality", "validation", "testing", "governance"],
+      "related_concepts": ["Great Expectations", "dbt Tests", "Monitoring"]
+    }
+  },
+  {
+    "title": "Great Expectations",
+    "body": "Open-source data validation framework for building and testing data pipelines. Defines expectations (assertions) about data, validates batches, and produces data quality reports.",
+    "metadata": {
+      "source": "Great Expectations Official Documentation",
+      "source_url": "https://greatexpectations.io/",
+      "license": "Apache 2.0",
+      "attribution": "Great Expectations Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration_tool",
+      "keywords": ["great_expectations", "validation", "quality", "testing"],
+      "related_concepts": ["Data Quality", "dbt Tests", "Monitoring"]
+    }
+  },
+  {
+    "title": "Dead Letter Queue (DLQ)",
+    "body": "Separate queue for messages that failed processing. Enables safe handling of bad data without halting pipeline. Operators investigate DLQ messages and fix/re-process them.",
+    "metadata": {
+      "source": "Message Queue Patterns",
+      "source_url": "https://en.wikipedia.org/wiki/Dead_letter_queue",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "streaming",
+      "keywords": ["dlq", "error_handling", "failed_messages", "queue"],
+      "related_concepts": ["Error Handling", "Monitoring", "Resilience"]
+    }
+  },
+  {
+    "title": "Replication",
+    "body": "Copying data from a source system (database, API) to a target system (data lake, warehouse) keeping them synchronized. Can be full (initial copy) or incremental (ongoing changes via CDC).",
+    "metadata": {
+      "source": "Data Integration Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Data_replication",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_integration",
+      "keywords": ["replication", "sync", "copy", "incremental"],
+      "related_concepts": ["CDC", "Data Integration", "Synchronization"]
+    }
+  },
+  {
+    "title": "Reverse ETL",
+    "body": "Moving data from warehouse back to operational systems (CRM, marketing tools). Enables data-driven operations like personalizing offers based on analytics. Growing practice in modern data stacks.",
+    "metadata": {
+      "source": "Reverse ETL Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Extract,_transform,_load",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Modern Data Stack Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["reverse_etl", "activation", "operational", "insights"],
+      "related_concepts": ["ETL", "ELT", "Data Activation"]
+    }
+  },
+  {
+    "title": "Cross-Cloud Consumption",
+    "body": "Accessing and using data across multiple cloud providers (AWS, Azure, GCP). Databricks supports Delta Sharing for cross-cloud data access. Enables agility and multi-vendor strategies.",
+    "metadata": {
+      "source": "Databricks Delta Sharing, Multi-Cloud Architecture",
+      "source_url": "https://docs.databricks.com/data-sharing/",
+      "license": "Fair use",
+      "attribution": "Databricks, Cloud Architecture Community",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "data_integration",
+      "keywords": ["cross_cloud", "multi_cloud", "data_sharing"],
+      "related_concepts": ["Delta Sharing", "Multi-Cloud", "Governance"]
+    }
+  },
+  {
+    "title": "API-First Data Integration",
+    "body": "Designing data integration around APIs (REST, GraphQL) rather than direct database access. Improves security, maintainability, and enables SaaS integrations. Opposite of direct SQL access.",
+    "metadata": {
+      "source": "Modern Data Architecture",
+      "source_url": "https://en.wikipedia.org/wiki/Web_API",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Data Architecture Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_integration",
+      "keywords": ["api_first", "rest", "graphql", "integration"],
+      "related_concepts": ["REST API", "Microservices", "Data Access Patterns"]
+    }
+  }
+]

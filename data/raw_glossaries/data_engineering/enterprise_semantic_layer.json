@@ -1,0 +1,407 @@
+[
+  {
+    "title": "Semantic Layer",
+    "body": "A centralized data abstraction layer that defines business metrics and entities once, then serves them consistently to BI tools, analytics dashboards, and AI/ML applications. Prevents metric proliferation and conflicting definitions across teams.",
+    "metadata": {
+      "source": "Cube.dev, dbt Semantic Layer Documentation",
+      "source_url": "https://docs.getdbt.com/docs/build/semantic-models",
+      "license": "CC BY 4.0 / Apache 2.0",
+      "attribution": "dbt Project, Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "semantic_layer",
+      "keywords": ["metrics", "semantic_model", "BI", "governance"],
+      "related_concepts": ["Headless BI", "Metric Definition", "Data Mesh"]
+    }
+  },
+  {
+    "title": "Headless BI / Headless Analytics",
+    "body": "An architecture where the semantic layer is decoupled from the visualization/presentation layer. Metrics are defined centrally and consumed by multiple frontends (Power BI, Tableau, GenAI agents, REST APIs) without each one defining logic independently.",
+    "metadata": {
+      "source": "Cube.dev Docs, Gartner Analytics Reports",
+      "source_url": "https://cube.dev/blog/headless-bi/",
+      "license": "Proprietary with fair use",
+      "attribution": "Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "semantic_layer",
+      "keywords": ["BI", "architecture", "decoupling", "multi-consumer"],
+      "related_concepts": ["Semantic Layer", "API-First Analytics"]
+    }
+  },
+  {
+    "title": "Metric Definition / Metric Store",
+    "body": "A centralized repository of business metrics (e.g., 'Monthly Active Users', 'Net Premium Earned') that includes the SQL logic, dimensions, filters, and business rules. Once defined, metrics are reused across all analytics tools.",
+    "metadata": {
+      "source": "dbt Labs, Cube.dev Documentation",
+      "source_url": "https://docs.getdbt.com/docs/build/metrics",
+      "license": "CC BY 4.0",
+      "attribution": "dbt Project",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "semantic_layer",
+      "keywords": ["metric", "business_logic", "reusability"],
+      "related_concepts": ["KPI", "Semantic Layer", "Data Mart"]
+    }
+  },
+  {
+    "title": "Cube.dev",
+    "body": "An open-source semantic layer and headless BI platform. Sits between data warehouses (Snowflake, BigQuery) and frontends (Tableau, Grafana, custom apps). Handles metric definitions, role-based access, and provides REST/GraphQL APIs.",
+    "metadata": {
+      "source": "Cube.dev Official Documentation",
+      "source_url": "https://cube.dev/docs/",
+      "license": "Apache 2.0 with proprietary cloud edition",
+      "attribution": "Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "semantic_layer_tool",
+      "keywords": ["headless_BI", "open_source", "metrics", "API"],
+      "related_concepts": ["Semantic Layer", "Looker Studio", "Power BI"]
+    }
+  },
+  {
+    "title": "dbt Semantic Layer / MetricFlow",
+    "body": "dbt's native semantic layer (formerly MetricFlow) that lives in dbt projects. Enables centralized metric definitions using YAML, automatic SQL generation, and integration with dbt Cloud. Metrics are queryable via dbt APIs and BI tools.",
+    "metadata": {
+      "source": "dbt Labs Documentation",
+      "source_url": "https://docs.getdbt.com/docs/build/semantic-models",
+      "license": "CC BY 4.0",
+      "attribution": "dbt Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "semantic_layer_tool",
+      "keywords": ["dbt", "metrics", "YAML", "API_first"],
+      "related_concepts": ["dbt", "MetricFlow", "Semantic Model"]
+    }
+  },
+  {
+    "title": "Metric Definition YAML (dbt)",
+    "body": "YAML syntax used in dbt projects to define business metrics centrally. Includes metric name, type (simple, derived), SQL templates, dimensions, filters, and description. Enables one-time definition, multi-tool consumption.",
+    "metadata": {
+      "source": "dbt Labs Documentation",
+      "source_url": "https://docs.getdbt.com/docs/build/metrics",
+      "license": "CC BY 4.0",
+      "attribution": "dbt Project",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "semantic_layer_tool",
+      "keywords": ["dbt", "YAML", "configuration", "metrics"],
+      "related_concepts": ["dbt Model", "Metrics", "Semantic Model"]
+    }
+  },
+  {
+    "title": "Metric Consumption / Metric API",
+    "body": "Downstream applications (BI tools, dashboards, GenAI agents) query metrics through APIs (REST, GraphQL, JDBC) rather than direct SQL. Ensures metric definitions are applied consistently and audit trails are maintained.",
+    "metadata": {
+      "source": "Cube.dev, Looker Documentation",
+      "source_url": "https://cube.dev/docs/api-reference",
+      "license": "Various (fair use)",
+      "attribution": "Cube.dev, Google Cloud",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "semantic_layer",
+      "keywords": ["API", "metrics", "consumption", "governance"],
+      "related_concepts": ["GraphQL", "REST API", "Semantic Layer"]
+    }
+  },
+  {
+    "title": "Metric Federation",
+    "body": "Technique for combining metrics across multiple data sources (different databases, clouds, teams) into a unified semantic layer. Enables consistent metric definitions even when underlying data is distributed.",
+    "metadata": {
+      "source": "Cube.dev, dbt Labs",
+      "source_url": "https://cube.dev/blog/semantic-layer-federation/",
+      "license": "Proprietary with fair use",
+      "attribution": "Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "semantic_layer",
+      "keywords": ["federation", "distributed", "multi_source", "data_mesh"],
+      "related_concepts": ["Data Mesh", "Multi-Cloud", "Semantic Layer"]
+    }
+  },
+  {
+    "title": "Dimension",
+    "body": "In semantic layers and BI, a dimension is a categorical attribute used to slice and dice metrics. Examples: Product Category, Region, Customer Segment, Time Period. Dimensions enable drill-down analysis from aggregate metrics.",
+    "metadata": {
+      "source": "Cube.dev, dbt, Business Analytics",
+      "source_url": "https://cube.dev/blog/semantic-layer/",
+      "license": "CC BY 4.0",
+      "attribution": "Cube.dev, dbt Project",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "semantic_layer",
+      "keywords": ["dimension", "attribute", "categorical", "slicing"],
+      "related_concepts": ["Metric", "Fact Table", "OLAP"]
+    }
+  },
+  {
+    "title": "Fact Table",
+    "body": "A table in a data warehouse containing quantitative measurements (facts) along with foreign keys to dimension tables. Example: A 'Sales Fact' table with columns like transaction_id, amount, timestamp, and foreign keys to customer, product, store dimensions.",
+    "metadata": {
+      "source": "Data Warehouse Design Standards, Kimball Methodology",
+      "source_url": "https://en.wikipedia.org/wiki/Star_schema",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Ralph Kimball",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_modeling",
+      "keywords": ["data_warehouse", "fact", "OLAP", "schema"],
+      "related_concepts": ["Dimension Table", "Star Schema", "Snowflake Schema"]
+    }
+  },
+  {
+    "title": "Power BI Semantic Model",
+    "body": "Microsoft Power BI's equivalent of a semantic layer. Defines relationships, hierarchies, calculations (DAX measures), and role-based security. Power BI reports consume this model rather than querying raw tables directly.",
+    "metadata": {
+      "source": "Microsoft Learn Power BI Documentation",
+      "source_url": "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-modeling-view",
+      "license": "CC BY 4.0",
+      "attribution": "Microsoft",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "bi_tool",
+      "keywords": ["Power BI", "model", "DAX", "relationships"],
+      "related_concepts": ["DAX", "Power BI", "Semantic Layer"]
+    }
+  },
+  {
+    "title": "DAX (Data Analysis Expressions)",
+    "body": "Microsoft's formula language for Power BI and Excel. Used to define calculated columns, measures, and KPIs. DAX syntax enables complex aggregations, time-intelligence functions, and row-context calculations.",
+    "metadata": {
+      "source": "Microsoft Learn Power BI Documentation",
+      "source_url": "https://learn.microsoft.com/en-us/dax/",
+      "license": "CC BY 4.0",
+      "attribution": "Microsoft",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "bi_tool",
+      "keywords": ["Power BI", "formula", "DAX", "calculation"],
+      "related_concepts": ["MDX", "Power BI Measure", "Calculated Column"]
+    }
+  },
+  {
+    "title": "Tableau Data Model / Live Connection",
+    "body": "Tableau's approach to connecting semantic layers. Can use live connections (direct query to semantic layer) or extracted data (periodic syncs). Tableau Desktop users build visualizations without writing SQL if the semantic layer is well-defined.",
+    "metadata": {
+      "source": "Tableau Public Documentation",
+      "source_url": "https://help.tableau.com/current/pro/desktop/en-us/",
+      "license": "Proprietary with fair use",
+      "attribution": "Tableau Software",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "bi_tool",
+      "keywords": ["Tableau", "data_model", "live_connection", "extraction"],
+      "related_concepts": ["Tableau Server", "Power BI", "Semantic Layer"]
+    }
+  },
+  {
+    "title": "KPI (Key Performance Indicator)",
+    "body": "A quantifiable measure used to track business performance (e.g., Customer Acquisition Cost, Net Premium Income, Claims Loss Ratio). KPIs are high-level metrics tied directly to business objectives and typically monitored at C-suite level.",
+    "metadata": {
+      "source": "Business Management, Analytics Standards",
+      "source_url": "https://en.wikipedia.org/wiki/Performance_indicator",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "business",
+      "keywords": ["metric", "performance", "business", "tracking"],
+      "related_concepts": ["Metric", "Dashboard", "Scorecard"]
+    }
+  },
+  {
+    "title": "Role-Based Access Control (RBAC) in Semantic Layer",
+    "body": "Security model where users are assigned roles, and each role has defined permissions to view/query specific dimensions, metrics, or rows. Semantic layers enforce RBAC to ensure users see only authorized data.",
+    "metadata": {
+      "source": "Cube.dev, dbt, Enterprise Security",
+      "source_url": "https://cube.dev/docs/security/overview",
+      "license": "Apache 2.0",
+      "attribution": "Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "security",
+      "keywords": ["RBAC", "access_control", "governance", "security"],
+      "related_concepts": ["ABAC", "Data Governance", "Unity Catalog"]
+    }
+  },
+  {
+    "title": "Star Schema",
+    "body": "A database design pattern used in data warehouses with a central fact table surrounded by dimension tables. Optimized for analytical queries (OLAP), enabling fast aggregations along multiple dimensions.",
+    "metadata": {
+      "source": "Ralph Kimball, Data Warehouse Design",
+      "source_url": "https://en.wikipedia.org/wiki/Star_schema",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_modeling",
+      "keywords": ["schema", "data_warehouse", "design", "OLAP"],
+      "related_concepts": ["Fact Table", "Dimension Table", "Snowflake Schema"]
+    }
+  },
+  {
+    "title": "Snowflake Schema",
+    "body": "A variation of star schema where dimension tables are normalized into multiple related tables. Reduces data redundancy but adds complexity to queries. Less common than star schema in modern semantic layers.",
+    "metadata": {
+      "source": "Data Warehouse Design Standards",
+      "source_url": "https://en.wikipedia.org/wiki/Snowflake_schema",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_modeling",
+      "keywords": ["schema", "normalization", "design", "data_warehouse"],
+      "related_concepts": ["Star Schema", "Fact Table", "Dimension Table"]
+    }
+  },
+  {
+    "title": "Mart / Data Mart",
+    "body": "A subset of a data warehouse focused on a specific business domain or team (e.g., Sales Mart, Claims Mart). Data marts are often built from the central warehouse and optimized for specific analytical use cases.",
+    "metadata": {
+      "source": "Data Warehouse Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Data_mart",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "data_warehouse",
+      "keywords": ["data_mart", "domain", "warehouse", "subset"],
+      "related_concepts": ["Data Warehouse", "Data Lake", "Spoke"]
+    }
+  },
+  {
+    "title": "Hub-and-Spoke Analytics Model",
+    "body": "Organizational model where a central architecture team (hub) defines standards, governance, and reusable components, while business teams (spokes) build solutions using the hub's frameworks. Wawanesa's P&C and Life teams are spokes consuming hub semantic definitions.",
+    "metadata": {
+      "source": "Enterprise Architecture Patterns, Wawanesa Job Description",
+      "source_url": "https://jobs.wawanesa.com/",
+      "license": "Fair use",
+      "attribution": "Wawanesa Insurance",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "organization",
+      "keywords": ["hub_spoke", "organizational_model", "governance", "reuse"],
+      "related_concepts": ["Data Mesh", "Governance", "Guardrails"]
+    }
+  },
+  {
+    "title": "Guardrails (in Analytics)",
+    "body": "Pre-built policies, templates, and constraints enforced by the hub to ensure spoke teams comply with governance standards. Examples: enforced PII masking, mandatory row-level security on customer data, approved metric definitions.",
+    "metadata": {
+      "source": "Enterprise Architecture Patterns",
+      "source_url": "https://wawanesa.com",
+      "license": "Fair use",
+      "attribution": "Enterprise Architecture Concepts",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["governance", "policy", "constraint", "compliance"],
+      "related_concepts": ["Hub-and-Spoke", "Data Mesh", "Compliance"]
+    }
+  },
+  {
+    "title": "Metric Drift / Metric Definition Drift",
+    "body": "When different teams inadvertently create conflicting definitions of the same business metric (e.g., two versions of 'Revenue' with different calculation rules). A centralized semantic layer prevents this.",
+    "metadata": {
+      "source": "Analytics Engineering Best Practices",
+      "source_url": "https://cube.dev/blog/",
+      "license": "Proprietary with fair use",
+      "attribution": "Analytics Engineering Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["metric", "drift", "consistency", "quality"],
+      "related_concepts": ["Metric Definition", "Data Governance", "Single Source of Truth"]
+    }
+  },
+  {
+    "title": "Single Source of Truth (SSOT)",
+    "body": "A governance principle where each piece of data/metric is defined and maintained in exactly one place. Enables consistency, auditability, and prevents duplicate work. Semantic layers enforce SSOT for metrics.",
+    "metadata": {
+      "source": "Data Governance Standards",
+      "source_url": "https://en.wikipedia.org/wiki/Single_source_of_truth",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Data Governance Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "governance",
+      "keywords": ["SSOT", "governance", "consistency", "quality"],
+      "related_concepts": ["Metric Definition", "Data Lineage", "Governance"]
+    }
+  },
+  {
+    "title": "Data Lineage",
+    "body": "The ability to trace data from its source through transformations to final consumption. Semantic layers track lineage from raw data → transformations → metrics → dashboards, enabling impact analysis and debugging.",
+    "metadata": {
+      "source": "Data Governance, Databricks, Cube.dev",
+      "source_url": "https://docs.databricks.com/data-governance/unity-catalog/manage-data-lineage.html",
+      "license": "Various",
+      "attribution": "Databricks, Data Governance Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["lineage", "traceability", "audit", "compliance"],
+      "related_concepts": ["Data Governance", "Audit Trail", "Compliance"]
+    }
+  },
+  {
+    "title": "GraphQL API for Metrics",
+    "body": "A query language and API standard used by some semantic layers (Cube, Apollo) to enable flexible metric queries. Clients can request exactly the dimensions and metrics needed, reducing over-fetching of data.",
+    "metadata": {
+      "source": "Cube.dev, GraphQL Official",
+      "source_url": "https://graphql.org/",
+      "license": "CC BY 4.0 / Proprietary",
+      "attribution": "GraphQL Foundation, Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "api",
+      "keywords": ["GraphQL", "API", "query_language", "metrics"],
+      "related_concepts": ["REST API", "Metric Consumption", "API Design"]
+    }
+  },
+  {
+    "title": "REST API for Metrics",
+    "body": "RESTful endpoints that allow applications to query metrics from a semantic layer using standard HTTP methods. Enables integration with dashboards, LLMs, and custom applications without direct SQL access.",
+    "metadata": {
+      "source": "REST API Design, Cube.dev",
+      "source_url": "https://cube.dev/docs/api-reference",
+      "license": "CC BY 4.0",
+      "attribution": "Web API Standards, Cube.dev",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "api",
+      "keywords": ["REST", "API", "HTTP", "metrics"],
+      "related_concepts": ["GraphQL API", "Semantic Layer", "Service-Oriented Architecture"]
+    }
+  },
+  {
+    "title": "Metric Aggregation",
+    "body": "Process of combining raw data points into summary statistics (sum, average, count) along dimensions. Semantic layers handle aggregation definitions to ensure consistent roll-up logic across all consumers.",
+    "metadata": {
+      "source": "Analytics Standards, OLAP Concepts",
+      "source_url": "https://en.wikipedia.org/wiki/Data_aggregation",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "semantic_layer",
+      "keywords": ["aggregation", "roll_up", "sum", "average"],
+      "related_concepts": ["Metric", "Dimension", "OLAP"]
+    }
+  },
+  {
+    "title": "Slowly Changing Dimension (SCD)",
+    "body": "A technique for handling dimensional data that changes over time (e.g., customer regions, product categories). SCD Types (0-4) define strategies for preserving historical dimension values while tracking changes.",
+    "metadata": {
+      "source": "Ralph Kimball Data Warehouse Design",
+      "source_url": "https://en.wikipedia.org/wiki/Slowly_changing_dimension",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Ralph Kimball",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "data_modeling",
+      "keywords": ["SCD", "dimension", "history", "type2", "effective_dating"],
+      "related_concepts": ["Dimension", "Fact Table", "Time-Series Data"]
+    }
+  }
+]

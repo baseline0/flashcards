@@ -136,7 +136,7 @@ class TestYAMLGlossaryParser:
         yaml_content = """- title: "Python"
   body: "A high-level language"
 - title: "JavaScript"
-  body: "A scripting language"""
+  body: "A scripting language\""""
 
         parser = YAMLGlossaryParser()
         entries = parser.parse(yaml_content, "prog", "languages")
@@ -153,7 +153,7 @@ class TestYAMLGlossaryParser:
     difficulty: "intermediate"
   - title: "REST"
     body: "Representational State Transfer"
-    difficulty: "advanced"""
+    difficulty: "advanced\""""
 
         parser = YAMLGlossaryParser()
         entries = parser.parse(yaml_content, "web", "architecture")
@@ -168,7 +168,7 @@ class TestYAMLGlossaryParser:
         yaml_content = """- term: "Recursion"
   definition: "Function calling itself"
 - term: "Iteration"
-  definition: "Repeated execution using loops"""
+  definition: "Repeated execution using loops\""""
 
         parser = YAMLGlossaryParser()
         entries = parser.parse(yaml_content, "algo", "concepts")
@@ -182,7 +182,7 @@ class TestYAMLGlossaryParser:
         yaml_content = """- title: "Term 1"
   body: "Definition 1"
 - title: "Term 2"
-  body: "Definition 2"""
+  body: "Definition 2\""""
 
         parser = YAMLGlossaryParser()
         # Use fallback parser

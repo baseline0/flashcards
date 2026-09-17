@@ -1,0 +1,422 @@
+[
+  {
+    "title": "Responsible AI",
+    "body": "Practice of developing AI systems that are transparent, fair, accountable, and aligned with human values. Includes explainability, bias detection, privacy protection, and compliance. Critical in regulated industries like insurance.",
+    "metadata": {
+      "source": "Responsible AI Principles, Microsoft, Google",
+      "source_url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+      "license": "Fair use",
+      "attribution": "Microsoft, Responsible AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["responsible_ai", "ethics", "transparency", "fairness"],
+      "related_concepts": ["AI Ethics", "Governance", "Compliance"]
+    }
+  },
+  {
+    "title": "Model Explainability",
+    "body": "Making model predictions understandable to humans. Includes explaining individual predictions (LIME, SHAP) and global patterns (feature importance). Required by regulations for high-stakes decisions.",
+    "metadata": {
+      "source": "Interpretable ML Research",
+      "source_url": "https://github.com/slundberg/shap",
+      "license": "MIT",
+      "attribution": "Scott Lundberg, Interpretable ML Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["explainability", "interpretability", "transparency"],
+      "related_concepts": ["SHAP", "LIME", "Feature Importance", "Regulatory Compliance"]
+    }
+  },
+  {
+    "title": "Fairness (in ML) / Model Fairness",
+    "body": "Ensuring model predictions don't systematically disadvantage specific groups. Measured via fairness metrics (demographic parity, equalized odds). Essential in insurance underwriting and lending.",
+    "metadata": {
+      "source": "Fairness in ML Research",
+      "source_url": "https://fairmlbook.org/",
+      "license": "CC BY 4.0",
+      "attribution": "Barocas, Hardt, Narayanan",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["fairness", "bias", "discrimination", "equity"],
+      "related_concepts": ["Bias Detection", "Disparate Impact", "Ethics"]
+    }
+  },
+  {
+    "title": "Bias Detection",
+    "body": "Methods for identifying systematic errors where models unfairly favor or disfavor certain groups. Tools like Fairness-indicators, AI Fairness 360 detect bias across demographics.",
+    "metadata": {
+      "source": "Google Fairness Indicators, IBM AI Fairness 360",
+      "source_url": "https://github.com/Trusted-AI/AIX360",
+      "license": "Apache 2.0",
+      "attribution": "IBM AI Fairness 360, Google",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["bias_detection", "fairness", "metrics"],
+      "related_concepts": ["Fairness", "Disparate Impact", "Model Auditing"]
+    }
+  },
+  {
+    "title": "Disparate Impact",
+    "body": "Legal concept where policies or decisions have a disproportionate negative effect on protected groups, even if not intentionally discriminatory. Models can cause disparate impact; must be audited and mitigated.",
+    "metadata": {
+      "source": "Fairness in ML, Legal Standards",
+      "source_url": "https://en.wikipedia.org/wiki/Disparate_impact",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["disparate_impact", "discrimination", "legal", "compliance"],
+      "related_concepts": ["Fairness", "Bias", "Regulatory Compliance"]
+    }
+  },
+  {
+    "title": "AI Governance",
+    "body": "Framework for overseeing AI systems across an organization: model approval workflows, risk assessment, compliance monitoring, incident handling. Databricks and other platforms provide governance tooling.",
+    "metadata": {
+      "source": "Enterprise AI Governance",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Databricks, Enterprise AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["governance", "approval", "compliance", "risk"],
+      "related_concepts": ["Model Governance", "Compliance", "Risk Management"]
+    }
+  },
+  {
+    "title": "Model Governance",
+    "body": "Policies and processes for managing model lifecycle: registration, validation, approval, deployment, monitoring, retirement. Ensures only validated models reach production.",
+    "metadata": {
+      "source": "MLOps Best Practices",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Fair use",
+      "attribution": "MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["model_governance", "lifecycle", "approval", "validation"],
+      "related_concepts": ["Model Registry", "MLflow", "Compliance"]
+    }
+  },
+  {
+    "title": "Data Privacy / Privacy-Preserving ML",
+    "body": "Protecting sensitive personal data (PII) throughout ML pipeline. Techniques: data minimization, PII masking, differential privacy, federated learning. Regulated by GDPR, CCPA, and industry standards.",
+    "metadata": {
+      "source": "Privacy Engineering, GDPR Compliance",
+      "source_url": "https://en.wikipedia.org/wiki/Privacy-preserving_machine_learning",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "responsible_ai",
+      "keywords": ["privacy", "pii", "gdpr", "differential_privacy"],
+      "related_concepts": ["PII Masking", "Differential Privacy", "Data Protection"]
+    }
+  },
+  {
+    "title": "PII (Personally Identifiable Information) Masking",
+    "body": "Removing or anonymizing sensitive identifiers (names, emails, social security numbers) in data. Essential in financial/insurance systems. Can be done via hashing, tokenization, or synthetic data generation.",
+    "metadata": {
+      "source": "Data Privacy Best Practices",
+      "source_url": "https://en.wikipedia.org/wiki/Data_anonymization",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Privacy Engineering Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["pii", "masking", "anonymization", "privacy"],
+      "related_concepts": ["Data Privacy", "GDPR", "Security"]
+    }
+  },
+  {
+    "title": "Differential Privacy",
+    "body": "Mathematical framework ensuring that removing any individual's data from analysis doesn't significantly change results. Enables sharing insights without leaking personal data. Growing use in public datasets.",
+    "metadata": {
+      "source": "Differential Privacy Research",
+      "source_url": "https://en.wikipedia.org/wiki/Differential_privacy",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, Differential Privacy Research Community",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "responsible_ai",
+      "keywords": ["differential_privacy", "privacy", "mathematics"],
+      "related_concepts": ["Privacy", "Federated Learning", "Anonymization"]
+    }
+  },
+  {
+    "title": "Federated Learning",
+    "body": "Training ML models across distributed data without centralizing sensitive data. Participants train locally, share model updates (not raw data) with central server. Preserves privacy and security.",
+    "metadata": {
+      "source": "Federated Learning Research",
+      "source_url": "https://en.wikipedia.org/wiki/Federated_learning",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "responsible_ai",
+      "keywords": ["federated_learning", "privacy", "distributed"],
+      "related_concepts": ["Differential Privacy", "Privacy", "Distributed Systems"]
+    }
+  },
+  {
+    "title": "Model Audit / AI Audit",
+    "body": "Formal review of model design, data, training process, and deployment for bias, fairness, safety, and compliance. Identifies risks and documents findings for regulatory submission.",
+    "metadata": {
+      "source": "AI Governance Best Practices",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Databricks, Enterprise AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["audit", "risk_assessment", "compliance", "review"],
+      "related_concepts": ["Model Governance", "Compliance", "Risk Management"]
+    }
+  },
+  {
+    "title": "Transparency / Transparency in AI",
+    "body": "Making AI systems' decisions understandable and observable. Includes documentation (what data, algorithms, design choices), explainability (why predictions made), and audit trails (who accessed what).",
+    "metadata": {
+      "source": "AI Transparency Principles",
+      "source_url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+      "license": "Fair use",
+      "attribution": "Microsoft, Responsible AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["transparency", "accountability", "documentation"],
+      "related_concepts": ["Explainability", "Audit Trail", "Accountability"]
+    }
+  },
+  {
+    "title": "Accountability",
+    "body": "Clear assignment of responsibility for AI system decisions and outcomes. Includes audit trails, escalation paths, and ability to reverse or explain decisions. Essential for regulated systems.",
+    "metadata": {
+      "source": "AI Governance Principles",
+      "source_url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+      "license": "Fair use",
+      "attribution": "Microsoft, Responsible AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["accountability", "responsibility", "traceability"],
+      "related_concepts": ["Governance", "Transparency", "Audit Trail"]
+    }
+  },
+  {
+    "title": "Audit Trail / Model Provenance",
+    "body": "Complete record of model's history: who trained it, when, with what data/code, evaluation results, deployment decisions. Enables compliance verification and root-cause analysis.",
+    "metadata": {
+      "source": "MLflow, Model Registry Documentation",
+      "source_url": "https://mlflow.org/docs/latest/model-registry/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["audit_trail", "provenance", "lineage", "tracking"],
+      "related_concepts": ["Data Lineage", "Model Registry", "Compliance"]
+    }
+  },
+  {
+    "title": "Regulatory Compliance / Compliance in AI",
+    "body": "Ensuring AI systems meet legal and industry regulations. Examples: GDPR (EU data protection), fair lending laws (USA), insurance regulatory requirements. Achieved through explainability, bias testing, and documentation.",
+    "metadata": {
+      "source": "AI Governance and Compliance",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Databricks, Legal/Compliance Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["compliance", "regulation", "legal", "gdpr"],
+      "related_concepts": ["GDPR", "Fair Lending", "Data Protection"]
+    }
+  },
+  {
+    "title": "GDPR (General Data Protection Regulation)",
+    "body": "EU regulation protecting personal data privacy. Key requirements: consent, data minimization, right to deletion, breach notification, data portability. Impacts any organization processing EU residents' data.",
+    "metadata": {
+      "source": "GDPR Official Text",
+      "source_url": "https://gdpr-info.eu/",
+      "license": "CC BY 4.0",
+      "attribution": "GDPR.info, EU Commission",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["gdpr", "privacy", "regulation", "eu"],
+      "related_concepts": ["Data Privacy", "Compliance", "PII Masking"]
+    }
+  },
+  {
+    "title": "Model Risk Management",
+    "body": "Framework for identifying, measuring, and managing risks posed by AI/ML models in production. Includes validation (before deployment), monitoring (ongoing), and incident response (when issues detected).",
+    "metadata": {
+      "source": "Model Risk Management Standards",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Regulatory Bodies, Risk Management Community",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "governance",
+      "keywords": ["risk_management", "validation", "monitoring"],
+      "related_concepts": ["Model Governance", "Testing", "Monitoring"]
+    }
+  },
+  {
+    "title": "Model Validation",
+    "body": "Testing models before deployment: backtesting on historical data, stress testing on edge cases, bias validation, fairness audits. Ensures models meet business and compliance requirements.",
+    "metadata": {
+      "source": "Model Risk Management Standards",
+      "source_url": "https://docs.databricks.com/machine-learning/best-practices/",
+      "license": "Fair use",
+      "attribution": "Databricks, Risk Management Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["validation", "testing", "backtesting", "approval"],
+      "related_concepts": ["Model Testing", "Quality Assurance", "Governance"]
+    }
+  },
+  {
+    "title": "Backtesting",
+    "body": "Testing a model's historical performance by running it on past data it wasn't trained on. Validates model accuracy and identifies periods of degradation. Critical for financial/insurance models.",
+    "metadata": {
+      "source": "Machine Learning Validation",
+      "source_url": "https://en.wikipedia.org/wiki/Backtesting",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["backtesting", "validation", "historical", "performance"],
+      "related_concepts": ["Model Testing", "Validation", "Risk Management"]
+    }
+  },
+  {
+    "title": "Model Stress Testing",
+    "body": "Testing models on extreme, adversarial, or unusual inputs to find failure modes. Identifies edge cases, robustness issues, and potential harms. Required before high-stakes deployments.",
+    "metadata": {
+      "source": "Responsible AI Best Practices",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Responsible AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["stress_testing", "robustness", "edge_cases"],
+      "related_concepts": ["Model Testing", "Validation", "Risk Management"]
+    }
+  },
+  {
+    "title": "Adversarial Examples / Adversarial Robustness",
+    "body": "Inputs crafted to fool models into making incorrect predictions. Testing against adversarial examples ensures robustness. Important for security-critical applications (fraud detection).",
+    "metadata": {
+      "source": "Adversarial ML Research",
+      "source_url": "https://en.wikipedia.org/wiki/Adversarial_machine_learning",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "responsible_ai",
+      "keywords": ["adversarial_examples", "robustness", "security"],
+      "related_concepts": ["Security", "Model Testing", "Risk Management"]
+    }
+  },
+  {
+    "title": "Model Debugging",
+    "body": "Investigating model errors and unexpected behavior to understand root causes. Tools: SHAP (identify problematic features), error analysis (group errors by pattern), data inspection (check training data).",
+    "metadata": {
+      "source": "ML Debugging Best Practices",
+      "source_url": "https://github.com/slundberg/shap",
+      "license": "MIT",
+      "attribution": "ML Engineering Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["debugging", "error_analysis", "root_cause"],
+      "related_concepts": ["SHAP", "Explainability", "Model Understanding"]
+    }
+  },
+  {
+    "title": "Model Reproducibility",
+    "body": "Ability to recreate exact model training run and results given same data/code/parameters. Achieved via version control, dependency pinning, random seeds, and experiment tracking.",
+    "metadata": {
+      "source": "Reproducible Research, MLOps",
+      "source_url": "https://mlflow.org/docs/latest/tracking/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project, Reproducible Research Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["reproducibility", "version_control", "experiment_tracking"],
+      "related_concepts": ["MLflow", "Version Control", "Documentation"]
+    }
+  },
+  {
+    "title": "Model Documentation",
+    "body": "Recording model design decisions, data used, assumptions, limitations, and known issues. Model cards (Google) and datasheets (Timnit Gebru) are standardized formats.",
+    "metadata": {
+      "source": "Model Cards for Model Reporting",
+      "source_url": "https://github.com/google/model-card-toolkit",
+      "license": "Apache 2.0",
+      "attribution": "Google, Timnit Gebru",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "governance",
+      "keywords": ["documentation", "model_card", "transparency"],
+      "related_concepts": ["Transparency", "Accountability", "Model Governance"]
+    }
+  },
+  {
+    "title": "Model Card",
+    "body": "Standardized one-pager documenting model: purpose, intended use, training data, performance metrics, bias/fairness evaluation, limitations, recommendations. Promotes transparency and accountability.",
+    "metadata": {
+      "source": "Model Cards for Model Reporting",
+      "source_url": "https://github.com/google/model-card-toolkit",
+      "license": "Apache 2.0",
+      "attribution": "Google",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "governance",
+      "keywords": ["model_card", "documentation", "reporting"],
+      "related_concepts": ["Datasheet", "Model Documentation", "Transparency"]
+    }
+  },
+  {
+    "title": "Datasheet for Datasets",
+    "body": "Documentation standard for datasets including: motivation (why created), composition (what data), collection process, labeling process, uses, limitations, and maintenance plan.",
+    "metadata": {
+      "source": "Datasheets for Datasets Paper",
+      "source_url": "https://arxiv.org/abs/1803.09010",
+      "license": "CC BY 4.0",
+      "attribution": "Timnit Gebru et al.",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "governance",
+      "keywords": ["datasheet", "dataset", "documentation", "metadata"],
+      "related_concepts": ["Model Card", "Data Governance", "Transparency"]
+    }
+  },
+  {
+    "title": "Interpretability vs Accuracy Trade-off",
+    "body": "Complex models (deep learning) achieve higher accuracy but lower interpretability. Simple models (decision trees) are more interpretable but less accurate. Domain and use case determine acceptable trade-off.",
+    "metadata": {
+      "source": "Interpretable ML Research",
+      "source_url": "https://fairmlbook.org/",
+      "license": "CC BY 4.0",
+      "attribution": "Barocas, Hardt, Narayanan",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["trade_off", "interpretability", "accuracy", "complexity"],
+      "related_concepts": ["Model Explainability", "Model Complexity", "Performance"]
+    }
+  }
+]

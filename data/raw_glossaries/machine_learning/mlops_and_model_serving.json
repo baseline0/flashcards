@@ -1,0 +1,422 @@
+[
+  {
+    "title": "MLOps (Machine Learning Operations)",
+    "body": "The practice of applying DevOps principles to machine learning pipelines. Encompasses experiment tracking, model versioning, automated testing, deployment, monitoring, and retraining. Aims to operationalize ML models reliably and at scale.",
+    "metadata": {
+      "source": "MLflow Documentation, Databricks MLOps Guide",
+      "source_url": "https://mlflow.org/docs/latest/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project, Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["mlops", "devops", "pipeline", "automation"],
+      "related_concepts": ["DevOps", "CI/CD", "Model Deployment"]
+    }
+  },
+  {
+    "title": "MLflow",
+    "body": "An open-source platform for managing machine learning workflows. Provides experiment tracking (MLflow Tracking), model registry, model serving, and project reproducibility. Integrates with Databricks for unified ML operations.",
+    "metadata": {
+      "source": "MLflow Official Documentation",
+      "source_url": "https://mlflow.org/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project (Databricks)",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["mlflow", "experiment_tracking", "model_registry", "serving"],
+      "related_concepts": ["Experiment Tracking", "Model Registry", "Model Serving"]
+    }
+  },
+  {
+    "title": "MLflow Experiment Tracking",
+    "body": "MLflow's system for logging parameters, metrics, and artifacts during model training runs. Enables data scientists to compare experiments, track hyperparameter tuning, and reproduce results.",
+    "metadata": {
+      "source": "MLflow Documentation",
+      "source_url": "https://mlflow.org/docs/latest/tracking/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "mlops_tool",
+      "keywords": ["mlflow", "experiment", "tracking", "logging"],
+      "related_concepts": ["Model Training", "Hyperparameter Tuning", "Metrics"]
+    }
+  },
+  {
+    "title": "MLflow Model Registry",
+    "body": "A centralized repository for model versioning, staging (Staging/Production), and lineage tracking. Enables teams to approve models, track transitions between stages, and maintain audit trails of model deployments.",
+    "metadata": {
+      "source": "MLflow Documentation",
+      "source_url": "https://mlflow.org/docs/latest/model-registry/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["mlflow", "model_registry", "versioning", "promotion"],
+      "related_concepts": ["Model Versioning", "Model Approval", "Deployment Pipeline"]
+    }
+  },
+  {
+    "title": "Model Staging (Development, Staging, Production)",
+    "body": "MLOps practice of promoting models through environments before production. Development: active experimentation; Staging: pre-production testing; Production: live serving. MLflow Model Registry manages these transitions.",
+    "metadata": {
+      "source": "MLflow Documentation, MLOps Best Practices",
+      "source_url": "https://mlflow.org/docs/latest/model-registry/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project, MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "mlops",
+      "keywords": ["staging", "environment", "promotion", "devops"],
+      "related_concepts": ["CI/CD", "Model Deployment", "Testing"]
+    }
+  },
+  {
+    "title": "Databricks Model Serving",
+    "body": "Fully managed REST API serving for ML models on Databricks. Handles autoscaling, A/B testing, model shadowing, and canary deployments. Integrates with MLflow Model Registry for seamless deployment.",
+    "metadata": {
+      "source": "Databricks Official Documentation",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Proprietary (Databricks)",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["databricks", "model_serving", "REST_API", "autoscaling"],
+      "related_concepts": ["MLflow", "Model Deployment", "Inference"]
+    }
+  },
+  {
+    "title": "Mosaic AI (Databricks)",
+    "body": "Databricks' managed platform for end-to-end ML workflows. Combines data preparation, model training, experiment tracking, model serving, and LLM operations. Provides Mosaic AI Agent Framework for GenAI applications.",
+    "metadata": {
+      "source": "Databricks Mosaic AI Documentation",
+      "source_url": "https://docs.databricks.com/en/machine-learning/mosaic-ai/index.html",
+      "license": "Proprietary (Databricks)",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_platform",
+      "keywords": ["mosaic_ai", "databricks", "genai", "llm_operations"],
+      "related_concepts": ["Databricks", "MLflow", "GenAI", "LLM Orchestration"]
+    }
+  },
+  {
+    "title": "Feature Store",
+    "body": "A centralized repository for machine learning features (transformations of raw data). Enables reuse of features across models, ensures consistency between training and serving, and manages feature versioning and lineage.",
+    "metadata": {
+      "source": "Databricks Feature Store, Tecton",
+      "source_url": "https://docs.databricks.com/machine-learning/feature-store/",
+      "license": "Apache 2.0 / Proprietary",
+      "attribution": "Databricks, Tecton",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["feature_store", "features", "reuse", "consistency"],
+      "related_concepts": ["Feature Engineering", "Model Training", "Inference"]
+    }
+  },
+  {
+    "title": "Databricks Feature Store",
+    "body": "Native feature store on Databricks supporting both batch and real-time feature serving. Tracks feature lineage, enables point-in-time joins for training, and serves features via online store for real-time predictions.",
+    "metadata": {
+      "source": "Databricks Official Documentation",
+      "source_url": "https://docs.databricks.com/machine-learning/feature-store/",
+      "license": "Proprietary (Databricks)",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["databricks", "feature_store", "online", "offline"],
+      "related_concepts": ["Feature Engineering", "Real-Time Serving", "Feature Lineage"]
+    }
+  },
+  {
+    "title": "Tecton Feature Store",
+    "body": "Independent feature store platform that unifies batch and real-time feature computation. Enables teams to define features once and use across training and serving, with built-in monitoring and lineage tracking.",
+    "metadata": {
+      "source": "Tecton Official Documentation",
+      "source_url": "https://www.tecton.ai/",
+      "license": "Proprietary (Tecton)",
+      "attribution": "Tecton",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["tecton", "feature_store", "real_time", "batch"],
+      "related_concepts": ["Feature Store", "Real-Time ML", "Feature Engineering"]
+    }
+  },
+  {
+    "title": "Model Monitoring / Model Observability",
+    "body": "Continuous tracking of model performance in production (accuracy drift, data drift, concept drift, bias). Enables early detection of model degradation and triggers automated retraining or alerts to data science teams.",
+    "metadata": {
+      "source": "MLOps Best Practices, Databricks",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/model-monitoring.html",
+      "license": "Proprietary with fair use",
+      "attribution": "MLOps Community, Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["monitoring", "observability", "drift", "detection"],
+      "related_concepts": ["Data Drift", "Concept Drift", "Model Performance"]
+    }
+  },
+  {
+    "title": "Data Drift",
+    "body": "Change in the statistical properties of input data over time, causing model performance degradation. Example: if claims fraud patterns change seasonally but the model wasn't trained on recent data, it suffers data drift.",
+    "metadata": {
+      "source": "MLOps Concepts, Databricks",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/model-monitoring.html",
+      "license": "Fair use",
+      "attribution": "MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["data_drift", "distribution_change", "monitoring"],
+      "related_concepts": ["Concept Drift", "Model Drift", "Retraining"]
+    }
+  },
+  {
+    "title": "Concept Drift",
+    "body": "Change in the relationship between input features and target variable over time, even if feature distributions remain constant. Example: insurance pricing rules change, but historical claims patterns no longer predict risk accurately.",
+    "metadata": {
+      "source": "Machine Learning Theory, MLOps",
+      "source_url": "https://en.wikipedia.org/wiki/Concept_drift",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia, MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["concept_drift", "model_degradation", "nonstationarity"],
+      "related_concepts": ["Data Drift", "Model Drift", "Retraining"]
+    }
+  },
+  {
+    "title": "Model Retraining",
+    "body": "Process of re-running model training on fresh data to recover from drift or improve performance. Can be scheduled (daily, weekly) or triggered by monitoring alerts (drift detected, accuracy below threshold).",
+    "metadata": {
+      "source": "MLOps Best Practices",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Fair use",
+      "attribution": "MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "mlops",
+      "keywords": ["retraining", "automation", "scheduling", "drift_recovery"],
+      "related_concepts": ["Scheduled Jobs", "Monitoring", "CI/CD Pipeline"]
+    }
+  },
+  {
+    "title": "Model Explainability / Interpretability",
+    "body": "Techniques for understanding why a trained model makes specific predictions. Critical in insurance for regulatory compliance and user trust. Examples: SHAP values, LIME, feature importance scores.",
+    "metadata": {
+      "source": "Interpretable ML, SHAP Documentation",
+      "source_url": "https://github.com/slundberg/shap",
+      "license": "MIT",
+      "attribution": "Scott Lundberg, SHAP Project",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["explainability", "interpretability", "transparency", "regulation"],
+      "related_concepts": ["SHAP", "LIME", "Feature Importance"]
+    }
+  },
+  {
+    "title": "SHAP (SHapley Additive exPlanations)",
+    "body": "A game-theoretic approach to explain model predictions. Computes each feature's contribution to a prediction based on Shapley values. Provides global and local explanations; widely used in regulated industries.",
+    "metadata": {
+      "source": "SHAP Official Documentation",
+      "source_url": "https://github.com/slundberg/shap",
+      "license": "MIT",
+      "attribution": "Scott Lundberg",
+      "access_date": "2026-09-17",
+      "difficulty": "advanced",
+      "category": "responsible_ai",
+      "keywords": ["SHAP", "explainability", "feature_contribution", "shapley_values"],
+      "related_concepts": ["LIME", "Feature Importance", "Model Interpretability"]
+    }
+  },
+  {
+    "title": "LIME (Local Interpretable Model-agnostic Explanations)",
+    "body": "A technique for explaining individual predictions by fitting a simple, interpretable model locally around the data point. Model-agnostic (works with any model). Provides local explanations that are easier to understand than global SHAP.",
+    "metadata": {
+      "source": "LIME Research Paper, GitHub",
+      "source_url": "https://github.com/marcotcr/lime",
+      "license": "BSD 2-Clause",
+      "attribution": "Marco Ribeiro, Sameer Singh, Carlos Guestrin",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["LIME", "explainability", "local", "interpretable"],
+      "related_concepts": ["SHAP", "Model Interpretability", "Feature Importance"]
+    }
+  },
+  {
+    "title": "Feature Importance",
+    "body": "Measure of how much each input feature contributes to model predictions. Calculated differently across model types (tree-based: Gini importance, SHAP, permutation importance). Helps identify key drivers of predictions.",
+    "metadata": {
+      "source": "Scikit-Learn, Machine Learning Theory",
+      "source_url": "https://scikit-learn.org/stable/modules/inspection.html",
+      "license": "BSD 3-Clause",
+      "attribution": "Scikit-Learn Contributors",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "responsible_ai",
+      "keywords": ["feature_importance", "permutation", "shap", "contribution"],
+      "related_concepts": ["Model Interpretability", "SHAP", "LIME"]
+    }
+  },
+  {
+    "title": "Model Bias / Fairness",
+    "body": "Systematic errors where model predictions favor certain groups over others. Example: insurance model underestimating risk for specific demographics. MLOps requires detecting and mitigating bias.",
+    "metadata": {
+      "source": "Responsible AI Principles, Databricks",
+      "source_url": "https://docs.databricks.com/machine-learning/responsible-ai/",
+      "license": "Fair use",
+      "attribution": "Databricks, Responsible AI Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "responsible_ai",
+      "keywords": ["bias", "fairness", "discrimination", "ethics"],
+      "related_concepts": ["Ethics", "Governance", "Compliance"]
+    }
+  },
+  {
+    "title": "Batch Scoring / Batch Inference",
+    "body": "Process of generating predictions for a large dataset in one go (as opposed to real-time). Databricks Jobs run batch scoring pipelines to score millions of records overnight, updating analytics tables.",
+    "metadata": {
+      "source": "Databricks, MLOps Patterns",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Fair use",
+      "attribution": "Databricks, MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "mlops",
+      "keywords": ["batch_scoring", "inference", "offline", "scheduled"],
+      "related_concepts": ["Real-Time Scoring", "Model Serving", "Databricks Jobs"]
+    }
+  },
+  {
+    "title": "Real-Time Scoring / Online Inference",
+    "body": "Generating predictions on-demand through an API for individual requests. Requires low-latency serving infrastructure. Databricks Model Serving and feature stores support real-time scoring.",
+    "metadata": {
+      "source": "Databricks Model Serving Documentation",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Proprietary with fair use",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["real_time", "online", "inference", "latency"],
+      "related_concepts": ["Batch Scoring", "Model Serving", "Latency"]
+    }
+  },
+  {
+    "title": "A/B Testing (in ML)",
+    "body": "Comparing two model versions (A and B) in production by routing traffic to each. Enables safe rollout of new models and quantifies performance gains. Databricks Model Serving natively supports A/B testing.",
+    "metadata": {
+      "source": "Databricks Model Serving, Experimentation",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Proprietary with fair use",
+      "attribution": "Databricks",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["a_b_testing", "experimentation", "canary", "rollout"],
+      "related_concepts": ["Canary Deployment", "Model Comparison", "Validation"]
+    }
+  },
+  {
+    "title": "Canary Deployment",
+    "body": "Gradually rolling out a new model to production by serving it to a small percentage of traffic initially, then increasing percentage if metrics look good. Reduces risk of bad models impacting all users.",
+    "metadata": {
+      "source": "DevOps Deployment Patterns",
+      "source_url": "https://en.wikipedia.org/wiki/Canary_release",
+      "license": "CC BY-SA 3.0",
+      "attribution": "Wikipedia",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["canary", "deployment", "gradual_rollout", "risk_mitigation"],
+      "related_concepts": ["A/B Testing", "Blue-Green Deployment", "Model Serving"]
+    }
+  },
+  {
+    "title": "Model Shadowing",
+    "body": "Running a new model in parallel to the production model without using its predictions for real decisions. Allows observation of model behavior and performance metrics before full rollout.",
+    "metadata": {
+      "source": "MLOps Best Practices, Databricks",
+      "source_url": "https://docs.databricks.com/machine-learning/model-serving/",
+      "license": "Fair use",
+      "attribution": "MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["shadowing", "testing", "validation", "production"],
+      "related_concepts": ["Canary Deployment", "A/B Testing", "Model Validation"]
+    }
+  },
+  {
+    "title": "Model Artifacts",
+    "body": "Files generated during model training and needed for inference: trained model weights, preprocessing transformations, vocabulary files, configuration files. MLflow tracks and versions artifacts.",
+    "metadata": {
+      "source": "MLflow Documentation",
+      "source_url": "https://mlflow.org/docs/latest/tracking/",
+      "license": "Apache 2.0",
+      "attribution": "MLflow Project",
+      "access_date": "2026-09-17",
+      "difficulty": "beginner",
+      "category": "mlops",
+      "keywords": ["artifacts", "model_files", "versioning", "reproducibility"],
+      "related_concepts": ["Model Registry", "Model Deployment", "MLflow"]
+    }
+  },
+  {
+    "title": "Model Serialization (Pickle, Parquet, ONNX)",
+    "body": "Process of converting trained models to storable formats for deployment. MLflow supports multiple formats (sklearn pickle, TensorFlow SavedModel, ONNX). ONNX enables cross-platform model portability.",
+    "metadata": {
+      "source": "MLflow, ONNX Documentation",
+      "source_url": "https://onnx.ai/",
+      "license": "CC BY 4.0 / Apache 2.0",
+      "attribution": "MLflow Project, ONNX Foundation",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["serialization", "ONNX", "pickle", "model_formats"],
+      "related_concepts": ["Model Artifacts", "Model Deployment", "Inference"]
+    }
+  },
+  {
+    "title": "SageMaker Pipelines (AWS)",
+    "body": "AWS service for orchestrating end-to-end ML workflows. Handles data preparation, training, hyperparameter tuning, evaluation, and deployment steps. Integrates with SageMaker training and model registry.",
+    "metadata": {
+      "source": "AWS SageMaker Documentation",
+      "source_url": "https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html",
+      "license": "CC BY 4.0",
+      "attribution": "AWS",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops_tool",
+      "keywords": ["sagemaker", "pipelines", "orchestration", "aws"],
+      "related_concepts": ["Databricks Workflows", "MLflow", "CI/CD for ML"]
+    }
+  },
+  {
+    "title": "CI/CD for Machine Learning",
+    "body": "Applying continuous integration and deployment practices to ML. Includes automated testing of data quality, model performance, and staged deployments. Ensures model changes are validated before production.",
+    "metadata": {
+      "source": "MLOps Best Practices",
+      "source_url": "https://docs.databricks.com/machine-learning/best-practices/",
+      "license": "Fair use",
+      "attribution": "Databricks, MLOps Community",
+      "access_date": "2026-09-17",
+      "difficulty": "intermediate",
+      "category": "mlops",
+      "keywords": ["ci_cd", "automation", "testing", "deployment"],
+      "related_concepts": ["DevOps", "Model Testing", "Deployment Pipeline"]
+    }
+  }
+]
