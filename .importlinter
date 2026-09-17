@@ -1,0 +1,22 @@
+[importlinter]
+root_package = src.flashcards
+
+[forbidden]
+name = Layer 2 isolation (flashcards app)
+condition = root_package
+modules_forbidden_to_import =
+    cv
+    income_ops
+    membrane
+    research
+    demos
+    sites
+    rope_mcp
+    vscode_workspace_mcp
+
+[forbidden]
+name = Configuration via FleetSettings (not os.getenv)
+condition = root_package
+modules_forbidden_to_import =
+    os -> getenv
+    os -> environ
