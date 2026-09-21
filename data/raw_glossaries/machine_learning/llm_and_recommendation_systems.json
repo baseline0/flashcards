@@ -1,0 +1,377 @@
+[
+  {
+    "title": "BERT (Bidirectional Encoder Representations from Transformers)",
+    "body": "A pre-trained encoder-only transformer model that learns bidirectional representations by masking random tokens and predicting them. Used for classification, NER, and question-answering tasks. Introduced by Google in 2018.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Transformer", "Pre-training", "Meta Interview"]
+    }
+  },
+  {
+    "title": "GPT (Generative Pre-trained Transformer)",
+    "body": "A decoder-only transformer model that generates text autoregressively, predicting the next token based on previous tokens. Powers systems like ChatGPT and GPT-4. Introduced by OpenAI with versions 1, 2, 3, and 4.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "Language Models are Unsupervised Multitask Learners",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Radford et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Transformer", "Autoregressive", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Fine-tuning",
+    "body": "The process of adapting a pre-trained model to a new task by training it on task-specific data. Typically involves unfreezing some or all layers and using a small learning rate to avoid catastrophic forgetting.",
+    "metadata": {
+      "source_url": "https://huggingface.co/docs/transformers/training",
+      "source_name": "Hugging Face: Fine-tuning Transformers",
+      "license": "Apache-2.0",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Transfer Learning", "Meta Interview"]
+    }
+  },
+  {
+    "title": "LoRA (Low-Rank Adaptation)",
+    "body": "A parameter-efficient fine-tuning technique that freezes pre-trained weights and adds trainable low-rank decomposition matrices to model weights. Reduces memory and compute requirements while maintaining performance.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/2106.09685",
+      "source_name": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Hu et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Fine-tuning", "Efficiency", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Prompt Tuning",
+    "body": "A parameter-efficient fine-tuning technique that learns a set of continuous prompt embeddings prepended to input text, without modifying pre-trained model weights. Similar to prefix tuning.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/2104.08691",
+      "source_name": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Lester et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Fine-tuning", "Efficiency", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Inference Optimization",
+    "body": "Techniques to reduce latency and memory footprint during model inference, including quantization, knowledge distillation, pruning, KV caching, and batching. Critical for production deployment at scale.",
+    "metadata": {
+      "source_url": "https://huggingface.co/docs/transformers/performance",
+      "source_name": "Hugging Face: Performance and Scalability",
+      "license": "Apache-2.0",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Production", "Performance", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Quantization",
+    "body": "Reducing model precision (e.g., from float32 to int8) to decrease memory usage and increase inference speed. Quantization-aware training accounts for quantization during training. Post-training quantization applies it after training.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/2004.09602",
+      "source_name": "Quantization and Training of Neural Networks for Efficient Integer-Arithmetic Only Inference",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Jacob et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Optimization", "Inference", "Meta Interview"]
+    }
+  },
+  {
+    "title": "KV Caching",
+    "body": "A technique in transformer inference where past key-value pairs are cached to avoid recomputation. During autoregressive generation, only new tokens are computed; previous tokens' KVs are reused. Dramatically reduces inference latency.",
+    "metadata": {
+      "source_url": "https://huggingface.co/docs/transformers/llm_tutorial",
+      "source_name": "Hugging Face: LLM Inference Tutorial",
+      "license": "Apache-2.0",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Optimization", "Inference", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Self-Attention",
+    "body": "A mechanism allowing each token to attend to all other tokens in a sequence, computing a weighted sum of values based on similarity (via dot products of queries and keys). Core building block of transformers.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1706.03762",
+      "source_name": "Attention Is All You Need",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Vaswani et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Transformer", "Attention", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Multi-Head Attention",
+    "body": "An extension of self-attention where attention is computed in parallel across multiple 'heads', each attending to different parts of the sequence. Results are concatenated and projected. Enables learning diverse attention patterns.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1706.03762",
+      "source_name": "Attention Is All You Need",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Vaswani et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "Transformer", "Attention", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Tokenization",
+    "body": "The process of breaking text into smaller units (tokens) that a model can process. Methods include character-level, word-level, and subword tokenization (BPE, WordPiece). Affects model vocabulary size and sequence length.",
+    "metadata": {
+      "source_url": "https://huggingface.co/docs/transformers/tokenizer_summary",
+      "source_name": "Hugging Face: Tokenizer Summary",
+      "license": "Apache-2.0",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["LLM", "NLP", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Collaborative Filtering",
+    "body": "A recommendation technique that finds user-item patterns by analyzing user-item interactions (ratings, clicks, purchases). Assumes users with similar preferences will like similar items. Methods include user-user and item-item similarity.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1708.09012",
+      "source_name": "Collaborative Filtering Recommender Systems",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Konstan et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Personalization", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Matrix Factorization",
+    "body": "A collaborative filtering technique that decomposes a user-item interaction matrix into lower-rank user and item factor matrices. Each user and item has a latent vector; predictions come from dot products of these vectors.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/0909.3052",
+      "source_name": "Matrix Factorization Techniques for Recommender Systems",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Koren et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Collaborative Filtering", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Content-Based Recommendation",
+    "body": "A recommendation technique that recommends items similar to those the user has liked before, based on item features or attributes (genre, author, tags). Uses similarity metrics like cosine similarity on feature vectors.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Recommender_system#Content-based_filtering",
+      "source_name": "Wikipedia: Recommender System - Content-based Filtering",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Content-based", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Hybrid Recommendation",
+    "body": "A recommendation approach combining multiple techniques (collaborative filtering, content-based, knowledge-based) to leverage strengths of each. Can improve coverage, handle cold-start better, and provide diverse recommendations.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1707.07344",
+      "source_name": "Hybrid Recommender Systems: A Systematic Literature Review",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Burke",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Hybrid", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Embeddings",
+    "body": "Dense vector representations of entities (users, items, words) in a low-dimensional continuous space. Similar entities have vectors close in space. Used in both LLMs (word embeddings) and recommendation systems (user/item embeddings).",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Word_embedding",
+      "source_name": "Wikipedia: Word Embedding",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "LLM", "NLP", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Ranking (in Recommendation Systems)",
+    "body": "The second stage of many recommendation systems where candidates (retrieved by a retriever) are scored and ranked. Ranking models are often more complex and slower than retrievers, applied to smaller candidate sets to balance accuracy and latency.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1606.04695",
+      "source_name": "Learning to Rank for Information Retrieval",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Liu",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Ranking", "Information Retrieval", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Cold-Start Problem",
+    "body": "A challenge in recommendation systems where new users or items have little interaction history. Solutions include content-based approaches, transfer learning, hybrid methods, or explicit feature collection.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Cold_start_(recommender_systems)",
+      "source_name": "Wikipedia: Cold Start (Recommender Systems)",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Challenge", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Diversity in Recommendations",
+    "body": "A goal in recommendation systems to provide varied recommendations, avoiding over-concentration on a few popular items. Balances accuracy (relevance) with coverage and serendipity. Achieved through re-ranking or diverse retrieval.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1803.09066",
+      "source_name": "The Exposure-Diversity Trade-off in Search and Recommendation Systems",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Chakraborty et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Diversity", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Feedback Loop (in Recommendation Systems)",
+    "body": "A cycle where system recommendations influence user behavior, which generates new training data, which can reinforce or shift the system's recommendations. Can lead to filter bubbles but also enables online learning and adaptation.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1702.02527",
+      "source_name": "The Feedback Loops Problem in Recommender Systems",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Chaney et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Feedback", "System Design", "Meta Interview"]
+    }
+  },
+  {
+    "title": "CTR (Click-Through Rate)",
+    "body": "The ratio of users who click on a recommendation to the total number of users who see it. Common metric for evaluating recommendation systems in ads and content feeds. Higher CTR indicates relevance and engagement.",
+    "metadata": {
+      "source_url": "https://en.wikipedia.org/wiki/Click-through_rate",
+      "source_name": "Wikipedia: Click-Through Rate",
+      "license": "CC-BY-SA-3.0",
+      "attribution_required": true,
+      "attribution_text": "Wikipedia Contributors",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Metric", "Ads", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Personalization at Scale",
+    "body": "Delivering personalized recommendations to millions of users in real-time. Requires efficient architectures (two-tower models, retrieval-ranking pipelines), feature stores, and online serving infrastructure with latency constraints.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1606.03762",
+      "source_name": "YouTube Recommendations at Scale: How to Deal with Billions of Items",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Covington et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Scale", "Infrastructure", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Feature Store",
+    "body": "Infrastructure for managing, versioning, and serving features (derived attributes) to ML models at training and serving time. Enables consistent feature definitions, reduces engineering overhead, and supports real-time feature updates.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/2110.03997",
+      "source_name": "Feature Stores for ML",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Mahajan et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["ML Infrastructure", "Recommendation", "Data Pipeline", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Two-Tower Architecture (in Recommendation Systems)",
+    "body": "An efficient recommendation architecture with separate embedding towers for users and items, trained end-to-end. User and item embeddings are computed independently and combined (dot product) for prediction. Used by YouTube, Meta, Airbnb.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1606.02960",
+      "source_name": "YouTube Recommendations: A two-tower architecture",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Covington et al.",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Architecture", "Scale", "Meta Interview"]
+    }
+  },
+  {
+    "title": "Learning to Rank",
+    "body": "A machine learning approach to ranking where models learn to score and order items based on features and training signals. Used in recommendation systems, search, and ads ranking. Balances multiple objectives (relevance, diversity, freshness).",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1606.04695",
+      "source_name": "Learning to Rank for Information Retrieval",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Liu",
+      "tier": 2,
+      "commercial_use": true,
+      "scraped_date": "2026-09-21",
+      "tags": ["Recommendation", "Ranking", "Information Retrieval", "Meta Interview"]
+    }
+  }
+]
