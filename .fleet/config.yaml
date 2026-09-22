@@ -1,36 +1,25 @@
-# Fleet Configuration for flashcards
-# Unified config location: .fleet/config.yaml (replaces .fleetconfig.yaml)
-# Spaced repetition engine for arbitrary glossaries
-
 type: service
 language: python
 test_framework: pytest
-
-# Standards compliance
 standards:
   type_hints: required
   docstrings: google-style
   max_line_length: 120
-
-# Governance
 governance:
   enabled: true
   fixable-categories:
-    - environment
-    - config
-    - discovery
+  - environment
+  - config
+  - discovery
   protected-paths:
-    - .env
-    - secrets.json
-    - "*.key"
-
-# Testing requirements
+  - .env
+  - secrets.json
+  - '*.key'
 testing:
   min_coverage: 80
   test_command: pytest tests/
   coverage_report: html
-
-# Guard rails
 guard-rails:
   max-lines-changed: 1000
   require-approval: false
+schema_version: '1.0'

@@ -1,0 +1,457 @@
+{
+  "schema_version": "0.1.0-phase1",
+  "run_id": "2026-09-17T20-51-11-93c69f73",
+  "repo": {
+    "name": "flashcards",
+    "local_path": "/home/mark/projects/flashcards",
+    "remote_url": "https://github.com/baseline0/flashcards.git",
+    "branch": "main",
+    "commit_sha": "93c69f73fe1c5e91d6da11973e62f9f72d229e39",
+    "is_dirty": true
+  },
+  "policy": {
+    "config_path": ".repo-config.yaml",
+    "config_exists": false,
+    "config_hash": null
+  },
+  "evaluation_mode": "static-only",
+  "evaluated_at": "2026-09-17T20:51:11.305437+00:00",
+  "duration_seconds": 0.314304,
+  "environment": {
+    "tool_versions": [
+      {
+        "name": "git",
+        "available": true,
+        "version": "git version 2.35.1"
+      },
+      {
+        "name": "python",
+        "available": true,
+        "version": "Python 3.13.15"
+      },
+      {
+        "name": "uv",
+        "available": true,
+        "version": "uv 0.12.13 (x86_64-unknown-linux-gnu)"
+      },
+      {
+        "name": "ruff",
+        "available": true,
+        "version": "ruff 0.16.8"
+      },
+      {
+        "name": "mypy",
+        "available": false,
+        "version": null
+      },
+      {
+        "name": "just",
+        "available": true,
+        "version": "just 1.58.0"
+      },
+      {
+        "name": "gh",
+        "available": true,
+        "version": "gh version 2.74.0-19-gea8fc856e (2025-06-09)"
+      },
+      {
+        "name": "node",
+        "available": true,
+        "version": "v24.13.0"
+      },
+      {
+        "name": "npm",
+        "available": true,
+        "version": "11.6.2"
+      },
+      {
+        "name": "cargo",
+        "available": false,
+        "version": null
+      },
+      {
+        "name": "go",
+        "available": false,
+        "version": null
+      }
+    ]
+  },
+  "safety": {
+    "git_status_before": "dirty",
+    "git_status_after": "dirty",
+    "files_changed_during_eval": [],
+    "unexpected_changes_detected": false
+  },
+  "documentation": {
+    "readme_present": true,
+    "contributing_present": false,
+    "architecture_docs_present": false,
+    "architecture_doc_paths": []
+  },
+  "stack": {
+    "manifest_files_found": [
+      "pyproject.toml"
+    ],
+    "primary_language_guess": "python",
+    "loc_by_extension": {
+      ".json": 2782,
+      ".yaml": 122,
+      ".yml": 71,
+      ".md": 1700,
+      ".html": 1214,
+      ".toml": 58,
+      ".py": 1813,
+      ".lock": 1167
+    },
+    "loc_total": 8927
+  },
+  "ci": {
+    "platform": "github_actions",
+    "config_paths": [
+      ".github/workflows/deploy-pages.yml",
+      ".github/workflows/test.yml"
+    ]
+  },
+  "structure": {
+    "top_level_dirs": [
+      ".claude",
+      ".github",
+      "data",
+      "docs",
+      "src",
+      "tests"
+    ],
+    "tracked_file_count": 69
+  },
+  "command_candidates": [
+    {
+      "purpose": "unknown",
+      "name": "test.step2",
+      "raw_command": "uv python install ${{ matrix.python-version }}",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "ci_config",
+        "path": ".github/workflows/test.yml",
+        "line": null
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "test.step3",
+      "raw_command": "uv sync",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "ci_config",
+        "path": ".github/workflows/test.yml",
+        "line": null
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "test.step4",
+      "raw_command": "uv run pytest tests/ -v",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "ci_config",
+        "path": ".github/workflows/test.yml",
+        "line": null
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "default",
+      "raw_command": "@just --list",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 7
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "server",
+      "raw_command": "uv run uvicorn flashcards.server.app:app --reload --host 127.0.0.1 --port 8000",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 11
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@echo \"\ud83d\udcda Insurance Flashcards\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 24
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@echo \"\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 25
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@python3 -c \"import json; data = json.load(open('data/raw_glossaries/insurance/property_and_casualty.json')); print(f'\\n\u2705 Property & Casualty ({len(data)} terms):'); [print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]; print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\"",
+      "is_chained": true,
+      "chained_parts": [
+        "@python3 -c \"import json",
+        "data = json.load(open('data/raw_glossaries/insurance/property_and_casualty.json'))",
+        "print(f'\\n\u2705 Property & Casualty ({len(data)} terms):')",
+        "[print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]",
+        "print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\""
+      ],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 26
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@python3 -c \"import json; data = json.load(open('data/raw_glossaries/insurance/underwriting_and_claims.json')); print(f'\\n\u2705 Underwriting & Claims ({len(data)} terms):'); [print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]; print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\"",
+      "is_chained": true,
+      "chained_parts": [
+        "@python3 -c \"import json",
+        "data = json.load(open('data/raw_glossaries/insurance/underwriting_and_claims.json'))",
+        "print(f'\\n\u2705 Underwriting & Claims ({len(data)} terms):')",
+        "[print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]",
+        "print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\""
+      ],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 27
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@echo \"\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 28
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@echo \"\ud83d\udcd6 To start the server: just server\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 29
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "insurance",
+      "raw_command": "@echo \"\ud83e\uddea To run tests: just test\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 30
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "insurance",
+      "raw_command": "@echo \"\"",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 31
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "test",
+      "raw_command": "uv run pytest tests/ -v",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 35
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "coverage",
+      "raw_command": "uv run pytest tests/ --cov=src/flashcards --cov-report=html",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 39
+      }
+    },
+    {
+      "purpose": "lint",
+      "name": "fmt",
+      "raw_command": "uv run ruff format .",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 43
+      }
+    },
+    {
+      "purpose": "lint",
+      "name": "fmt",
+      "raw_command": "uv run ruff check --fix .",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 44
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "check",
+      "raw_command": "uv run pyright src/",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 48
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "install",
+      "raw_command": "uv sync --dev",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 52
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "clean",
+      "raw_command": "rm -rf .pytest_cache .ruff_cache __pycache__ .pytype",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 56
+      }
+    },
+    {
+      "purpose": "unknown",
+      "name": "clean",
+      "raw_command": "find . -type d -name \"__pycache__\" -exec rm -rf {} +",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "justfile",
+        "path": "justfile",
+        "line": 57
+      }
+    },
+    {
+      "purpose": "test",
+      "name": "pytest (from pyproject.toml config)",
+      "raw_command": "pytest",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "package_scripts",
+        "path": "pyproject.toml",
+        "line": null
+      }
+    },
+    {
+      "purpose": "lint",
+      "name": "ruff (config found in pyproject.toml)",
+      "raw_command": "ruff check .",
+      "is_chained": false,
+      "chained_parts": [],
+      "source": {
+        "type": "package_scripts",
+        "path": "pyproject.toml",
+        "line": null
+      }
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "unknown-no-policy",
+      "topic": "policy",
+      "question": "No .repo-config.yaml found. What risk level, quality gates, and lenses should apply to this repo?",
+      "evidence": "Checked for .repo-config.yaml at repo root; not found"
+    },
+    {
+      "id": "unknown-conflict-test",
+      "topic": "command_conflict",
+      "question": "Multiple distinct 'test' commands were found across sources. Which is authoritative?",
+      "evidence": "ci_config:.github/workflows/test.yml -> uv run pytest tests/ -v; justfile:justfile -> @echo \"\ud83e\uddea To run tests: just test\"; justfile:justfile -> uv run pytest tests/ -v; justfile:justfile -> uv run pytest tests/ --cov=src/flashcards --cov-report=html; justfile:justfile -> rm -rf .pytest_cache .ruff_cache __pycache__ .pytype; package_scripts:pyproject.toml -> pytest"
+    },
+    {
+      "id": "unknown-conflict-lint",
+      "topic": "command_conflict",
+      "question": "Multiple distinct 'lint' commands were found across sources. Which is authoritative?",
+      "evidence": "justfile:justfile -> uv run ruff format .; justfile:justfile -> uv run ruff check --fix .; package_scripts:pyproject.toml -> ruff check ."
+    },
+    {
+      "id": "unknown-chained-insurance",
+      "topic": "chained_command",
+      "question": "Command 'insurance' chains multiple steps with && or ;. Should these be split into independent, separately-captured commands?",
+      "evidence": "justfile:justfile:26 -> @python3 -c \"import json; data = json.load(open('data/raw_glossaries/insurance/property_and_casualty.json')); print(f'\\n\u2705 Property & Casualty ({len(data)} terms):'); [print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]; print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\""
+    },
+    {
+      "id": "unknown-chained-insurance",
+      "topic": "chained_command",
+      "question": "Command 'insurance' chains multiple steps with && or ;. Should these be split into independent, separately-captured commands?",
+      "evidence": "justfile:justfile:27 -> @python3 -c \"import json; data = json.load(open('data/raw_glossaries/insurance/underwriting_and_claims.json')); print(f'\\n\u2705 Underwriting & Claims ({len(data)} terms):'); [print(f'  \u2022 {item[\\\"title\\\"]}') for item in data[:5]]; print(f'  ... and {len(data)-5} more' if len(data) > 5 else '')\""
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "assumption-primary-language",
+      "topic": "stack",
+      "assumption": "Primary language is python",
+      "reason": "Inferred from highest line count by file extension among tracked files",
+      "confidence": 0.8
+    }
+  ]
+}
