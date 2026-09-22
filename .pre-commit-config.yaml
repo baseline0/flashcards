@@ -41,3 +41,10 @@ repos:
         entry: end-of-file-fixer
         language: system
         types: [text]
+
+repos:
+  - repo: https://github.com/baseline0/fleet-base
+    rev: v1.0.0
+    hooks:
+      - id: fleet-governance-validate
+        stages: [commit]
