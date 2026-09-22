@@ -2,6 +2,11 @@
 
 A modular, domain-agnostic spaced repetition system for learning from arbitrary glossaries.
 
+## Test Status
+
+[![Unit Tests](https://github.com/anthropics/flashcards/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/anthropics/flashcards/actions)  
+**Status:** 32/32 tests passing ✅
+
 ## Features
 
 - **Multi-domain glossaries** — Insurance, philosophy, science, history (any domain)
