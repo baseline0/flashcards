@@ -6,28 +6,28 @@ repos:
         entry: importlinter --check
         language: system
         pass_filenames: false
-        stages: [commit]
+        stages: [pre-commit]
 
       - id: ruff-format
         name: ruff format
         entry: ruff format
         language: system
         types: [python]
-        stages: [commit]
+        stages: [pre-commit]
 
       - id: ruff-check
         name: ruff check
         entry: ruff check --fix
         language: system
         types: [python]
-        stages: [commit]
+        stages: [pre-commit]
 
       - id: pytest
         name: pytest
         entry: pytest
         language: system
         types: [python]
-        stages: [commit]
+        stages: [pre-commit]
         pass_filenames: false
 
       - id: trailing-whitespace
@@ -47,4 +47,4 @@ repos:
     rev: v1.0.0
     hooks:
       - id: fleet-governance-validate
-        stages: [commit]
+        stages: [pre-commit]
