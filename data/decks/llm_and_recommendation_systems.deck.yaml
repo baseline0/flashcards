@@ -1,0 +1,59 @@
+name: llm_and_recommendation_systems
+include_tags:
+- llm
+subdecks:
+- deck: machine_learning/bert
+  version: vcf6e91b06983
+  mask:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+- deck: machine_learning/llm_and_recommendation_systems
+  version: vb178a0660501
+  mask:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+extra_slides: []
