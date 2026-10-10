@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+from flashcards.constants import REPO_ROOT
 
 from ..core.config import settings
 from ..core.database import init_db
@@ -23,17 +24,17 @@ app.include_router(api.router, prefix="/api", tags=["api"])
 @app.get("/")
 def root():
     """Serve landing page."""
-    docs_path = Path(__file__).parent.parent.parent.parent / "docs" / "index.html"
+    docs_path = REPO_ROOT / "docs" / "index.html"
     return FileResponse(docs_path)
 
 
 @app.get("/study")
 def study():
     """Serve interactive study interface."""
-    docs_path = Path(__file__).parent.parent.parent.parent / "docs" / "study.html"
+    docs_path = REPO_ROOT / "docs" / "study.html"
     return FileResponse(docs_path)
 
 
 # Serve static files (docs)
-docs_dir = Path(__file__).parent.parent.parent.parent / "docs"
+docs_dir = REPO_ROOT / "docs"
 app.mount("/static", StaticFiles(directory=docs_dir), name="static")
