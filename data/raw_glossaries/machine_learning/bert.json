@@ -1,0 +1,527 @@
+[
+  {
+    "title": "BERT (Bidirectional Encoder Representations from Transformers)",
+    "body": "An encoder-only Transformer pre-trained on unlabeled text with masked language modeling and next sentence prediction. Downstream tasks are handled by fine-tuning with one additional output layer.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Abstract; Section 1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "architecture",
+      "tags": [
+        "BERT",
+        "Transformer",
+        "Encoder",
+        "Pre-training",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT model sizes: BERT_BASE vs BERT_LARGE",
+    "body": "BERT_BASE has L=12 layers, H=768 hidden size, A=12 attention heads, and 110M total parameters. BERT_LARGE has L=24, H=1024, A=16, and 340M total parameters.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3 (model architecture)",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "architecture",
+      "tags": [
+        "BERT",
+        "Transformer",
+        "Model Size",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Bidirectionality in BERT",
+    "body": "Every layer of BERT conditions on both left and right context. Contrast: OpenAI GPT is a left-to-right Transformer, and ELMo concatenates independently trained left-to-right and right-to-left models.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 1; Section 3.1; Figure 3",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "bidirectionality",
+      "tags": [
+        "BERT",
+        "Bidirectional",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Why BERT does not use a standard language model objective",
+    "body": "With bidirectional conditioning in a standard language model, each word could indirectly see itself. BERT therefore uses a masked language model objective instead of predicting the next word.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3.1, Task #1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "bidirectionality",
+      "tags": [
+        "BERT",
+        "Masked LM",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Masked Language Model (MLM) pre-training",
+    "body": "Select 15% of the WordPiece tokens in each sequence at random. Predict the original token at each selected position, using cross-entropy loss over the final hidden vector for that position.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3.1, Task #1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "tags": [
+        "BERT",
+        "Masked LM",
+        "Pre-training",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "MLM 80/10/10 replacement rule",
+    "body": "Of the 15% selected tokens: 80% of the time replace with [MASK], 10% of the time replace with a random token, and 10% of the time keep the original token unchanged.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3.1, Task #1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "tags": [
+        "BERT",
+        "Masked LM",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Why MLM does not always insert [MASK]",
+    "body": "The [MASK] token never appears during fine-tuning. The random-token and unchanged-token cases in the 80/10/10 rule reduce the mismatch between pre-training and fine-tuning.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3.1, Task #1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "tags": [
+        "BERT",
+        "Masked LM",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Next Sentence Prediction (NSP)",
+    "body": "A binarized sentence-pair task built from any monolingual corpus. For each example, 50% of the time B is the actual sentence that follows A (IsNext); 50% of the time B is a random sentence. The final [CLS] vector predicts the label.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3.1, Task #2",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "tags": [
+        "BERT",
+        "NSP",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "NSP ablation in the BERT paper",
+    "body": "[REVIEW] The paper's 'No NSP' ablation trains BERT_BASE without next sentence prediction and reports a drop on some tasks. Exact per-task deltas were not checked against the table column layout; read Appendix C before relying on them.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 5 (ablation table)",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "review_flag": true,
+      "review_reason": "Ablation table column mapping not verified; numbers intentionally omitted.",
+      "tags": [
+        "BERT",
+        "Ablation",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT input format: [CLS], [SEP], and segment embeddings",
+    "body": "The input begins with a special [CLS] token. Sentence pairs are separated by [SEP]. A learned segment embedding marks each token as sentence A or B. Each token's input vector sums its token, segment, and position embeddings.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3; Figure 2",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "tokenization",
+      "tags": [
+        "BERT",
+        "Input Format",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "WordPiece tokenization in BERT",
+    "body": "BERT uses WordPiece embeddings with a 30,000-token vocabulary. Words can split into subword pieces, marked with ## for continuation, e.g. 'playing' becomes 'play' + '##ing'.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3; Figure 2 example",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "tokenization",
+      "tags": [
+        "BERT",
+        "WordPiece",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Tokenizer's role in the Hugging Face workflow",
+    "body": "A tokenizer handles the first and last processing steps: it converts text into numerical inputs for the neural network, and converts model outputs back to text when needed.",
+    "metadata": {
+      "source_url": "https://huggingface.co/learn/llm-course/chapter2/1",
+      "source_name": "Hugging Face LLM Course, Chapter 2",
+      "source_section": "Chapter 2 introduction",
+      "license": "unverified",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": false,
+      "scraped_date": "2026-10-10",
+      "category": "HF workflow",
+      "review_flag": true,
+      "review_reason": "Content checked only via a summarized fetch, not the page text; HF course license not verified.",
+      "tags": [
+        "Hugging Face",
+        "Tokenizer",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "pipeline() in the Hugging Face workflow",
+    "body": "A high-level Transformers API that runs a model and tokenizer together for inference. Chapter 2 rebuilds what pipeline() does by calling a model and a tokenizer directly.",
+    "metadata": {
+      "source_url": "https://huggingface.co/learn/llm-course/chapter2/1",
+      "source_name": "Hugging Face LLM Course, Chapter 2",
+      "source_section": "Chapter 2 introduction",
+      "license": "unverified",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": false,
+      "scraped_date": "2026-10-10",
+      "category": "HF workflow",
+      "review_flag": true,
+      "review_reason": "Content checked only via a summarized fetch; HF course license not verified.",
+      "tags": [
+        "Hugging Face",
+        "pipeline",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "AutoModel and AutoTokenizer (Hugging Face)",
+    "body": "[REVIEW] Auto classes load a model or tokenizer from a checkpoint name, choosing the matching architecture automatically. The fetched chapter text did not mention these classes; confirm against the Hugging Face docs.",
+    "metadata": {
+      "source_url": "https://huggingface.co/learn/llm-course/chapter2/1",
+      "source_name": "Hugging Face LLM Course, Chapter 2",
+      "source_section": "Not confirmed in fetched text",
+      "license": "unverified",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": false,
+      "scraped_date": "2026-10-10",
+      "category": "HF workflow",
+      "review_flag": true,
+      "review_reason": "Source text did not mention AutoModel/AutoTokenizer; body is unsourced.",
+      "tags": [
+        "Hugging Face",
+        "AutoModel",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Attention mask in batched BERT inputs",
+    "body": "[REVIEW] A 0/1 mask marking real tokens versus padding, so attention ignores padded positions when sequences of different lengths are batched. Not confirmed in the fetched chapter text.",
+    "metadata": {
+      "source_url": "https://huggingface.co/learn/llm-course/chapter2/1",
+      "source_name": "Hugging Face LLM Course, Chapter 2",
+      "source_section": "Not confirmed in fetched text",
+      "license": "unverified",
+      "attribution_required": true,
+      "attribution_text": "Hugging Face",
+      "tier": 1,
+      "commercial_use": false,
+      "scraped_date": "2026-10-10",
+      "category": "attention",
+      "review_flag": true,
+      "review_reason": "Source text did not mention attention masks; body is unsourced.",
+      "tags": [
+        "Attention",
+        "Padding",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Self-attention in BERT",
+    "body": "Each BERT layer is a multi-head bidirectional self-attention stack, so every token attends to every other token in the sequence. The final hidden vector of [CLS] serves as the aggregate sequence representation.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3; Section 4",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "attention",
+      "tags": [
+        "BERT",
+        "Self-Attention",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Fine-tuning: all parameters, one extra output layer",
+    "body": "Start from pre-trained weights, add one task-specific output layer, and fine-tune all parameters on labeled data for the downstream task.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Abstract; Section 3 (fine-tuning)",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "fine-tuning",
+      "tags": [
+        "BERT",
+        "Fine-tuning",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Feature-based vs fine-tuning approach",
+    "body": "A feature-based approach (e.g. ELMo) uses pre-trained representations as extra features for a task-specific model. BERT's fine-tuning approach updates all pre-trained parameters on the downstream task.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 1",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "fine-tuning",
+      "tags": [
+        "BERT",
+        "Fine-tuning",
+        "Feature-based",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT fine-tuning hyperparameter search",
+    "body": "[REVIEW] The paper searches batch sizes of 16 or 32 and Adam learning rates of 5e-5, 3e-5, or 2e-5, for 2 to 4 epochs. GLUE fine-tuning used batch size 32 and 3 epochs. Ranges were read from a partial text extraction; verify against Appendix A.3.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 4; Appendix A.3",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "fine-tuning",
+      "review_flag": true,
+      "review_reason": "Appendix A.3 ranges only partially verified from extracted text.",
+      "tags": [
+        "BERT",
+        "Hyperparameters",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT tasks: classification, token tagging, and span QA",
+    "body": "Sentence-level outputs use the [CLS] vector, e.g. NLI and single-sentence classification. Token-level outputs use each token's final hidden vector, e.g. NER. Span QA predicts start and end positions over a passage.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 4; Figure 4",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "use cases",
+      "tags": [
+        "BERT",
+        "Use Cases",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT results at publication",
+    "body": "Reported: GLUE score 80.5 (7.7 point absolute improvement); MultiNLI accuracy 86.7% (4.6 point absolute improvement); SQuAD v1.1 test F1 93.2 (1.5 point); SQuAD v2.0 test F1 83.1 (5.1 point). Set new state-of-the-art on eleven NLP tasks.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Abstract",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "use cases",
+      "tags": [
+        "BERT",
+        "Benchmarks",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "BERT pre-training corpora",
+    "body": "BooksCorpus (800M words) and English Wikipedia (2,500M words), using text passages only from Wikipedia.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "pretraining",
+      "tags": [
+        "BERT",
+        "Corpus",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  },
+  {
+    "title": "Debugging: checking BERT input structure",
+    "body": "[REVIEW] When sentence pairs behave oddly, check that the input starts with [CLS], that [SEP] separates and ends the segments, and that segment IDs match the sentence. This checklist is derived from the input format, not stated in the paper.",
+    "metadata": {
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source_section": "Section 3; Figure 2 (derived)",
+      "license": "arXiv",
+      "attribution_required": true,
+      "attribution_text": "Devlin et al.",
+      "tier": 1,
+      "commercial_use": true,
+      "scraped_date": "2026-10-10",
+      "category": "debugging",
+      "review_flag": true,
+      "review_reason": "Debugging checklist is my inference from the input format, not a source statement.",
+      "tags": [
+        "BERT",
+        "Debugging",
+        "Bert Deck",
+        "llm"
+      ]
+    }
+  }
+]
