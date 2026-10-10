@@ -1,6 +1,6 @@
 # flashcards: BERT Deck
 
-## Features
+## Features - `feature`
 
 - [ ] Build the BERT deck. No deck exists yet; BERT appears only in `data/raw_glossaries/machine_learning/`.
 
