@@ -41,3 +41,7 @@ dmypy.json
 
 # Project-specific
 data/flashcards.sqlite
+# Unit test / coverage reports
+.coverage.*
+*.cover
+coverage.xml
