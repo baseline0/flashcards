@@ -1,5 +1,8 @@
 #!/usr/bin/env just --justfile
 
+# Shared commit recipe from fleet-base. Literal path: just does not interpolate variables into import paths.
+import "../fleet-base/src/fleet_base/justfiles/shared/commit.just"
+
 set shell := ["bash", "-c"]
 
 # Default: show help
