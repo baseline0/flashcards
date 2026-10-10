@@ -1,5 +1,6 @@
 """Tests for glossary ingestion metrics."""
 
+import pytest
 import json
 import tempfile
 from pathlib import Path
@@ -34,9 +35,7 @@ def test_update_ingestion_metrics():
         ]
 
         # Update metrics
-        metrics = tracker.update_ingestion_metrics(
-            entries, domain="insurance", total_available=10
-        )
+        metrics = tracker.update_ingestion_metrics(entries, domain="insurance", total_available=10)
 
         assert metrics["by_domain"]["insurance"]["ingested"] == 2
         assert metrics["by_domain"]["insurance"]["available"] == 10
@@ -86,9 +85,7 @@ def test_multiple_domains():
             )
             for i in range(5)
         ]
-        tracker.update_ingestion_metrics(
-            insurance_entries, "insurance", total_available=10
-        )
+        tracker.update_ingestion_metrics(insurance_entries, "insurance", total_available=10)
 
         # Add AWS entries
         aws_entries = [
@@ -202,7 +199,3 @@ def test_overall_progress():
         assert progress["total_ingested"] == 4
         assert progress["total_available"] == 10
         assert progress["domains_tracked"] == 2
-
-
-# Import pytest for approx
-import pytest

@@ -1,6 +1,6 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
-from fsrs import Rating, FSRS, Card, RevLogEntry
+from fsrs import Rating, FSRS, Card
 
 
 class FSRSEngine:

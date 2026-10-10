@@ -38,9 +38,6 @@ def get_parser(format: str) -> BaseGlossaryParser:
     }
 
     if format.lower() not in parsers:
-        raise ValueError(
-            f"Unsupported format: {format}. "
-            f"Choose from: {', '.join(parsers.keys())}"
-        )
+        raise ValueError(f"Unsupported format: {format}. Choose from: {', '.join(parsers.keys())}")
 
     return parsers[format.lower()]()

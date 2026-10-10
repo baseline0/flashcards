@@ -1,6 +1,5 @@
 """Parser for Markdown-formatted glossaries."""
 
-import re
 import uuid
 
 from ..domains.schemas import GlossaryEntry
@@ -92,9 +91,7 @@ class MarkdownGlossaryParser(BaseGlossaryParser):
 
         return entries
 
-    def _parse_table_format(
-        self, content: str, domain: str, category: str
-    ) -> list[GlossaryEntry]:
+    def _parse_table_format(self, content: str, domain: str, category: str) -> list[GlossaryEntry]:
         """Parse Markdown table format (| Term | Definition |)."""
         entries = []
         lines = content.split("\n")
@@ -102,8 +99,9 @@ class MarkdownGlossaryParser(BaseGlossaryParser):
         # Find table start (line with |)
         table_start = None
         for i, line in enumerate(lines):
-            if "|" in line and any(c in lines[i + 1] if i + 1 < len(lines) else False
-                                    for c in ["-", ":|"]):
+            if "|" in line and any(
+                c in lines[i + 1] if i + 1 < len(lines) else False for c in ["-", ":|"]
+            ):
                 table_start = i
                 break
 

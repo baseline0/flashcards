@@ -1,6 +1,5 @@
 from datetime import datetime
 
-import pytest
 
 from src.flashcards.domains.schemas import CardType, Flashcard, GlossaryEntry
 

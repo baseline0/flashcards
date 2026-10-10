@@ -113,17 +113,17 @@ Sources that are not explicitly open-access but qualify for fair use under U.S. 
 Update `GlossaryEntry` to track:
 ```python
 metadata: {
-    "source_url": str,           # Where the term originated
-    "source_name": str,          # Human-readable source
-    "license": str,              # CC-BY-4.0, MIT, Apache-2.0, proprietary, public-domain
-    "license_url": str,          # Link to license text
+    "source_url": str,  # Where the term originated
+    "source_name": str,  # Human-readable source
+    "license": str,  # CC-BY-4.0, MIT, Apache-2.0, proprietary, public-domain
+    "license_url": str,  # Link to license text
     "attribution_required": bool,
-    "attribution_text": str,     # How to attribute (author, organization, year)
+    "attribution_text": str,  # How to attribute (author, organization, year)
     "fair_use_justification": str,  # Only for Tier 2
-    "commercial_use": bool,      # Whether flashcards may be used commercially
-    "scraped_date": str,         # ISO-8601 date
-    "notes": str,                # Provenance notes (e.g., "Extracted from Ch. 3")
-    "tier": int,                 # 1=Open-Access, 2=Fair-Use, 3=Prohibited (rejected)
+    "commercial_use": bool,  # Whether flashcards may be used commercially
+    "scraped_date": str,  # ISO-8601 date
+    "notes": str,  # Provenance notes (e.g., "Extracted from Ch. 3")
+    "tier": int,  # 1=Open-Access, 2=Fair-Use, 3=Prohibited (rejected)
 }
 ```
 
@@ -137,21 +137,21 @@ metadata: {
 ```python
 # Machine Learning Glossary (Tier 1: CC-BY, NVIDIA)
 [
-  {
-    "title": "Epoch",
-    "body": "One complete pass through the training dataset",
-    "metadata": {
-      "source_url": "https://developer.nvidia.com/glossary/",
-      "source_name": "NVIDIA AI Glossary",
-      "license": "CC-BY-4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/",
-      "attribution_required": true,
-      "attribution_text": "© NVIDIA",
-      "tier": 1,
-      "commercial_use": true,
-      "scraped_date": "2026-09-16"
+    {
+        "title": "Epoch",
+        "body": "One complete pass through the training dataset",
+        "metadata": {
+            "source_url": "https://developer.nvidia.com/glossary/",
+            "source_name": "NVIDIA AI Glossary",
+            "license": "CC-BY-4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "attribution_required": true,
+            "attribution_text": "© NVIDIA",
+            "tier": 1,
+            "commercial_use": true,
+            "scraped_date": "2026-09-16",
+        },
     }
-  }
 ]
 ```
 

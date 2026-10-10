@@ -1,6 +1,5 @@
 import json
 
-import pytest
 
 from src.flashcards.ingestion.json_parser import JSONGlossaryParser
 

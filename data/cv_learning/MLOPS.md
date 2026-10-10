@@ -203,8 +203,8 @@ audit = BiasAuditResult(
     model_name="claims_risk_scoring",
     model_version="1.0",
     disparate_impact_ratio=0.92,  # >= 0.8: acceptable
-    calibration_error=0.03,       # < 0.05: well-calibrated
-    passed_audit=True,            # ✅ Ready for production
+    calibration_error=0.03,  # < 0.05: well-calibrated
+    passed_audit=True,  # ✅ Ready for production
 )
 ```
 
@@ -214,8 +214,8 @@ explanation = SHAPExplanation(
     prediction_id="pred_20260914_claim_12345",
     prediction_value=0.73,  # 73% probability of high-risk
     shap_values={
-        "days_since_policy": 0.15,   # Positive → increases risk
-        "claim_amount": 0.22,        # Positive → increases risk
+        "days_since_policy": 0.15,  # Positive → increases risk
+        "claim_amount": 0.22,  # Positive → increases risk
         "injury_type_fracture": 0.18,
     },
 )

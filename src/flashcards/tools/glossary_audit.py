@@ -35,19 +35,21 @@ class GlossaryAudit:
 
                 for entry in data:
                     metadata = entry.get("metadata", {})
-                    items.append({
-                        "domain": domain_path.name,
-                        "glossary": glossary_file.stem,
-                        "term": entry.get("title", ""),
-                        "source_url": metadata.get("source_url", ""),
-                        "source_name": metadata.get("source_name", ""),
-                        "license": metadata.get("license", "unknown"),
-                        "tier": metadata.get("tier", 0),
-                        "attribution_required": metadata.get("attribution_required", False),
-                        "commercial_use": metadata.get("commercial_use", False),
-                        "scraped_date": metadata.get("scraped_date", ""),
-                        "fair_use": bool(metadata.get("fair_use_justification")),
-                    })
+                    items.append(
+                        {
+                            "domain": domain_path.name,
+                            "glossary": glossary_file.stem,
+                            "term": entry.get("title", ""),
+                            "source_url": metadata.get("source_url", ""),
+                            "source_name": metadata.get("source_name", ""),
+                            "license": metadata.get("license", "unknown"),
+                            "tier": metadata.get("tier", 0),
+                            "attribution_required": metadata.get("attribution_required", False),
+                            "commercial_use": metadata.get("commercial_use", False),
+                            "scraped_date": metadata.get("scraped_date", ""),
+                            "fair_use": bool(metadata.get("fair_use_justification")),
+                        }
+                    )
 
         return items
 
@@ -79,7 +81,8 @@ class GlossaryAudit:
                 )
             if item["commercial_use"] is False and not item.get("license"):
                 summary["compliance_issues"].append(
-                    f"{item['glossary']}: {item['term']} restricts commercial use but has no license"
+                    f"{item['glossary']}: {item['term']} restricts commercial use "
+                    "but has no license"
                 )
 
         return {
@@ -123,8 +126,7 @@ class GlossaryAudit:
         """Verify all required attributions are present."""
         items = self.inventory()
         issues = [
-            item for item in items
-            if item["attribution_required"] and not item.get("source_name")
+            item for item in items if item["attribution_required"] and not item.get("source_name")
         ]
 
         if issues:
@@ -133,5 +135,5 @@ class GlossaryAudit:
                 print(f"  - {issue['glossary']}/{issue['term']}")
             return False
 
-        print(f"✓ All required attributions are present")
+        print("✓ All required attributions are present")
         return True

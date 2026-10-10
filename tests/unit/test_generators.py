@@ -1,5 +1,3 @@
-import pytest
-
 from src.flashcards.domains.schemas import CardType, GlossaryEntry
 from src.flashcards.generators.term_def_generator import TermDefinitionGenerator
 

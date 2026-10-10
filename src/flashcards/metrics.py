@@ -60,9 +60,7 @@ class GlossaryMetricsTracker:
         metrics["total_ingested"] = total_ingested
         metrics["total_available"] = total_available
         metrics["completion_pct"] = (
-            (total_ingested / total_available * 100)
-            if total_available > 0
-            else 0.0
+            (total_ingested / total_available * 100) if total_available > 0 else 0.0
         )
         metrics["timestamp"] = datetime.now().isoformat()
 
@@ -122,17 +120,15 @@ class GlossaryMetricsTracker:
 
         domains_display = []
         for domain, data in metrics["by_domain"].items():
-            pct = (
-                (data["ingested"] / data["available"] * 100)
-                if data["available"] > 0
-                else 0.0
+            pct = (data["ingested"] / data["available"] * 100) if data["available"] > 0 else 0.0
+            domains_display.append(
+                {
+                    "name": domain,
+                    "status": f"{data['ingested']}/{data['available']}",
+                    "pct": f"{pct:.1f}%",
+                    "bar": self._progress_bar(pct, width=20),
+                }
             )
-            domains_display.append({
-                "name": domain,
-                "status": f"{data['ingested']}/{data['available']}",
-                "pct": f"{pct:.1f}%",
-                "bar": self._progress_bar(pct, width=20),
-            })
 
         return {
             "title": "Glossary Ingestion Progress",

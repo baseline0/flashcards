@@ -1,6 +1,5 @@
 """Parser for YAML-formatted glossaries."""
 
-import re
 import uuid
 from typing import Any
 
@@ -41,6 +40,7 @@ class YAMLGlossaryParser(BaseGlossaryParser):
         try:
             # Try to import pyyaml if available
             import yaml
+
             data = yaml.safe_load(content)
         except ImportError:
             # Fallback: parse simple YAML manually
@@ -77,7 +77,7 @@ class YAMLGlossaryParser(BaseGlossaryParser):
                 key, value = line.split(": ", 1)
                 current_key = key.strip()
                 # Remove quotes if present
-                value = value.strip().strip('"\'')
+                value = value.strip().strip("\"'")
                 current_value_lines = [value] if value else []
             elif line.startswith("  ") and current_key:
                 # Continuation of multiline value
@@ -91,9 +91,7 @@ class YAMLGlossaryParser(BaseGlossaryParser):
 
         return entries
 
-    def _extract_entries(
-        self, data: Any, domain: str, category: str
-    ) -> list[GlossaryEntry]:
+    def _extract_entries(self, data: Any, domain: str, category: str) -> list[GlossaryEntry]:
         """Extract GlossaryEntry objects from parsed YAML data."""
         entries = []
 

@@ -166,10 +166,10 @@ Use the `get_parser()` helper to automatically select the right parser:
 from src.flashcards.ingestion import get_parser
 
 # Automatically select parser based on format
-parser = get_parser("json")      # JSONGlossaryParser
-parser = get_parser("csv")       # CSVGlossaryParser
+parser = get_parser("json")  # JSONGlossaryParser
+parser = get_parser("csv")  # CSVGlossaryParser
 parser = get_parser("markdown")  # MarkdownGlossaryParser
-parser = get_parser("yaml")      # YAMLGlossaryParser
+parser = get_parser("yaml")  # YAMLGlossaryParser
 
 # Parse content
 entries = parser.parse(content, domain="web", category="architecture")
@@ -198,11 +198,7 @@ parser = get_parser(file_format)
 ### Step 3: Parse Entries
 
 ```python
-entries = parser.parse(
-    content,
-    domain="cloud_computing",
-    category="AWS"
-)
+entries = parser.parse(content, domain="cloud_computing", category="AWS")
 
 print(f"✓ Ingested {len(entries)} glossary entries")
 ```
@@ -235,7 +231,7 @@ entry.metadata = {
     "difficulty": "intermediate",
     "source": "RFC 7230",
     "category": "web_standards",
-    "format": "json"
+    "format": "json",
 }
 ```
 
