@@ -14,7 +14,7 @@
   },
   {
     "title": "MCP Server",
-    "body": "A program that implements the MCP protocol and exposes capabilities (tools, resources, prompts) to AI agents. Examples: rope-mcp (code refactoring), vscode-workspace-mcp (file operations), anthropic/filesystem-mcp (file system access).",
+    "body": "A program that implements the MCP protocol and exposes capabilities (tools, resources, prompts) to AI agents. Examples: rope-mcp (code refactoring), mcp-vscode (file operations), anthropic/filesystem-mcp (file system access).",
     "metadata": {
       "source_url": "https://modelcontextprotocol.io/servers",
       "source_name": "MCP Servers",
@@ -27,7 +27,7 @@
   },
   {
     "title": "MCP Client",
-    "body": "The AI agent or application that connects to MCP servers and uses their capabilities. Example: Claude Code uses rope-mcp and vscode-workspace-mcp for code refactoring and file operations.",
+    "body": "The AI agent or application that connects to MCP servers and uses their capabilities. Example: Claude Code uses rope-mcp and mcp-vscode for code refactoring and file operations.",
     "metadata": {
       "source_url": "https://modelcontextprotocol.io/clients",
       "source_name": "MCP Clients",
@@ -91,10 +91,10 @@
     }
   },
   {
-    "title": "VSCode Workspace MCP (vscode-workspace-mcp)",
+    "title": "VSCode Workspace MCP (mcp-vscode)",
     "body": "An MCP server for file and workspace operations. Provides tools like 'read_file', 'write_file', 'list_directory', 'search_in_files', and 'get_file_info'. Enables AI agents to safely navigate and modify file systems.",
     "metadata": {
-      "source_url": "https://github.com/anthropics/mcp-servers/tree/main/src/vscode-workspace-mcp",
+      "source_url": "https://github.com/anthropics/mcp-servers/tree/main/src/mcp-vscode",
       "source_name": "VSCode Workspace MCP",
       "license": "MIT",
       "attribution_required": false,
