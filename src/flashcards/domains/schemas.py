@@ -71,3 +71,4 @@ class DeckInfo(BaseModel):
     category: str
     glossary_name: str
     card_count: int
+    kind: str = "atomic"  # "atomic" or "composite"

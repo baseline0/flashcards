@@ -193,3 +193,35 @@ def load_all_decks(glossaries_root: Path, taxonomy: Taxonomy) -> dict[str, Atomi
         name = path.relative_to(glossaries_root).with_suffix("").as_posix()
         decks[name] = load_atomic_deck(name, path, taxonomy)
     return decks
+
+
+def check_name_collisions(atomic_names: set[str], composite_names: set[str]) -> None:
+    """Forbid a composite sharing a name with an atomic deck, comparing the final path component.
+
+    Raises:
+        ValueError: Listing every collision, so the fix is visible in one run.
+    """
+    atomic_basenames = {name.rsplit("/", 1)[-1] for name in atomic_names}
+    collisions = sorted(composite_names & atomic_basenames)
+    if collisions:
+        raise ValueError(f"composite names collide with atomic deck names: {collisions}")
+
+
+def load_composites(composite_root: Path) -> dict[str, CompositeDeck]:
+    """Read every composite under the root. A file must be named after its composite.
+
+    Raises:
+        ValueError: If a file's name does not match the composite inside it.
+    """
+    composites: dict[str, CompositeDeck] = {}
+    for path in sorted(composite_root.glob("*.deck.yaml")):
+        composite = read_composite(path)
+        if path.name != f"{composite.name}.deck.yaml":
+            raise ValueError(f"{path.name} must be named {composite.name}.deck.yaml")
+        composites[composite.name] = composite
+    return composites
+
+
+def composite_card_count(composite: CompositeDeck) -> int:
+    """Number of slides the composite presents, read from its masks."""
+    return sum(sum(pin.mask) for pin in composite.subdecks)

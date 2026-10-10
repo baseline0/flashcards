@@ -137,3 +137,36 @@ def test_composite_round_trips_through_yaml(decks, taxonomy, tmp_path):
     write_composite(composite, path)
 
     assert read_composite(path) == composite
+
+
+def test_composite_sharing_an_atomic_basename_is_refused():
+    from flashcards.composite import check_name_collisions
+
+    with pytest.raises(ValueError, match="collide.*llm_and_recommendation_systems"):
+        check_name_collisions(
+            {"machine_learning/llm_and_recommendation_systems"}, {"llm_and_recommendation_systems"}
+        )
+
+
+def test_distinct_names_pass_the_collision_check():
+    from flashcards.composite import check_name_collisions
+
+    check_name_collisions({"machine_learning/bert"}, {"llm_and_recommendation_track"})
+
+
+def test_composite_file_must_be_named_after_its_composite(decks, taxonomy, tmp_path):
+    from flashcards.composite import load_composites
+
+    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+    write_composite(composite, tmp_path / "wrong.deck.yaml")
+
+    with pytest.raises(ValueError, match="must be named mix.deck.yaml"):
+        load_composites(tmp_path)
+
+
+def test_card_count_is_the_number_of_masked_slides(decks, taxonomy):
+    from flashcards.composite import composite_card_count
+
+    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+
+    assert composite_card_count(composite) == len(present(composite, decks))

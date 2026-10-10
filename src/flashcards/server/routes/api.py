@@ -1,9 +1,10 @@
 import json
 import random
-from pathlib import Path
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+
+from fastapi import HTTPException
 
 from ...core.config import settings
 from ...core.database import get_session
@@ -11,12 +12,17 @@ from ...domains.models import FlashcardModel
 from ...domains.schemas import DeckInfo, Flashcard, ReviewInput
 from ...generators.term_def_generator import TermDefinitionGenerator
 from ...ingestion.json_parser import JSONGlossaryParser
+from ...composite import check_name_collisions, composite_card_count, load_composites
 
 router = APIRouter()
 
 
 def _load_and_generate_deck(domain: str, category: str, glossary_name: str, db: Session):
     """Load glossary file and generate cards if not already in DB."""
+    if domain == "composite":
+        raise HTTPException(
+            status_code=422, detail="composite decks cannot be loaded yet; list only"
+        )
     glossary_path = settings.glossaries_path / domain / f"{glossary_name}.json"
 
     # Check if cards already exist
@@ -63,11 +69,7 @@ def list_decks(db: Session = Depends(get_session)) -> list[DeckInfo]:
             category = glossary_file.parent.name
 
             # Count cards in DB or in file
-            card_count = (
-                db.query(FlashcardModel)
-                .filter_by(domain=domain_path.name)
-                .count()
-            )
+            card_count = db.query(FlashcardModel).filter_by(domain=domain_path.name).count()
 
             if card_count == 0:
                 # Count from file
@@ -86,6 +88,21 @@ def list_decks(db: Session = Depends(get_session)) -> list[DeckInfo]:
                     card_count=card_count,
                 )
             )
+    # Composite decks live in their own folder and may not share a name with an atomic deck.
+    composites = load_composites(settings.composite_decks_path)
+    atomic_names = {f"{d.parent.name}/{d.stem}" for d in settings.glossaries_path.rglob("*.json")}
+    check_name_collisions(atomic_names, set(composites))
+    for composite in composites.values():
+        decks.append(
+            DeckInfo(
+                domain="composite",
+                category="composite",
+                glossary_name=composite.name,
+                card_count=composite_card_count(composite),
+                kind="composite",
+            )
+        )
+    return decks
     return decks
 
 
