@@ -1,0 +1,125 @@
+# Canonical topic tags for flashcard decks. Expand over time: add a canonical tag, then its synonyms.
+#
+# Rules:
+#   - A canonical tag is lowercase kebab-case and appears once.
+#   - Every raw tag in a glossary resolves to exactly one canonical tag. An unknown raw tag is an error.
+#   - Synonyms are the spellings or near-duplicates seen in existing glossaries. A synonym may not
+#     be another canonical tag's name.
+#   - Deck markers (for example "Bert Deck") map onto the topic they label.
+
+tags:
+  ads:
+    description: Advertising systems and their ranking
+  ablation:
+    description: Controlled removal of a component to measure its effect
+  architecture:
+    description: Model and system architectures
+  attention:
+    description: Attention mechanisms, including self-attention
+    synonyms: [Self-Attention]
+  autoregressive:
+    description: Models that generate one token at a time from earlier tokens
+  benchmarks:
+    description: Standard evaluation suites and datasets
+  bert:
+    description: BERT and its variants
+    synonyms: [Bert Deck]
+  bidirectional:
+    description: Models that condition on both left and right context
+  challenge:
+    description: Open problems and hard cases
+  collaborative-filtering:
+    description: Recommendation from user-item interaction patterns
+    synonyms: [Collaborative Filtering]
+  content-based:
+    description: Recommendation from item features
+  corpus:
+    description: Text collections used for pre-training or evaluation
+  data-pipeline:
+    description: Data ingestion and transformation pipelines
+    synonyms: [Data Pipeline]
+  debugging:
+    description: Diagnosing failing models or inputs
+  diversity:
+    description: Variety in recommendation or search results
+  efficiency:
+    description: Compute, memory, and latency cost
+  encoder:
+    description: Encoder-only or encoder stacks
+  feature-based:
+    description: Using fixed pretrained representations as features
+  feedback:
+    description: User signals used to improve a system
+  fine-tuning:
+    description: Adapting a pretrained model to a task
+  hugging-face:
+    description: The Hugging Face libraries and hub
+    synonyms: [Hugging Face, AutoModel]
+  hybrid:
+    description: Combining two approaches
+  hyperparameters:
+    description: Training settings chosen before training
+  inference:
+    description: Running a trained model to produce outputs
+  information-retrieval:
+    description: Finding relevant documents or items for a query
+    synonyms: [Information Retrieval]
+  infrastructure:
+    description: Hardware, serving, and platform systems
+    synonyms: [ML Infrastructure]
+  input-format:
+    description: How text is structured as model input
+    synonyms: [Input Format]
+  llm:
+    description: Large language models
+  masked-language-model:
+    description: Pre-training by predicting masked tokens
+    synonyms: [Masked LM]
+  meta-interview:
+    description: Interview preparation and framing
+    synonyms: [Meta Interview]
+  metric:
+    description: Measures used to evaluate models or systems
+  model-size:
+    description: Parameter count and its consequences
+    synonyms: [Model Size]
+  next-sentence-prediction:
+    description: Pre-training task predicting whether two sentences follow each other
+    synonyms: [NSP]
+  nlp:
+    description: Natural language processing
+  optimization:
+    description: Algorithms and procedures for training
+  padding:
+    description: Filling sequences to a common length
+  performance:
+    description: Measured speed and quality of a system
+  personalization:
+    description: Tailoring output to a user
+  pipeline:
+    description: General processing pipelines
+  pre-training:
+    description: Training on unlabeled data before task adaptation
+  production:
+    description: Running systems for real users
+  ranking:
+    description: Ordering candidate results
+  recommendation:
+    description: Recommendation systems
+  scale:
+    description: Handling large data, models, or traffic
+  system-design:
+    description: Designing end-to-end systems
+    synonyms: [System Design]
+  tokenizer:
+    description: Splitting text into tokens
+  transfer-learning:
+    description: Reusing a model trained on one task for another
+    synonyms: [Transfer Learning]
+  transformer:
+    description: The Transformer architecture
+  use-cases:
+    description: Where a technique is applied
+    synonyms: [Use Cases]
+  wordpiece:
+    description: Subword tokenization scheme
