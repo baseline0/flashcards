@@ -1,7 +1,8 @@
 import json
 import uuid
 
-from ..domains.schemas import GlossaryEntry
+from flashcards.domains.schemas import GlossaryEntry
+
 from .base import BaseGlossaryParser
 
 

@@ -46,9 +46,7 @@ def decks(tmp_path: Path, taxonomy):
         tmp_path / "first.json",
         [("One", "1", ["Alpha Tag"]), ("Two", "2", ["beta"]), ("Three", "3", ["alpha"])],
     )
-    second = write_glossary(
-        tmp_path / "second.json", [("Four", "4", ["beta"]), ("Five", "5", ["alpha"])]
-    )
+    second = write_glossary(tmp_path / "second.json", [("Four", "4", ["beta"]), ("Five", "5", ["alpha"])])
     return {
         "first": load_atomic_deck("first", first, taxonomy),
         "second": load_atomic_deck("second", second, taxonomy),
@@ -142,10 +140,8 @@ def test_composite_round_trips_through_yaml(decks, taxonomy, tmp_path):
 def test_composite_sharing_an_atomic_basename_is_refused():
     from flashcards.composite import check_name_collisions
 
-    with pytest.raises(ValueError, match="collide.*llm_and_recommendation_systems"):
-        check_name_collisions(
-            {"machine_learning/llm_and_recommendation_systems"}, {"llm_and_recommendation_systems"}
-        )
+    with pytest.raises(ValueError, match=r"collide.*llm_and_recommendation_systems"):
+        check_name_collisions({"machine_learning/llm_and_recommendation_systems"}, {"llm_and_recommendation_systems"})
 
 
 def test_distinct_names_pass_the_collision_check():
@@ -160,7 +156,7 @@ def test_composite_file_must_be_named_after_its_composite(decks, taxonomy, tmp_p
     composite = build_composite("mix", {"alpha"}, decks, taxonomy)
     write_composite(composite, tmp_path / "wrong.deck.yaml")
 
-    with pytest.raises(ValueError, match="must be named mix.deck.yaml"):
+    with pytest.raises(ValueError, match=r"must be named mix.deck.yaml"):
         load_composites(tmp_path)
 
 

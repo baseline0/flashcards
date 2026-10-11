@@ -147,8 +147,7 @@ def present(composite: CompositeDeck, decks: dict[str, AtomicDeck]) -> list[Slid
             )
         if len(pin.mask) != len(deck.slides):
             raise PinError(
-                f"{composite.name}: mask for {pin.deck} has {len(pin.mask)} flags "
-                f"for {len(deck.slides)} slides"
+                f"{composite.name}: mask for {pin.deck} has {len(pin.mask)} flags for {len(deck.slides)} slides"
             )
         shown.extend(slide for slide, keep in zip(deck.slides, pin.mask, strict=True) if keep)
     return shown
@@ -158,10 +157,7 @@ def composite_to_dict(composite: CompositeDeck) -> dict:
     return {
         "name": composite.name,
         "include_tags": sorted(composite.include_tags),
-        "subdecks": [
-            {"deck": pin.deck, "version": pin.version, "mask": list(pin.mask)}
-            for pin in composite.subdecks
-        ],
+        "subdecks": [{"deck": pin.deck, "version": pin.version, "mask": list(pin.mask)} for pin in composite.subdecks],
         "extra_slides": list(composite.extra_slides),
     }
 
@@ -171,8 +167,7 @@ def composite_from_dict(data: dict) -> CompositeDeck:
         name=data["name"],
         include_tags=frozenset(data.get("include_tags", [])),
         subdecks=tuple(
-            SubdeckPin(deck=s["deck"], version=s["version"], mask=tuple(s["mask"]))
-            for s in data["subdecks"]
+            SubdeckPin(deck=s["deck"], version=s["version"], mask=tuple(s["mask"])) for s in data["subdecks"]
         ),
         extra_slides=tuple(data.get("extra_slides", [])),
     )

@@ -1,4 +1,5 @@
-from ..domains.schemas import CardType, Flashcard, GlossaryEntry
+from flashcards.domains.schemas import CardType, Flashcard, GlossaryEntry
+
 from .base import BaseCardGenerator
 
 

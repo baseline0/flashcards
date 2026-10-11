@@ -59,9 +59,7 @@ class GlossaryMetricsTracker:
 
         metrics["total_ingested"] = total_ingested
         metrics["total_available"] = total_available
-        metrics["completion_pct"] = (
-            (total_ingested / total_available * 100) if total_available > 0 else 0.0
-        )
+        metrics["completion_pct"] = (total_ingested / total_available * 100) if total_available > 0 else 0.0
         metrics["timestamp"] = datetime.now().isoformat()
 
         # Save updated metrics
@@ -84,11 +82,7 @@ class GlossaryMetricsTracker:
             return None
 
         domain_data = metrics["by_domain"][domain]
-        pct = (
-            (domain_data["ingested"] / domain_data["available"] * 100)
-            if domain_data["available"] > 0
-            else 0.0
-        )
+        pct = (domain_data["ingested"] / domain_data["available"] * 100) if domain_data["available"] > 0 else 0.0
 
         return {
             "domain": domain,
@@ -147,7 +141,7 @@ class GlossaryMetricsTracker:
         if self.metrics_file.exists():
             try:
                 return json.loads(self.metrics_file.read_text())
-            except (json.JSONDecodeError, IOError):
+            except (OSError, json.JSONDecodeError):
                 pass
 
         return {

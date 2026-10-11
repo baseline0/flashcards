@@ -1,11 +1,11 @@
 from datetime import datetime
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from pydantic import BaseModel, Field
 
 
-class CardType(str, Enum):
+class CardType(StrEnum):
     """Types of flashcards supported."""
 
     TERM_DEFINITION = "term_definition"

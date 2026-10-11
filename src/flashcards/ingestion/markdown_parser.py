@@ -2,7 +2,8 @@
 
 import uuid
 
-from ..domains.schemas import GlossaryEntry
+from flashcards.domains.schemas import GlossaryEntry
+
 from .base import BaseGlossaryParser
 
 
@@ -50,9 +51,7 @@ class MarkdownGlossaryParser(BaseGlossaryParser):
 
         return entries
 
-    def _parse_definition_list(
-        self, content: str, domain: str, category: str
-    ) -> list[GlossaryEntry]:
+    def _parse_definition_list(self, content: str, domain: str, category: str) -> list[GlossaryEntry]:
         """Parse ## Title + body definition list format."""
         entries = []
         lines = content.split("\n")
@@ -99,9 +98,7 @@ class MarkdownGlossaryParser(BaseGlossaryParser):
         # Find table start (line with |)
         table_start = None
         for i, line in enumerate(lines):
-            if "|" in line and any(
-                c in lines[i + 1] if i + 1 < len(lines) else False for c in ["-", ":|"]
-            ):
+            if "|" in line and any(c in lines[i + 1] if i + 1 < len(lines) else False for c in ["-", ":|"]):
                 table_start = i
                 break
 

@@ -3,9 +3,9 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from flashcards.constants import REPO_ROOT
+from flashcards.core.config import settings
+from flashcards.core.database import init_db
 
-from ..core.config import settings
-from ..core.database import init_db
 from .routes import api
 
 app = FastAPI(title=settings.app_name, debug=settings.debug)

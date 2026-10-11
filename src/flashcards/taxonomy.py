@@ -29,9 +29,7 @@ class Taxonomy:
         """Return the canonical tag for a raw tag, or raise UnknownTagError."""
         key = raw.strip().lower()
         if key not in self._lookup:
-            raise UnknownTagError(
-                f"unknown tag {raw!r}: add it to data/taxonomy.yaml or fix the spelling"
-            )
+            raise UnknownTagError(f"unknown tag {raw!r}: add it to data/taxonomy.yaml or fix the spelling")
         return self._lookup[key]
 
 

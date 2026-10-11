@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from ..domains.schemas import GlossaryEntry
+from flashcards.domains.schemas import GlossaryEntry
 
 
 class BaseGlossaryParser(ABC):

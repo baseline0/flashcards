@@ -1,7 +1,7 @@
-from abc import ABC, abstractmethod
 import uuid
+from abc import ABC, abstractmethod
 
-from ..domains.schemas import Flashcard, GlossaryEntry
+from flashcards.domains.schemas import Flashcard, GlossaryEntry
 
 
 class BaseCardGenerator(ABC):

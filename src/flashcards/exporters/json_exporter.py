@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from ..domains.schemas import Flashcard
+from flashcards.domains.schemas import Flashcard
 
 
 class JSONExporter:

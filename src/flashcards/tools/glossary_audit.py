@@ -1,12 +1,12 @@
 """Tools for auditing glossary sources and compliance."""
 
-import json
 import csv
+import json
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
-from collections import defaultdict
 
-from ..core.config import settings
+from flashcards.core.config import settings
 
 
 class GlossaryAudit:
@@ -76,13 +76,10 @@ class GlossaryAudit:
 
             # Flag issues
             if tier == 0:
-                summary["compliance_issues"].append(
-                    f"{item['glossary']}: {item['term']} has no tier classification"
-                )
+                summary["compliance_issues"].append(f"{item['glossary']}: {item['term']} has no tier classification")
             if item["commercial_use"] is False and not item.get("license"):
                 summary["compliance_issues"].append(
-                    f"{item['glossary']}: {item['term']} restricts commercial use "
-                    "but has no license"
+                    f"{item['glossary']}: {item['term']} restricts commercial use but has no license"
                 )
 
         return {
@@ -125,9 +122,7 @@ class GlossaryAudit:
     def check_attribution(self) -> bool:
         """Verify all required attributions are present."""
         items = self.inventory()
-        issues = [
-            item for item in items if item["attribution_required"] and not item.get("source_name")
-        ]
+        issues = [item for item in items if item["attribution_required"] and not item.get("source_name")]
 
         if issues:
             print(f"⚠ {len(issues)} terms require attribution but lack source:")

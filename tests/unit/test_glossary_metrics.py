@@ -1,9 +1,10 @@
 """Tests for glossary ingestion metrics."""
 
-import pytest
 import json
 import tempfile
 from pathlib import Path
+
+import pytest
 
 from src.flashcards.domains.schemas import GlossaryEntry
 from src.flashcards.metrics import GlossaryMetricsTracker

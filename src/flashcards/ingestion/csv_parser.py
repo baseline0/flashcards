@@ -4,7 +4,8 @@ import csv
 import io
 import uuid
 
-from ..domains.schemas import GlossaryEntry
+from flashcards.domains.schemas import GlossaryEntry
+
 from .base import BaseGlossaryParser
 
 
@@ -34,9 +35,9 @@ class CSVGlossaryParser(BaseGlossaryParser):
 
         for row in reader:
             metadata = {}
-            if "difficulty" in row and row["difficulty"]:
+            if row.get("difficulty"):
                 metadata["difficulty"] = row["difficulty"]
-            if "source" in row and row["source"]:
+            if row.get("source"):
                 metadata["source"] = row["source"]
 
             entry = GlossaryEntry(

@@ -1,18 +1,16 @@
 import json
 import random
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from fastapi import HTTPException
-
-from ...core.config import settings
-from ...core.database import get_session
-from ...domains.models import FlashcardModel
-from ...domains.schemas import DeckInfo, Flashcard, ReviewInput
-from ...generators.term_def_generator import TermDefinitionGenerator
-from ...ingestion.json_parser import JSONGlossaryParser
-from ...composite import check_name_collisions, composite_card_count, load_composites
+from flashcards.composite import check_name_collisions, composite_card_count, load_composites
+from flashcards.core.config import settings
+from flashcards.core.database import get_session
+from flashcards.domains.models import FlashcardModel
+from flashcards.domains.schemas import DeckInfo, Flashcard, ReviewInput
+from flashcards.generators.term_def_generator import TermDefinitionGenerator
+from flashcards.ingestion.json_parser import JSONGlossaryParser
 
 router = APIRouter()
 
@@ -20,9 +18,7 @@ router = APIRouter()
 def _load_and_generate_deck(domain: str, category: str, glossary_name: str, db: Session):
     """Load glossary file and generate cards if not already in DB."""
     if domain == "composite":
-        raise HTTPException(
-            status_code=422, detail="composite decks cannot be loaded yet; list only"
-        )
+        raise HTTPException(status_code=422, detail="composite decks cannot be loaded yet; list only")
     glossary_path = settings.glossaries_path / domain / f"{glossary_name}.json"
 
     # Check if cards already exist
@@ -75,10 +71,8 @@ def list_decks(db: Session = Depends(get_session)) -> list[DeckInfo]:
                 # Count from file
                 with open(glossary_file) as f:
                     data = json.load(f)
-                    if isinstance(data, list):
-                        card_count = len(data) * 2  # bidirectional
-                    else:
-                        card_count = 2
+                    # bidirectional cards for list-shaped glossaries
+                    card_count = len(data) * 2 if isinstance(data, list) else 2
 
             decks.append(
                 DeckInfo(
@@ -107,9 +101,7 @@ def list_decks(db: Session = Depends(get_session)) -> list[DeckInfo]:
 
 
 @router.post("/deck/load")
-def load_deck(
-    domain: str, category: str, glossary_name: str, db: Session = Depends(get_session)
-) -> dict:
+def load_deck(domain: str, category: str, glossary_name: str, db: Session = Depends(get_session)) -> dict:
     """Load glossary and generate cards."""
     _load_and_generate_deck(domain, category, glossary_name, db)
     card_count = db.query(FlashcardModel).filter_by(domain=domain).count()
@@ -117,9 +109,7 @@ def load_deck(
 
 
 @router.get("/deck/study", response_model=list[Flashcard])
-def get_study_deck(
-    domain: str, shuffle: bool = True, db: Session = Depends(get_session)
-) -> list[Flashcard]:
+def get_study_deck(domain: str, shuffle: bool = True, db: Session = Depends(get_session)) -> list[Flashcard]:
     """Get shuffled deck for studying."""
     cards = db.query(FlashcardModel).filter_by(domain=domain).all()
 

@@ -1,6 +1,5 @@
 import json
 
-
 from src.flashcards.ingestion.json_parser import JSONGlossaryParser
 
 

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Float, Integer, String, Text
 
-from ..core.database import Base
+from flashcards.core.database import Base
 
 
 class GlossaryEntryModel(Base):
