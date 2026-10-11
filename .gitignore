@@ -45,3 +45,6 @@ data/flashcards.sqlite
 .coverage.*
 *.cover
 coverage.xml
+
+# Local backlog: not versioned
+TODO.md
