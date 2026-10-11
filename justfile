@@ -50,6 +50,10 @@ fmt:
 check:
     uv run pyright src/
 
+# Pyright ratchet: fails when a file gains errors (scripts in fleet-base; mode from pyproject.toml).
+check-types:
+    uv run python ../fleet-base/scripts/pyright_ratchet.py check
+
 # Install dependencies
 install:
     uv sync --dev
