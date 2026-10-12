@@ -1,9 +1,14 @@
+default_stages:
+  - pre-commit
+default_install_hook_types:
+  - pre-commit
+  - pre-push
 repos:
   - repo: local
     hooks:
       - id: importlinter
         name: importlinter (architecture boundaries)
-        entry: importlinter --check
+        entry: uv run --with import-linter lint-imports
         language: system
         pass_filenames: false
         stages: [pre-commit]
@@ -28,7 +33,6 @@ repos:
         language: system
         types: [text]
 
-repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.8
     hooks:
@@ -59,3 +63,13 @@ repos:
         pass_filenames: false
         files: '\.py$'
         stages: [pre-commit]
+  - repo: local
+    hooks:
+      - id: just-test-unit
+        name: '[P0] Pre-push: just test-unit (unit tests)'
+        entry: env -u VIRTUAL_ENV just test-unit
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages:
+          - pre-push

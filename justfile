@@ -66,3 +66,7 @@ clean:
 # Full CI: format, check, test
 ci: fmt check test
     @echo "✅ All checks passed"
+
+# Unit tests: the gate the pre-push hook runs (fleet hook standard, fleet_base.hook_standard R4)
+test-unit:
+    just test
