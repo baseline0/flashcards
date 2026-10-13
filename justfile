@@ -1,6 +1,8 @@
 #!/usr/bin/env just --justfile
 
 # Shared commit recipe from fleet-base. Literal path: just does not interpolate variables into import paths.
+import 'just/fleet-clean.just'
+
 set shell := ["bash", "-c"]
 
 # Default: show help
@@ -55,11 +57,6 @@ check-types:
 # Install dependencies
 install:
     uv sync --dev
-
-# Clean cache
-clean:
-    rm -rf .pytest_cache .ruff_cache __pycache__ .pytype
-    find . -type d -name "__pycache__" -exec rm -rf {} +
 
 # Full CI: format, check, test
 ci: fmt check test
