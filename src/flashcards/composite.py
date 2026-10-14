@@ -92,41 +92,50 @@ def load_atomic_deck(name: str, path: Path, taxonomy: Taxonomy) -> AtomicDeck:
 
 @dataclass(frozen=True)
 class SubdeckPin:
+    """One subdeck in a composite: the tags it shows, and the version and mask those tags produced.
+
+    `version` and `mask` are None in an authored file until `composite build` fills them in.
+    """
+
     deck: str
-    version: str
-    mask: tuple[int, ...]
+    include_tags: frozenset[str]
+    version: str | None = None
+    mask: tuple[int, ...] | None = None
 
 
 @dataclass(frozen=True)
 class CompositeDeck:
+    """A presentation: its subdecks in the order they are shown, each with its own slide selection."""
+
     name: str
-    include_tags: frozenset[str]
     subdecks: tuple[SubdeckPin, ...]
     extra_slides: tuple[str, ...] = field(default_factory=tuple)
 
 
-def build_composite(
-    name: str,
-    include_tags: set[str],
-    decks: dict[str, AtomicDeck],
-    taxonomy: Taxonomy,
-) -> CompositeDeck:
-    """Pin every subdeck with at least one matching slide, masking exactly the matching slides.
+def pin_composite(composite: CompositeDeck, decks: dict[str, AtomicDeck], taxonomy: Taxonomy) -> CompositeDeck:
+    """Return the composite with each subdeck's version and mask computed from its include_tags.
 
-    Args:
-        name: Composite deck name.
-        include_tags: Canonical tags; a slide matches when it carries any of them.
-        decks: Atomic decks by name.
-        taxonomy: Used to normalize the include tags.
+    Inclusion and order come from the definition and are kept as written. A missing or repeated subdeck, or one
+    whose tags match no slide, is an error, so a definition cannot quietly present less than it lists.
+
+    Raises:
+        ValueError: On a missing or repeated subdeck, or a subdeck whose tags match no slide.
     """
-    wanted = {taxonomy.resolve(tag) for tag in include_tags}
-    pins = []
-    for deck_name in sorted(decks):
-        deck = decks[deck_name]
+    seen: set[str] = set()
+    pinned: list[SubdeckPin] = []
+    for sub in composite.subdecks:
+        if sub.deck in seen:
+            raise ValueError(f"{composite.name}: subdeck {sub.deck!r} is listed more than once")
+        seen.add(sub.deck)
+        if sub.deck not in decks:
+            raise ValueError(f"{composite.name}: subdeck {sub.deck!r} does not exist")
+        deck = decks[sub.deck]
+        wanted = {taxonomy.resolve(tag) for tag in sub.include_tags}
         mask = tuple(1 if slide.tags & wanted else 0 for slide in deck.slides)
-        if any(mask):
-            pins.append(SubdeckPin(deck=deck_name, version=deck.version, mask=mask))
-    return CompositeDeck(name=name, include_tags=frozenset(wanted), subdecks=tuple(pins))
+        if not any(mask):
+            raise ValueError(f"{composite.name}: {sub.deck!r} has no slide tagged {sorted(sub.include_tags)}")
+        pinned.append(SubdeckPin(deck=sub.deck, include_tags=sub.include_tags, version=deck.version, mask=mask))
+    return CompositeDeck(name=composite.name, subdecks=tuple(pinned), extra_slides=composite.extra_slides)
 
 
 def present(composite: CompositeDeck, decks: dict[str, AtomicDeck]) -> list[Slide]:
@@ -138,6 +147,8 @@ def present(composite: CompositeDeck, decks: dict[str, AtomicDeck]) -> list[Slid
     """
     shown: list[Slide] = []
     for pin in composite.subdecks:
+        if pin.version is None or pin.mask is None:
+            raise PinError(f"{composite.name}: {pin.deck} is not built; run `flashcards composite build`")
         if pin.deck not in decks:
             raise PinError(f"{composite.name}: subdeck {pin.deck!r} is missing")
         deck = decks[pin.deck]
@@ -155,20 +166,30 @@ def present(composite: CompositeDeck, decks: dict[str, AtomicDeck]) -> list[Slid
 
 
 def composite_to_dict(composite: CompositeDeck) -> dict:
-    return {
-        "name": composite.name,
-        "include_tags": sorted(composite.include_tags),
-        "subdecks": [{"deck": pin.deck, "version": pin.version, "mask": list(pin.mask)} for pin in composite.subdecks],
-        "extra_slides": list(composite.extra_slides),
-    }
+    subdecks = []
+    for pin in composite.subdecks:
+        entry: dict = {"deck": pin.deck, "include_tags": sorted(pin.include_tags)}
+        if pin.version is not None:
+            entry["version"] = pin.version
+        if pin.mask is not None:
+            entry["mask"] = list(pin.mask)
+        subdecks.append(entry)
+    return {"name": composite.name, "subdecks": subdecks, "extra_slides": list(composite.extra_slides)}
 
 
 def composite_from_dict(data: dict) -> CompositeDeck:
+    if "include_tags" in data:
+        raise ValueError(f"{data['name']}: include_tags now belongs to each subdeck; move it under subdecks")
     return CompositeDeck(
         name=data["name"],
-        include_tags=frozenset(data.get("include_tags", [])),
         subdecks=tuple(
-            SubdeckPin(deck=s["deck"], version=s["version"], mask=tuple(s["mask"])) for s in data["subdecks"]
+            SubdeckPin(
+                deck=s["deck"],
+                include_tags=frozenset(s["include_tags"]),
+                version=s.get("version"),
+                mask=tuple(s["mask"]) if "mask" in s else None,
+            )
+            for s in data["subdecks"]
         ),
         extra_slides=tuple(data.get("extra_slides", [])),
     )
@@ -236,4 +257,4 @@ def composite_entries(name: str, slides: list[Slide]) -> list[GlossaryEntry]:
 
 def composite_card_count(composite: CompositeDeck) -> int:
     """Number of slides the composite presents, read from its masks."""
-    return sum(sum(pin.mask) for pin in composite.subdecks)
+    return sum(sum(pin.mask or ()) for pin in composite.subdecks)

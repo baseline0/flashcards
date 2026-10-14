@@ -1,9 +1,9 @@
-"""Composite decks pin subdecks, mask slides by tag, and refuse a stale or mismatched pin.
+"""A composite lists its subdecks in order, each with the tags it shows, and pins what those tags produced.
 
-Happy path: a tag query masks exactly the matching slides; the presentation keeps subdeck and
-slide order; a composite round-trips through YAML.
-Unhappy paths: a changed subdeck version, a missing subdeck, a short mask, duplicate slide
-titles, and an unknown include tag all fail loudly.
+Happy path: each subdeck shows its own tags' slides, in the order the composite lists the subdecks; a built
+composite round-trips through YAML.
+Unhappy paths: an unbuilt composite, a changed or missing subdeck, a short mask, a repeated or empty subdeck,
+an unknown tag, and a legacy top-level include_tags all fail loudly.
 """
 
 import json
@@ -16,9 +16,9 @@ from flashcards.composite import (
     CompositeDeck,
     PinError,
     SubdeckPin,
-    build_composite,
     deck_version,
     load_atomic_deck,
+    pin_composite,
     present,
     read_composite,
     slide_id,
@@ -53,6 +53,14 @@ def decks(tmp_path: Path, taxonomy):
     }
 
 
+def definition(name: str, *subdecks: tuple[str, set[str]]) -> CompositeDeck:
+    """An authored composite: subdecks in the given order, each with its include tags."""
+    return CompositeDeck(
+        name=name,
+        subdecks=tuple(SubdeckPin(deck=deck, include_tags=frozenset(tags)) for deck, tags in subdecks),
+    )
+
+
 def test_slide_id_is_stable_and_scoped_to_its_deck():
     assert slide_id("first", "One") == slide_id("first", "One")
     assert slide_id("first", "One") != slide_id("second", "One")
@@ -73,30 +81,69 @@ def test_duplicate_titles_fail_to_load(tmp_path: Path, taxonomy):
         load_atomic_deck("dup", path, taxonomy)
 
 
-def test_tag_query_masks_exactly_the_matching_slides(decks, taxonomy):
-    composite = build_composite("mix", {"Alpha Tag"}, decks, taxonomy)
+def test_each_subdeck_masks_its_own_tags(decks, taxonomy):
+    composite = pin_composite(
+        definition("mix", ("first", {"Alpha Tag"}), ("second", {"beta"})),
+        decks,
+        taxonomy,
+    )
 
     by_deck = {pin.deck: pin.mask for pin in composite.subdecks}
-    assert by_deck == {"first": (1, 0, 1), "second": (0, 1)}
+    assert by_deck == {"first": (1, 0, 1), "second": (1, 0)}
 
 
-def test_decks_with_no_matching_slide_are_not_pinned(decks, taxonomy):
-    composite = build_composite("only-beta", {"beta"}, decks, taxonomy)
+def test_presentation_follows_the_order_the_composite_lists_subdecks(decks, taxonomy):
+    composite = pin_composite(
+        definition("reversed", ("second", {"alpha"}), ("first", {"alpha"})),
+        decks,
+        taxonomy,
+    )
 
-    assert [pin.deck for pin in composite.subdecks] == ["first", "second"]
-    only_second = build_composite("gamma", {"alpha"}, {"second": decks["second"]}, taxonomy)
-    assert [pin.deck for pin in only_second.subdecks] == ["second"]
+    assert [slide.title for slide in present(composite, decks)] == ["Five", "One", "Three"]
 
 
-def test_presentation_keeps_subdeck_then_slide_order(decks, taxonomy):
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+def test_only_listed_subdecks_are_presented(decks, taxonomy):
+    composite = pin_composite(definition("only-second", ("second", {"alpha"})), decks, taxonomy)
 
-    titles = [slide.title for slide in present(composite, decks)]
-    assert titles == ["One", "Three", "Five"]
+    assert [pin.deck for pin in composite.subdecks] == ["second"]
+    assert [slide.title for slide in present(composite, decks)] == ["Five"]
+
+
+def test_each_subdeck_can_show_a_different_tag(decks, taxonomy):
+    composite = pin_composite(
+        definition("mixed", ("first", {"beta"}), ("second", {"alpha"})),
+        decks,
+        taxonomy,
+    )
+
+    assert [slide.title for slide in present(composite, decks)] == ["Two", "Five"]
+
+
+def test_a_subdeck_whose_tags_match_no_slide_is_refused(tmp_path: Path, taxonomy):
+    beta_only = write_glossary(tmp_path / "beta_only.json", [("Only", "x", ["beta"])])
+    decks = {"beta_only": load_atomic_deck("beta_only", beta_only, taxonomy)}
+
+    with pytest.raises(ValueError, match="no slide tagged"):
+        pin_composite(definition("empty", ("beta_only", {"alpha"})), decks, taxonomy)
+
+
+def test_a_subdeck_listed_twice_is_refused(decks, taxonomy):
+    with pytest.raises(ValueError, match="listed more than once"):
+        pin_composite(definition("twice", ("first", {"alpha"}), ("first", {"beta"})), decks, taxonomy)
+
+
+def test_a_subdeck_that_does_not_exist_is_refused(decks, taxonomy):
+    with pytest.raises(ValueError, match="does not exist"):
+        pin_composite(definition("ghost", ("nowhere", {"alpha"})), decks, taxonomy)
+
+
+def test_an_unbuilt_composite_is_refused_by_presentation(decks):
+    with pytest.raises(PinError, match="not built"):
+        present(definition("draft", ("first", {"alpha"})), decks)
 
 
 def test_changed_subdeck_version_is_refused(decks, taxonomy):
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+    composite = pin_composite(definition("mix", ("first", {"alpha"})), decks, taxonomy)
     changed = dict(decks)
     changed["first"] = AtomicDeck("first", "v-new", decks["first"].slides)
 
@@ -105,18 +152,23 @@ def test_changed_subdeck_version_is_refused(decks, taxonomy):
 
 
 def test_missing_subdeck_is_refused(decks, taxonomy):
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+    composite = pin_composite(definition("mix", ("first", {"alpha"})), decks, taxonomy)
 
     with pytest.raises(PinError, match="missing"):
-        present(composite, {"first": decks["first"]})
+        present(composite, {"second": decks["second"]})
 
 
 def test_mask_shorter_than_its_subdeck_is_refused(decks, taxonomy):
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
     short = CompositeDeck(
         name="mix",
-        include_tags=composite.include_tags,
-        subdecks=(SubdeckPin(deck="first", version=decks["first"].version, mask=(1,)),),
+        subdecks=(
+            SubdeckPin(
+                deck="first",
+                include_tags=frozenset({"alpha"}),
+                version=decks["first"].version,
+                mask=(1,),
+            ),
+        ),
     )
 
     with pytest.raises(PinError, match="mask for first"):
@@ -125,16 +177,24 @@ def test_mask_shorter_than_its_subdeck_is_refused(decks, taxonomy):
 
 def test_unknown_include_tag_is_refused(decks, taxonomy):
     with pytest.raises(UnknownTagError):
-        build_composite("bad", {"gamma"}, decks, taxonomy)
+        pin_composite(definition("bad", ("first", {"gamma"})), decks, taxonomy)
 
 
-def test_composite_round_trips_through_yaml(decks, taxonomy, tmp_path):
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+def test_built_composite_round_trips_through_yaml(decks, taxonomy, tmp_path):
+    composite = pin_composite(definition("mix", ("second", {"alpha"}), ("first", {"beta"})), decks, taxonomy)
     path = tmp_path / "mix.deck.yaml"
 
     write_composite(composite, path)
 
     assert read_composite(path) == composite
+
+
+def test_legacy_top_level_include_tags_is_refused(tmp_path: Path):
+    path = tmp_path / "old.deck.yaml"
+    path.write_text("name: old\ninclude_tags: [alpha]\nsubdecks: []\n")
+
+    with pytest.raises(ValueError, match="move it under subdecks"):
+        read_composite(path)
 
 
 def test_composite_sharing_an_atomic_basename_is_refused():
@@ -153,7 +213,7 @@ def test_distinct_names_pass_the_collision_check():
 def test_composite_file_must_be_named_after_its_composite(decks, taxonomy, tmp_path):
     from flashcards.composite import load_composites
 
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+    composite = pin_composite(definition("mix", ("first", {"alpha"})), decks, taxonomy)
     write_composite(composite, tmp_path / "wrong.deck.yaml")
 
     with pytest.raises(ValueError, match=r"must be named mix.deck.yaml"):
@@ -163,6 +223,6 @@ def test_composite_file_must_be_named_after_its_composite(decks, taxonomy, tmp_p
 def test_card_count_is_the_number_of_masked_slides(decks, taxonomy):
     from flashcards.composite import composite_card_count
 
-    composite = build_composite("mix", {"alpha"}, decks, taxonomy)
+    composite = pin_composite(definition("mix", ("first", {"alpha"}), ("second", {"alpha"})), decks, taxonomy)
 
     assert composite_card_count(composite) == len(present(composite, decks))

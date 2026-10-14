@@ -78,10 +78,10 @@ commit:
 commit-all:
     fleet recipe commit-all
 
-# Regenerate the llm composite pins from the glossaries (use `just composite-check` to verify without writing)
+# Refresh the llm composite's pins from its authored subdecks (use `just composite-check` to verify without writing)
 composite-build:
-    uv run flashcards composite build --name llm_and_recommendation_track --include-tag llm
+    uv run flashcards composite build --name llm_and_recommendation_track
 
 # Fail if the llm composite pins are out of date with the glossaries
 composite-check:
-    uv run flashcards composite build --name llm_and_recommendation_track --include-tag llm --check
+    uv run flashcards composite build --name llm_and_recommendation_track --check

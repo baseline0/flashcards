@@ -19,27 +19,32 @@ app.add_typer(composite_app, name="composite")
 @composite_app.command("build")
 def composite_build(
     name: str = typer.Option(..., "--name", help="Composite deck name; its file is <name>.deck.yaml"),
-    include_tag: list[str] = typer.Option(
-        ..., "--include-tag", help="Canonical or synonym tag a slide must carry (repeat for several)"
-    ),
     glossaries: Path = typer.Option(Path("data/raw_glossaries"), "--glossaries", help="Glossary root"),
     taxonomy: Path = typer.Option(Path("data/taxonomy.yaml"), "--taxonomy", help="Taxonomy file"),
     composites: Path = typer.Option(Path("data/composite_decks"), "--composites", help="Composite deck folder"),
-    check: bool = typer.Option(False, "--check", help="Write nothing; exit 1 if the committed file would change"),
+    check: bool = typer.Option(False, "--check", help="Write nothing; exit 1 if the file would change"),
 ) -> None:
-    """Pin every subdeck that has a matching slide, masking exactly the matching slides."""
+    """Fill in each authored subdeck's version and mask, keeping the subdeck order and tags as written."""
+    target = composites / f"{name}.deck.yaml"
+    if not target.exists():
+        typer.echo(f"{target} does not exist; author it with its subdecks and include_tags first", err=True)
+        raise typer.Exit(code=1)
+
     tax = load_taxonomy(taxonomy)
     decks = composite.load_all_decks(glossaries, tax)
-    built = composite.build_composite(name, set(include_tag), decks, tax)
-    target = composites / f"{name}.deck.yaml"
+    try:
+        definition = composite.read_composite(target)
+        built = composite.pin_composite(definition, decks, tax)
+    except ValueError as exc:
+        typer.echo(str(exc), err=True)
+        raise typer.Exit(code=1) from exc
 
     if check:
-        current = composite.read_composite(target) if target.exists() else None
-        if current != built:
+        if built != definition:
             typer.echo(f"{target} is out of date; run `flashcards composite build` to regenerate it", err=True)
             raise typer.Exit(code=1)
         typer.echo(f"{target} is up to date")
         return
 
     composite.write_composite(built, target)
-    typer.echo(f"wrote {target}: {len(built.subdecks)} subdeck pins")
+    typer.echo(f"wrote {target}: {len(built.subdecks)} subdecks")

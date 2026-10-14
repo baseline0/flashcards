@@ -33,7 +33,11 @@ def client(tmp_path: Path, monkeypatch):
 
     taxonomy = load_taxonomy(data / "taxonomy.yaml")
     decks = composite.load_all_decks(glossaries, taxonomy)
-    pinned = composite.build_composite("track", {"alpha"}, decks, taxonomy)
+    authored = composite.CompositeDeck(
+        name="track",
+        subdecks=(composite.SubdeckPin(deck="topic/alpha", include_tags=frozenset({"alpha"})),),
+    )
+    pinned = composite.pin_composite(authored, decks, taxonomy)
     composites = data / "composite_decks"
     composites.mkdir()
     composite.write_composite(pinned, composites / "track.deck.yaml")

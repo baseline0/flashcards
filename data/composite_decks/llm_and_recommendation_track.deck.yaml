@@ -1,8 +1,8 @@
 name: llm_and_recommendation_track
-include_tags:
-- llm
 subdecks:
 - deck: machine_learning/bert
+  include_tags:
+  - llm
   version: vcf6e91b06983
   mask:
   - 1
@@ -29,6 +29,8 @@ subdecks:
   - 1
   - 1
 - deck: machine_learning/llm_and_recommendation_systems
+  include_tags:
+  - llm
   version: v64ca26ef77ef
   mask:
   - 1
