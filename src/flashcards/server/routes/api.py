@@ -11,6 +11,7 @@ from flashcards.domains.models import FlashcardModel
 from flashcards.domains.schemas import DeckInfo, Flashcard, ReviewInput
 from flashcards.generators.term_def_generator import TermDefinitionGenerator
 from flashcards.ingestion.json_parser import JSONGlossaryParser
+from flashcards.taxonomy import UnknownTagError, load_taxonomy
 
 router = APIRouter()
 
@@ -28,8 +29,11 @@ def _load_and_generate_deck(domain: str, category: str, glossary_name: str, db: 
 
     # Parse and generate
     content = glossary_path.read_text()
-    parser = JSONGlossaryParser()
-    entries = parser.parse(content, domain, category)
+    taxonomy = load_taxonomy(settings.glossaries_path.parent / "taxonomy.yaml")
+    try:
+        entries = JSONGlossaryParser(taxonomy).parse(content, domain, category)
+    except UnknownTagError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
 
     generator = TermDefinitionGenerator()
     for entry in entries:

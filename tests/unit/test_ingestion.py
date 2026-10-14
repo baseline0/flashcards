@@ -1,11 +1,22 @@
 import json
+from pathlib import Path
+
+import pytest
 
 from src.flashcards.ingestion.json_parser import JSONGlossaryParser
+from src.flashcards.taxonomy import UnknownTagError, load_taxonomy
 
 
-def test_parse_json_list():
+@pytest.fixture
+def taxonomy(tmp_path: Path):
+    path = tmp_path / "taxonomy.yaml"
+    path.write_text("tags:\n  llm:\n    description: x\n  bert:\n    synonyms: [Bert Deck]\n")
+    return load_taxonomy(path)
+
+
+def test_parse_json_list(taxonomy):
     """Test parsing JSON array of glossary entries."""
-    parser = JSONGlossaryParser()
+    parser = JSONGlossaryParser(taxonomy)
     content = json.dumps(
         [
             {"title": "Term1", "body": "Definition1"},
@@ -21,9 +32,9 @@ def test_parse_json_list():
     assert entries[1].metadata["source"] == "test"
 
 
-def test_parse_json_object():
+def test_parse_json_object(taxonomy):
     """Test parsing JSON object as single entry."""
-    parser = JSONGlossaryParser()
+    parser = JSONGlossaryParser(taxonomy)
     content = json.dumps({"title": "Single", "body": "Entry"})
 
     entries = parser.parse(content, domain="test", category="test_cat")
@@ -32,9 +43,9 @@ def test_parse_json_object():
     assert entries[0].title == "Single"
 
 
-def test_parse_generates_ids():
+def test_parse_generates_ids(taxonomy):
     """Test that parser generates unique IDs."""
-    parser = JSONGlossaryParser()
+    parser = JSONGlossaryParser(taxonomy)
     content = json.dumps([{"title": "A", "body": "B"}, {"title": "C", "body": "D"}])
 
     entries = parser.parse(content, "test", "test")
@@ -42,3 +53,22 @@ def test_parse_generates_ids():
     assert entries[0].id is not None
     assert entries[1].id is not None
     assert entries[0].id != entries[1].id
+
+
+def test_parse_resolves_tags_to_canonical_names(taxonomy):
+    """Raw tags such as 'LLM' and 'Bert Deck' are stored as canonical tags."""
+    parser = JSONGlossaryParser(taxonomy)
+    content = json.dumps([{"title": "T", "body": "B", "metadata": {"tags": ["LLM", "Bert Deck"]}}])
+
+    (entry,) = parser.parse(content, "test", "test")
+
+    assert entry.metadata["tags"] == ["llm", "bert"]
+
+
+def test_parse_rejects_an_unknown_tag(taxonomy):
+    """A tag the taxonomy does not know fails loudly instead of entering the database."""
+    parser = JSONGlossaryParser(taxonomy)
+    content = json.dumps([{"title": "T", "body": "B", "metadata": {"tags": ["Unlisted"]}}])
+
+    with pytest.raises(UnknownTagError):
+        parser.parse(content, "test", "test")
