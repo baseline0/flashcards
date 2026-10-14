@@ -1,20 +1,5 @@
 [
   {
-    "title": "BERT (Bidirectional Encoder Representations from Transformers)",
-    "body": "A pre-trained encoder-only transformer model that learns bidirectional representations by masking random tokens and predicting them. Used for classification, NER, and question-answering tasks. Introduced by Google in 2018.",
-    "metadata": {
-      "source_url": "https://arxiv.org/abs/1810.04805",
-      "source_name": "BERT: Pre-training of Deep Bidirectional Transformers",
-      "license": "arXiv",
-      "attribution_required": true,
-      "attribution_text": "Devlin et al.",
-      "tier": 1,
-      "commercial_use": true,
-      "scraped_date": "2026-09-21",
-      "tags": ["LLM", "Transformer", "Pre-training", "Meta Interview"]
-    }
-  },
-  {
     "title": "GPT (Generative Pre-trained Transformer)",
     "body": "A decoder-only transformer model that generates text autoregressively, predicting the next token based on previous tokens. Powers systems like ChatGPT and GPT-4. Introduced by OpenAI with versions 1, 2, 3, and 4.",
     "metadata": {

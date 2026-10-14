@@ -29,9 +29,8 @@ subdecks:
   - 1
   - 1
 - deck: machine_learning/llm_and_recommendation_systems
-  version: vb178a0660501
+  version: v64ca26ef77ef
   mask:
-  - 1
   - 1
   - 1
   - 1
