@@ -1,6 +1,5 @@
 {
   "src/flashcards/core/database.py": 2,
   "src/flashcards/generators/term_def_generator.py": 2,
-  "src/flashcards/server/routes/api.py": 12,
-  "src/flashcards/srs/fsrs_engine.py": 5
+  "src/flashcards/server/routes/api.py": 12
 }

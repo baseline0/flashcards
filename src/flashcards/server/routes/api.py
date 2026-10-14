@@ -3,6 +3,7 @@ import random
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException
+from fsrs import Rating
 from sqlalchemy.orm import Session
 
 from flashcards import composite
@@ -13,6 +14,7 @@ from flashcards.domains.models import FlashcardModel
 from flashcards.domains.schemas import DeckInfo, Flashcard, GlossaryEntry, ReviewInput
 from flashcards.generators.term_def_generator import TermDefinitionGenerator
 from flashcards.ingestion.json_parser import JSONGlossaryParser
+from flashcards.srs.fsrs_engine import FSRSEngine
 from flashcards.taxonomy import UnknownTagError, load_taxonomy
 
 router = APIRouter()
@@ -169,13 +171,20 @@ def get_study_deck(domain: str, shuffle: bool = True, db: Session = Depends(get_
 
 @router.post("/card/review")
 def review_card(review: ReviewInput, db: Session = Depends(get_session)) -> dict:
-    """Record user review of a card (placeholder for FSRS integration)."""
+    """Record a review: rating 1 (again) to 4 (easy) reschedules the card with FSRS."""
     card = db.query(FlashcardModel).filter_by(id=review.card_id).first()
     if not card:
-        return {"error": "Card not found"}
+        raise HTTPException(status_code=404, detail="card not found")
+    try:
+        rating = Rating(review.rating)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail="rating must be 1 (again) to 4 (easy)") from exc
 
-    # TODO: Integrate FSRS engine for actual scheduling
-    card.repetition_count += 1
+    FSRSEngine().review(card, rating)
     db.commit()
-
-    return {"status": "reviewed", "rating": review.rating}
+    return {
+        "status": "reviewed",
+        "rating": review.rating,
+        "due": card.due_date.isoformat(),
+        "repetition_count": card.repetition_count,
+    }

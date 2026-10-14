@@ -1,36 +1,41 @@
-from datetime import timedelta
+"""Spaced-repetition scheduling with py-fsrs.
 
-from fsrs import FSRS, Card, Rating
+A flashcard keeps its full FSRS state as JSON in `fsrs_card`, so the scheduler resumes from the real
+learning/review state rather than rebuilding a card from its counters. Due dates are stored as naive UTC,
+matching the rest of the database.
+"""
+
+from datetime import UTC, datetime
+from typing import Protocol
+
+from fsrs import Card, Rating, Scheduler
+
+
+class ReviewableCard(Protocol):
+    """The flashcard fields a review reads and writes."""
+
+    fsrs_card: str | None
+    due_date: datetime
+    stability: float
+    difficulty: float
+    repetition_count: int
 
 
 class FSRSEngine:
-    """Wrapper around py-fsrs for spaced repetition scheduling."""
+    """Applies a rating to a flashcard in place."""
 
-    def __init__(self):
-        self.fsrs = FSRS()
+    def __init__(self) -> None:
+        self._scheduler = Scheduler()
 
-    def schedule(self, card: Card, rating: Rating) -> tuple[Card, timedelta]:
-        """Apply review rating and return updated card and due offset."""
-        scheduled_cards = self.fsrs.repeat(card, rating)
-        return scheduled_cards[rating], timedelta(days=1)
-
-    def card_from_flashcard(self, flashcard) -> Card:
-        """Convert flashcard model to py-fsrs Card."""
-        return Card(
-            due=flashcard.due_date,
-            stability=flashcard.stability,
-            difficulty=flashcard.difficulty,
-            elapsed_days=0,
-            scheduled_days=0,
-            reps=flashcard.repetition_count,
-            lapses=0,
-            state=0,  # New
-            last_review=None,
-        )
-
-    def flashcard_from_card(self, card: Card, flashcard) -> None:
-        """Update flashcard with new card state."""
-        flashcard.stability = card.stability
-        flashcard.difficulty = card.difficulty
-        flashcard.repetition_count = card.reps
-        flashcard.due_date = card.due
+    def review(self, flashcard: ReviewableCard, rating: Rating, now: datetime | None = None) -> None:
+        """Update the card's FSRS state, due date, stability, difficulty and review count for one rating."""
+        when = now or datetime.now(UTC)
+        if when.tzinfo is None:  # the database stores naive UTC; py-fsrs requires an aware UTC time
+            when = when.replace(tzinfo=UTC)
+        card = Card.from_json(flashcard.fsrs_card) if flashcard.fsrs_card else Card()
+        card, _log = self._scheduler.review_card(card, rating, when)
+        flashcard.fsrs_card = card.to_json()
+        flashcard.due_date = card.due.astimezone(UTC).replace(tzinfo=None)
+        flashcard.stability = card.stability or 0.0
+        flashcard.difficulty = card.difficulty or 0.0
+        flashcard.repetition_count = (flashcard.repetition_count or 0) + 1

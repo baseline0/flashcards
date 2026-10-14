@@ -37,5 +37,6 @@ class FlashcardModel(Base):
     difficulty = Column(Float, default=0.0)
     repetition_count = Column(Integer, default=0)
     due_date = Column(DateTime, default=datetime.now, index=True)
+    fsrs_card = Column(Text, nullable=True)  # py-fsrs Card as JSON; NULL until the first review
 
     created_at = Column(DateTime, default=datetime.now)
