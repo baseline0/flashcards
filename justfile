@@ -37,10 +37,6 @@ insurance:
 test:
     uv run pytest tests/ -v
 
-# Run tests with coverage
-coverage:
-    uv run pytest tests/ --cov=src/flashcards --cov-report=html
-
 # Format & lint
 fmt:
     uv run ruff format .
@@ -85,3 +81,9 @@ composite-build:
 # Fail if the llm composite pins are out of date with the glossaries
 composite-check:
     uv run flashcards composite build --name llm_and_recommendation_track --check
+
+# Unit tests with line coverage, then the per-module floors in pyproject.toml (scripts/check_coverage_floors.py)
+coverage:
+    uv run pytest -q -p no:warnings --cov=flashcards --cov-report=term-missing
+    uv run coverage json -q -o .coverage.json
+    uv run python scripts/check_coverage_floors.py

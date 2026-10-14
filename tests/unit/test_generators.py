@@ -1,5 +1,5 @@
-from src.flashcards.domains.schemas import CardType, GlossaryEntry
-from src.flashcards.generators.term_def_generator import TermDefinitionGenerator
+from flashcards.domains.schemas import CardType, GlossaryEntry
+from flashcards.generators.term_def_generator import TermDefinitionGenerator
 
 
 def test_term_def_generates_two_cards():

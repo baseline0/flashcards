@@ -76,3 +76,16 @@ ignore = ["E501", "SIM105", "N818", "RUF001", "RUF002", "RUF022"]
 
 [tool.ruff.lint.flake8-tidy-imports.banned-api]
 "argparse".msg = "Use typer for CLIs (fleet mandate)."
+
+# Per-module line-coverage floors, enforced by `just coverage`. A ratchet: raise, never lower.
+[tool.flashcards.coverage_floors]
+"composite.py" = 100
+"cli.py" = 89
+"core/database.py" = 82
+"domains/models.py" = 100
+"generators/term_def_generator.py" = 90
+"ingestion/json_parser.py" = 100
+"server/app.py" = 77
+"server/routes/api.py" = 86
+"srs/fsrs_engine.py" = 100
+"taxonomy.py" = 100

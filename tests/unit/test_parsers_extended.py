@@ -2,9 +2,9 @@
 
 import pytest
 
-from src.flashcards.ingestion.csv_parser import CSVGlossaryParser
-from src.flashcards.ingestion.markdown_parser import MarkdownGlossaryParser
-from src.flashcards.ingestion.yaml_parser import YAMLGlossaryParser
+from flashcards.ingestion.csv_parser import CSVGlossaryParser
+from flashcards.ingestion.markdown_parser import MarkdownGlossaryParser
+from flashcards.ingestion.yaml_parser import YAMLGlossaryParser
 
 
 class TestCSVGlossaryParser:

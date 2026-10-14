@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from src.flashcards.ingestion.json_parser import JSONGlossaryParser
-from src.flashcards.taxonomy import UnknownTagError, load_taxonomy
+from flashcards.ingestion.json_parser import JSONGlossaryParser
+from flashcards.taxonomy import UnknownTagError, load_taxonomy
 
 
 @pytest.fixture

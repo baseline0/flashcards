@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from src.flashcards.domains.schemas import CardType, Flashcard, GlossaryEntry
+from flashcards.domains.schemas import CardType, Flashcard, GlossaryEntry
 
 
 def test_glossary_entry_minimal():

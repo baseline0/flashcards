@@ -6,8 +6,8 @@ from pathlib import Path
 
 import pytest
 
-from src.flashcards.domains.schemas import GlossaryEntry
-from src.flashcards.metrics import GlossaryMetricsTracker
+from flashcards.domains.schemas import GlossaryEntry
+from flashcards.metrics import GlossaryMetricsTracker
 
 
 def test_update_ingestion_metrics():
