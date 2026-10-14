@@ -77,3 +77,11 @@ commit:
 # Add all untracked files and commit with LLM or custom message
 commit-all:
     fleet recipe commit-all
+
+# Regenerate the llm composite pins from the glossaries (use `just composite-check` to verify without writing)
+composite-build:
+    uv run flashcards composite build --name llm_and_recommendation_track --include-tag llm
+
+# Fail if the llm composite pins are out of date with the glossaries
+composite-check:
+    uv run flashcards composite build --name llm_and_recommendation_track --include-tag llm --check
