@@ -46,9 +46,8 @@ fmt:
     uv run ruff format .
     uv run ruff check --fix .
 
-# Type check
-check:
-    uv run pyright src/
+# Type check (the ratchet; bare pyright fails on the known baseline)
+check: check-types
 
 # Pyright ratchet: fails when a file gains errors (scripts in fleet-base; mode from pyproject.toml).
 check-types:
