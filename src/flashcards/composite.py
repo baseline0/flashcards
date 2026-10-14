@@ -20,6 +20,7 @@ from pathlib import Path
 
 import yaml
 
+from .domains.schemas import GlossaryEntry
 from .taxonomy import Taxonomy
 
 SLIDE_NAMESPACE = uuid.UUID("6b1f2a4e-2c2d-4f4e-9a8f-5a6f1d0c7b11")
@@ -215,6 +216,22 @@ def load_composites(composite_root: Path) -> dict[str, CompositeDeck]:
             raise ValueError(f"{path.name} must be named {composite.name}.deck.yaml")
         composites[composite.name] = composite
     return composites
+
+
+def composite_entries(name: str, slides: list[Slide]) -> list[GlossaryEntry]:
+    """Presented slides as glossary entries under the composite's own domain, so cards are generated and studied
+    the same way as an atomic deck's."""
+    return [
+        GlossaryEntry(
+            id=slide.id,
+            domain=name,
+            category="composite",
+            title=slide.title,
+            body=slide.body,
+            metadata={"tags": sorted(slide.tags)},
+        )
+        for slide in slides
+    ]
 
 
 def composite_card_count(composite: CompositeDeck) -> int:

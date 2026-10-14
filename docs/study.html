@@ -639,7 +639,7 @@
                 list.innerHTML = this.decks
                     .map(
                         (deck) => `
-                    <div class="deck-card" onclick="app.selectDeck('${deck.domain}', '${deck.category}', '${deck.glossary_name}')">
+                    <div class="deck-card" onclick="app.selectDeck('${deck.domain}', '${deck.category}', '${deck.glossary_name}', '${deck.kind}')">
                         <h3>${deck.domain}</h3>
                         <p>${deck.glossary_name} • ${deck.card_count} cards</p>
                     </div>
@@ -648,13 +648,13 @@
                     .join("");
             }
 
-            async selectDeck(domain, category, glossaryName) {
+            async selectDeck(domain, category, glossaryName, kind) {
                 this.currentDeck = { domain, category, glossaryName };
                 this.reviews = [];
 
                 try {
                     // Load deck into DB
-                    await fetch(`${this.apiBase}/deck/load?domain=${domain}&category=${category}&glossary_name=${glossaryName}`, {
+                    await fetch(`${this.apiBase}/deck/load?domain=${domain}&category=${category}&glossary_name=${glossaryName}&kind=${kind}`, {
                         method: "POST",
                     });
 
