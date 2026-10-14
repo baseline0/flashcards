@@ -11,7 +11,7 @@ from flashcards.composite import PinError, check_name_collisions, composite_card
 from flashcards.core.config import settings
 from flashcards.core.database import get_session
 from flashcards.domains.models import FlashcardModel
-from flashcards.domains.schemas import DeckInfo, Flashcard, GlossaryEntry, ReviewInput
+from flashcards.domains.schemas import CardType, DeckInfo, Flashcard, GlossaryEntry, ReviewInput
 from flashcards.generators.term_def_generator import TermDefinitionGenerator
 from flashcards.ingestion.json_parser import JSONGlossaryParser
 from flashcards.srs.fsrs_engine import FSRSEngine
@@ -152,7 +152,7 @@ def get_study_deck(domain: str, shuffle: bool = True, db: Session = Depends(get_
             id=card.id,
             entry_id=card.entry_id,
             domain=card.domain,
-            card_type=card.card_type,
+            card_type=CardType(card.card_type),
             front=card.front,
             back=card.back,
             tags=json.loads(card.tags_json),
@@ -180,7 +180,12 @@ def review_card(review: ReviewInput, db: Session = Depends(get_session)) -> dict
     except ValueError as exc:
         raise HTTPException(status_code=422, detail="rating must be 1 (again) to 4 (easy)") from exc
 
-    FSRSEngine().review(card, rating)
+    scheduled = FSRSEngine().review(card.fsrs_card, rating)
+    card.fsrs_card = scheduled.fsrs_card
+    card.due_date = scheduled.due_date
+    card.stability = scheduled.stability
+    card.difficulty = scheduled.difficulty
+    card.repetition_count = (card.repetition_count or 0) + 1
     db.commit()
     return {
         "status": "reviewed",

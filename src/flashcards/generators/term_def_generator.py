@@ -8,13 +8,16 @@ class TermDefinitionGenerator(BaseCardGenerator):
 
     def generate(self, entry: GlossaryEntry) -> list[Flashcard]:
         """Create bidirectional term/definition cards."""
+        if entry.id is None:
+            raise ValueError(f"glossary entry {entry.title!r} has no id; the parser assigns one")
+        entry_id = entry.id
         cards = []
 
         # Card 1: Term → Definition
         cards.append(
             Flashcard(
                 id=self._make_id(),
-                entry_id=entry.id,
+                entry_id=entry_id,
                 domain=entry.domain,
                 card_type=CardType.TERM_DEFINITION,
                 front=entry.title,
@@ -27,7 +30,7 @@ class TermDefinitionGenerator(BaseCardGenerator):
         cards.append(
             Flashcard(
                 id=self._make_id(),
-                entry_id=entry.id,
+                entry_id=entry_id,
                 domain=entry.domain,
                 card_type=CardType.TERM_DEFINITION,
                 front=entry.body[:100] + ("..." if len(entry.body) > 100 else ""),

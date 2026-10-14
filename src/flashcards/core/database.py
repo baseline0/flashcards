@@ -1,3 +1,5 @@
+from collections.abc import Iterator
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
@@ -19,7 +21,7 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
-def get_session() -> Session:
+def get_session() -> Iterator[Session]:
     """Dependency for FastAPI to inject database sessions."""
     db = SessionLocal()
     try:

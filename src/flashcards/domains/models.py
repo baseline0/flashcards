@@ -1,6 +1,13 @@
+"""ORM models for raw glossary entries and generated flashcards.
+
+Columns use SQLAlchemy 2.0 `Mapped[...]` annotations so type checkers see plain Python values. Nullability
+matches the database as it already exists: a column that was nullable stays nullable here.
+"""
+
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Float, Integer, String, Text
+from sqlalchemy import DateTime, Float, Integer, String, Text
+from sqlalchemy.orm import Mapped, mapped_column
 
 from flashcards.core.database import Base
 
@@ -10,13 +17,13 @@ class GlossaryEntryModel(Base):
 
     __tablename__ = "glossary_entries"
 
-    id = Column(String, primary_key=True)
-    domain = Column(String, nullable=False, index=True)
-    category = Column(String, nullable=False, index=True)
-    title = Column(String, nullable=False)
-    body = Column(Text, nullable=False)
-    metadata_json = Column(String, default="{}")
-    created_at = Column(DateTime, default=datetime.now)
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    domain: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    category: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    title: Mapped[str] = mapped_column(String, nullable=False)
+    body: Mapped[str] = mapped_column(Text, nullable=False)
+    metadata_json: Mapped[str] = mapped_column(String, nullable=True, default="{}")
+    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=True, default=datetime.now)
 
 
 class FlashcardModel(Base):
@@ -24,19 +31,19 @@ class FlashcardModel(Base):
 
     __tablename__ = "flashcards"
 
-    id = Column(String, primary_key=True)
-    entry_id = Column(String, nullable=False, index=True)
-    domain = Column(String, nullable=False, index=True)
-    card_type = Column(String, nullable=False)
-    front = Column(Text, nullable=False)
-    back = Column(Text, nullable=False)
-    tags_json = Column(String, default="[]")
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    entry_id: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    domain: Mapped[str] = mapped_column(String, nullable=False, index=True)
+    card_type: Mapped[str] = mapped_column(String, nullable=False)
+    front: Mapped[str] = mapped_column(Text, nullable=False)
+    back: Mapped[str] = mapped_column(Text, nullable=False)
+    tags_json: Mapped[str] = mapped_column(String, nullable=True, default="[]")
 
     # FSRS metrics
-    stability = Column(Float, default=0.0)
-    difficulty = Column(Float, default=0.0)
-    repetition_count = Column(Integer, default=0)
-    due_date = Column(DateTime, default=datetime.now, index=True)
-    fsrs_card = Column(Text, nullable=True)  # py-fsrs Card as JSON; NULL until the first review
+    stability: Mapped[float] = mapped_column(Float, nullable=True, default=0.0)
+    difficulty: Mapped[float] = mapped_column(Float, nullable=True, default=0.0)
+    repetition_count: Mapped[int] = mapped_column(Integer, nullable=True, default=0)
+    due_date: Mapped[datetime] = mapped_column(DateTime, nullable=True, default=datetime.now, index=True)
+    fsrs_card: Mapped[str | None] = mapped_column(Text, nullable=True)  # py-fsrs Card as JSON; NULL before a review
 
-    created_at = Column(DateTime, default=datetime.now)
+    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=True, default=datetime.now)
