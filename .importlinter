@@ -16,6 +16,9 @@ forbidden_modules =
     sites
     rope_mcp
     vscode_workspace_mcp
+    fleet_ops
+    fleet_agents
+    fleet_toolbox
 
 # The FleetSettings rule (no os.getenv) that was here cannot be expressed in import-linter, which checks
 # module imports, not attribute calls. It was never enforced: this file did not parse.
