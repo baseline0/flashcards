@@ -91,3 +91,12 @@ repos:
         pass_filenames: false
         files: '^(just/fleet-clean\.just|justfile)$'
         stages: [pre-commit]
+  - repo: local
+    hooks:
+      - id: check-typer-explicit
+        name: "[P1] typer commands take required --name value options (ratchet against baseline)"
+        entry: fleet typer-explicit check --root . --baseline .typer-explicit-baseline.json
+        language: system
+        pass_filenames: false
+        files: '\.py$'
+        stages: [pre-commit]
