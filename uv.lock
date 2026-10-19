@@ -251,6 +251,7 @@ name = "flashcards"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "click" },
     { name = "fastapi" },
     { name = "fsrs" },
     { name = "genanki" },
@@ -277,6 +278,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "click", specifier = ">=8.0" },
     { name = "fastapi", specifier = ">=0.104.1" },
     { name = "fsrs", specifier = ">=6.3.2" },
     { name = "genanki", specifier = ">=0.13.1" },
