@@ -6,7 +6,6 @@ hand-edited. Its `--check` mode exits non-zero when the committed file is out of
 
 from pathlib import Path
 
-import click
 import typer
 
 from flashcards import composite
@@ -26,11 +25,12 @@ def composite_build(
     check: str = typer.Option(
         ...,
         "--check",
-        click_type=click.Choice(["true", "false"]),
         help="true: write nothing and exit 1 if the file would change; false: write the file",
     ),
 ) -> None:
     """Fill in each authored subdeck's version and mask, keeping the subdeck order and tags as written."""
+    if check not in ("true", "false"):
+        raise typer.BadParameter("must be true or false", param_hint="--check")
     checking = check == "true"
     target = composites / f"{name}.deck.yaml"
     if not target.exists():
