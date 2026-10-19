@@ -48,7 +48,7 @@ packages = ["src/flashcards"]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 minversion = "7.0"
-addopts = "-ra -q --tb=short"
+addopts = "-ra --tb=short"
 testpaths = ["tests"]
 asyncio_mode = "auto"
 
