@@ -36,7 +36,8 @@ def workspace(tmp_path: Path) -> dict[str, Path]:
     return {"taxonomy": taxonomy, "glossaries": tmp_path / "raw_glossaries", "composites": composites}
 
 
-def _args(workspace: dict[str, Path], name: str = "track", *extra: str) -> list[str]:
+def _args(workspace: dict[str, Path], name: str = "track", check: str = "false") -> list[str]:
+    """Build the argv; `--check` is a required true|false option."""
     return [
         "composite",
         "build",
@@ -48,7 +49,8 @@ def _args(workspace: dict[str, Path], name: str = "track", *extra: str) -> list[
         str(workspace["taxonomy"]),
         "--composites",
         str(workspace["composites"]),
-        *extra,
+        "--check",
+        check,
     ]
 
 
@@ -59,7 +61,7 @@ def test_build_fills_in_pins_and_check_passes_on_the_fresh_file(workspace):
     target = workspace["composites"] / "track.deck.yaml"
     assert "version:" in target.read_text() and "mask:" in target.read_text()
 
-    checked = runner.invoke(app, _args(workspace, "track", "--check"))
+    checked = runner.invoke(app, _args(workspace, check="true"))
     assert checked.exit_code == 0, checked.output
 
 
@@ -74,14 +76,14 @@ def test_check_fails_when_a_glossary_changed_and_writes_nothing(workspace):
     cards.append({"title": "Third", "body": "c", "metadata": {"tags": ["beta"]}})
     deck.write_text(json.dumps(cards))
 
-    checked = runner.invoke(app, _args(workspace, "track", "--check"))
+    checked = runner.invoke(app, _args(workspace, check="true"))
     assert checked.exit_code == 1
     assert "out of date" in checked.output
     assert target.read_text() == before
 
 
 def test_build_without_an_authored_file_says_what_to_author(workspace):
-    result = CliRunner().invoke(app, _args(workspace, "missing"))
+    result = CliRunner().invoke(app, _args(workspace, name="missing"))
 
     assert result.exit_code == 1
     assert "author it" in result.output

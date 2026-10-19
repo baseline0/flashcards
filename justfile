@@ -76,11 +76,11 @@ commit-all:
 
 # Refresh the llm composite's pins from its authored subdecks (use `just composite-check` to verify without writing)
 composite-build:
-    uv run flashcards composite build --name llm_and_recommendation_track
+    uv run flashcards composite build --name llm_and_recommendation_track --glossaries data/raw_glossaries --taxonomy data/taxonomy.yaml --composites data/composite_decks --check false
 
 # Fail if the llm composite pins are out of date with the glossaries
 composite-check:
-    uv run flashcards composite build --name llm_and_recommendation_track --check
+    uv run flashcards composite build --name llm_and_recommendation_track --glossaries data/raw_glossaries --taxonomy data/taxonomy.yaml --composites data/composite_decks --check true
 
 # Unit tests with line coverage, then the per-module floors in pyproject.toml (scripts/check_coverage_floors.py)
 coverage:
