@@ -48,7 +48,12 @@ packages = ["src/flashcards"]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 minversion = "7.0"
-addopts = "-ra --tb=short"
+addopts = "-ra --tb=short --strict-markers"
+markers = [
+    "unit: fast tests, run by the shared test-unit recipe",
+    "integration: tests that use real services or files across components",
+    "e2e: end-to-end tests of a whole workflow",
+]
 testpaths = ["tests"]
 asyncio_mode = "auto"
 
