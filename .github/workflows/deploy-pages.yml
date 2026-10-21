@@ -18,7 +18,12 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # The deploy waits for the same test suite that runs on every push to main. A red test stops the deploy.
+  tests:
+    uses: ./.github/workflows/test.yml
+
   deploy:
+    needs: tests
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
