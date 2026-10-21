@@ -29,6 +29,18 @@ The GitHub Actions workflow (`deploy-pages.yml`) will:
 - **Manual trigger:** Click "Run workflow" in GitHub Actions tab
 - **Deploy to:** `https://baseline0.github.io/flashcards/` (or your custom domain)
 
+The deploy job waits for the test suite (`test.yml`). After Pages accepts the upload, a smoke check waits up to a minute for the live page to show the expected content, and fails the run if it doesn't.
+
+## Rollback
+
+The site is whatever `docs/` holds on `main`. There is no "deploy this older commit" command, so roll back by reverting:
+
+1. Revert the bad commit on `main`: `git revert <sha>`. Push it (you push; agents don't).
+2. The push changes `docs/`, so the deploy runs: tests first, then the upload, then the smoke check.
+3. Confirm the run in the Actions tab and check the live URL.
+
+A revert of a commit that didn't touch `docs/` doesn't trigger a deploy, which is correct: the live site didn't change.
+
 ## Customization
 
 To customize the landing page:
