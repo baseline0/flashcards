@@ -2,6 +2,7 @@
 
 # Shared commit recipe from fleet-base. Literal path: just does not interpolate variables into import paths.
 import 'just/fleet-clean.just'
+import 'just/fleet-checks.just'
 
 set shell := ["bash", "-c"]
 
