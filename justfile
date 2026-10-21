@@ -54,7 +54,7 @@ check-types:
 
 # Install dependencies
 install:
-    uv sync --dev
+    uv sync --frozen --dev
 
 # Full CI: format, check, test
 ci: fmt check test
