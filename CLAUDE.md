@@ -1,7 +1,7 @@
 # flashcards
 
 <!-- fleet-standard:begin -->
-**Universal rules:** `~/.claude/CLAUDE.md` (fleet standard 1.2.0).
+**Universal rules:** `~/.claude/CLAUDE.md` (fleet standard 1.4.0).
 <!-- fleet-standard:end -->
 
 Commands are in the justfile (`just --list`). Universal rules are in `~/.claude/CLAUDE.md`.
