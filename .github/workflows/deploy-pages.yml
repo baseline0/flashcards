@@ -1,10 +1,12 @@
+# Publishes site/ and nothing else. docs/ is internal (ADRs, guides) and never reaches the live site. The Pages source
+# must be "GitHub Actions" in the repository settings. tests/unit/test_site_publish.py holds the publish set in code.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [ main, master ]
     paths:
-      - 'docs/**'
+      - 'site/**'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -38,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'docs'
+          path: 'site'
 
       - name: Deploy to GitHub Pages
         id: deployment

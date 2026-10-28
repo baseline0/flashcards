@@ -57,4 +57,4 @@ This repo **does not** handle:
 
 | **Date** | **Change** | **ADR** | **Justification** |
 |---|---|---|---|
-| 2026-09-17 | Established flashcards as application domain | [ADR-400](./docs/adr/400-learning-domain.md) | Enable fleet governance of learning platform |
+| 2026-09-17 | Established flashcards as application domain | — | Enable fleet governance of learning platform |

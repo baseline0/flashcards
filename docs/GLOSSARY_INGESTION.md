@@ -314,7 +314,7 @@ Example metrics export:
    # Check file format
    if not glossary_file.exists():
        raise FileNotFoundError(f"Glossary file not found: {glossary_file}")
-   
+
    # Preview first entry
    parser = get_parser(file_format)
    entries = parser.parse(content, domain, category)
@@ -324,7 +324,7 @@ Example metrics export:
 3. **Batch Ingestion:**
    ```python
    from pathlib import Path
-   
+
    glossary_dir = Path("data/glossaries")
    for glossary_file in glossary_dir.glob("*.json"):
        content = glossary_file.read_text()
@@ -345,5 +345,3 @@ The ingestion pipeline is part of Phase 5 (Dashboard & Orchestration):
 - **Dashboard Metric:** Glossary ingestion % complete (target: 100%)
 - **Health Report:** Ingestion errors per domain
 - **Trend Tracking:** New terms added per week
-
-See `docs/DASHBOARD_METRICS.md` for integration details.
