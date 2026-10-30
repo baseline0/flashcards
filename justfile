@@ -38,8 +38,8 @@ insurance:
     @echo ""
 
 # Run tests
-test:
-    uv run pytest tests/ -v
+# Unit tests only, matching CI and the pre-push hook. The full suite is `uv run pytest`.
+test: test-unit
 
 # Format & lint
 fmt:
@@ -61,9 +61,16 @@ install:
 ci: fmt check test
     @echo "✅ All checks passed"
 
-# Unit tests: the gate the pre-push hook runs (fleet hook standard, fleet_base.hook_standard R4)
+# Unit tests only (what CI and the pre-push gate run). Self-contained: depends on no other recipe.
 test-unit:
-    just test
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if uv run pytest --version >/dev/null 2>&1; then
+        uv run pytest -m unit --tb=short -v
+        exit 0
+    fi
+    echo "error: test-unit cannot run in this repo: install pytest as a dev dependency (uv add --dev pytest)" >&2
+    exit 1
 
 # ============================================================================
 # Shared fleet recipes, run by fleet-base's installed tool (run `just -f ~/projects/fleet-base/justfile install-fleet`; ADR-020).
