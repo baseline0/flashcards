@@ -11,7 +11,8 @@ from pathlib import Path
 import pytest
 
 TESTS_ROOT = Path(os.path.dirname(os.path.abspath(__file__)))
-TIERS = ("unit", "integration", "contract", "host", "e2e")
+# Tier folder under tests/ -> marker name. The placement checker reads this dictionary by AST.
+DIRECTORY_MARKERS = {"unit": "unit", "integration": "integration", "contract": "contract", "host": "host", "e2e": "e2e"}
 
 
 def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item]) -> None:
@@ -21,8 +22,10 @@ def pytest_collection_modifyitems(config: pytest.Config, items: list[pytest.Item
         if not path.is_relative_to(TESTS_ROOT):
             continue
         parts = path.relative_to(TESTS_ROOT).parts
-        if len(parts) == 1 or parts[0] not in TIERS:
-            raise pytest.UsageError(f"{item.nodeid}: move this test into one of the tier folders: {', '.join(TIERS)}")
-        if any(item.get_closest_marker(name) for name in TIERS):
+        if len(parts) == 1 or parts[0] not in DIRECTORY_MARKERS:
+            raise pytest.UsageError(
+                f"{item.nodeid}: move this test into one of the tier folders: {', '.join(DIRECTORY_MARKERS)}"
+            )
+        if any(item.get_closest_marker(name) for name in DIRECTORY_MARKERS.values()):
             raise pytest.UsageError(f"{item.nodeid}: do not declare a tier marker by hand; the folder sets the tier")
-        item.add_marker(getattr(pytest.mark, parts[0]))
+        item.add_marker(getattr(pytest.mark, DIRECTORY_MARKERS[parts[0]]))
