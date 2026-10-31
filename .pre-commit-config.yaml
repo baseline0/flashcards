@@ -6,15 +6,12 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
     hooks:
-        - id: trailing-whitespace
-          args: [--markdown-linebreak-ext=md]
-        - id: end-of-file-fixer
-        - id: check-merge-conflict
-        - id: check-added-large-files
-          args: [--maxkb=1000]
-        - id: check-yaml
-          args: [--unsafe]
-        - id: detect-private-key
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: [--maxkb=1000]
+      - id: check-yaml
+        args: [--unsafe]
+      - id: detect-private-key
   - repo: local
     hooks:
       - id: importlinter
@@ -32,25 +29,30 @@ repos:
         stages: [pre-commit]
         pass_filenames: false
 
-      - id: trailing-whitespace
-        args: [--markdown-linebreak-ext=md]
-        name: trim trailing whitespace
-        entry: trailing-whitespace-fixer
+      - id: whitespace-check
+        name: '[P1] Whitespace in the staged diff (check only)'
+        entry: git diff --cached --check
         language: system
-        types: [text]
-
-      - id: end-of-file-fixer
-        name: fix end of file fixer
-        entry: end-of-file-fixer
+        pass_filenames: false
+        stages:
+          - pre-commit
+      - id: check-hook-writers
+        name: '[P1] No commit hook writes tracked files'
+        entry: fleet hook --name check-hook-writers
         language: system
-        types: [text]
+        pass_filenames: false
+        stages:
+          - pre-commit
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.16.8
     hooks:
       - id: ruff
-        args: [--fix]
+        args:
+          - --no-fix
       - id: ruff-format
+        args:
+          - --check
   - repo: local
     hooks:
       - id: check-project-venv
