@@ -1,9 +1,5 @@
 # flashcards
 
-<!-- fleet-standard:begin -->
-**Universal rules:** `../infrastructure/claude/CLAUDE.standard.md` (fleet standard 1.5.0).
-<!-- fleet-standard:end -->
-
 Commands are in the justfile (`just --list`). Universal rules are in `~/.claude/CLAUDE.md`.
 
 ## Rules that are not visible in the code
