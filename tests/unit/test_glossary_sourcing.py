@@ -6,6 +6,24 @@ Happy path: a complete Tier 1 or Tier 2 term has no violations.
 Unhappy paths: a missing field, an unknown tier, a Tier 2 term without justification or with commercial use,
 a bad date, and a glossary file outside the domain/name layout are each reported.
 The committed data may carry recorded debt; the ceilings below may only be lowered as terms are fixed.
+
+## Specification Map
+
+| Rule | Authority | Enforcement |
+|------|-----------|------------|
+| Every term records source_url, source_name, license, attribution_required, tier, commercial_use, scraped_date | tests/unit/test_glossary_sourcing.py | test_a_term_missing_any_provenance_field_is_reported |
+| Only Tier 1 and Tier 2 are stored; Tier 3 is never stored | tests/unit/test_glossary_sourcing.py | test_only_tiers_1_and_2_are_ever_stored |
+| Tier 1 links its license text | tests/unit/test_glossary_sourcing.py | test_a_tier_1_term_without_a_license_url_is_reported |
+| Required attribution has attribution text | tests/unit/test_glossary_sourcing.py | test_attribution_text_is_required_whenever_attribution_is_required |
+| Tier 2 has a fair-use justification | tests/unit/test_glossary_sourcing.py | test_a_tier_2_term_without_a_fair_use_justification_is_reported |
+| Tier 2 is marked non-commercial | tests/unit/test_glossary_sourcing.py | test_a_tier_2_term_is_refused_unless_it_is_marked_non_commercial |
+| scraped_date is ISO-8601 | tests/unit/test_glossary_sourcing.py | test_scraped_date_must_be_an_iso_8601_date |
+| Files sit at data/raw_glossaries/{domain}/{glossary_name}.json | tests/unit/test_glossary_sourcing.py | test_glossary_files_sit_in_a_domain_folder_and_are_named_by_glossary |
+| Committed terms stay within recorded sourcing debt (the audit run before commit is now the test gate) | tests/unit/test_glossary_sourcing.py | test_committed_glossary_terms_stay_within_the_recorded_sourcing_debt |
+| Source is classified (Q1 to Q3) before scraping | tests/unit/test_glossary_sourcing.py | test_scraper_classifies_a_source_before_fetching (xfail) |
+| Tier 3 sources are skipped, never fetched | tests/unit/test_glossary_sourcing.py | test_scraper_never_fetches_a_tier_3_source (xfail) |
+| Tier 2 pull request includes a rationale | tests/unit/test_glossary_sourcing.py | test_tier_2_pull_request_states_its_rationale (xfail) |
+| Maintainer review confirms each classification | tests/unit/test_glossary_sourcing.py | test_maintainer_review_confirms_each_source_classification (xfail) |
 """
 
 import json
@@ -184,3 +202,45 @@ def test_committed_glossary_terms_stay_within_the_recorded_sourcing_debt():
         if counts[rule] > SOURCING_DEBT_CEILING.get(rule, 0)
     }
     assert over == {}, f"sourcing violations above the recorded ceiling (rule: found, allowed): {over}"
+
+
+@pytest.mark.xfail(
+    strict=True,
+    reason="owner: Mark Alexiuk; trigger: the scraper exists (a module that fetches glossary sources)",
+)
+def test_scraper_classifies_a_source_before_fetching():
+    """Q1 to Q3 of the sourcing guide decide the tier before any page is fetched."""
+    import flashcards.scraper as scraper_module
+
+    assert callable(getattr(scraper_module, "classify_source", None))
+
+
+@pytest.mark.xfail(
+    strict=True,
+    reason="owner: Mark Alexiuk; trigger: the scraper exists (a module that fetches glossary sources)",
+)
+def test_scraper_never_fetches_a_tier_3_source():
+    """Tier 3 sources (paywalled, ToS-forbidden, proprietary) are skipped entirely, never scraped."""
+    import flashcards.scraper as scraper_module
+
+    assert callable(getattr(scraper_module, "scrape_glossary", None))
+
+
+@pytest.mark.xfail(
+    strict=True,
+    reason="owner: Mark Alexiuk; trigger: a pull request template with a Tier 2 rationale section is committed under .github/",
+)
+def test_tier_2_pull_request_states_its_rationale():
+    """A PR that adds a Tier 2 source explains why the fair-use basis holds."""
+    template = REPO_ROOT / ".github" / "pull_request_template.md"
+    assert template.exists() and "Tier 2" in template.read_text()
+
+
+@pytest.mark.xfail(
+    strict=True,
+    reason="owner: Mark Alexiuk; trigger: CODEOWNERS names a glossary maintainer for data/raw_glossaries/",
+)
+def test_maintainer_review_confirms_each_source_classification():
+    """A maintainer, not only the author, confirms each source's tier before it is merged."""
+    owners = REPO_ROOT / ".github" / "CODEOWNERS"
+    assert owners.exists() and "data/raw_glossaries" in owners.read_text()
