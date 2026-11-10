@@ -106,23 +106,7 @@ data/raw_glossaries/cloud_computing/aws_terminology.json
 ```
 
 ### Verify Compliance
-Before committing, run the audit tool:
-
-```bash
-python -m src.flashcards.tools.glossary_audit --summary
-python -m src.flashcards.tools.glossary_audit --check-tiers
-python -m src.flashcards.tools.glossary_audit --check-attribution
-```
-
-Expected output:
-```
-✓ All 50 terms are properly classified
-✓ All required attributions are present
-✓ Summary by tier:
-  Tier 1: 32 terms (CC-BY, Apache 2.0, public domain)
-  Tier 2: 18 terms (fair use w/ justification)
-  Tier 3: 0 terms (correctly skipped)
-```
+The metadata rules in this guide (required fields, tier values, Tier 2 justification and non-commercial use, ISO scrape dates, file layout) are executable in `tests/unit/test_glossary_sourcing.py`, which `just test` runs.
 
 ---
 
@@ -221,11 +205,7 @@ python -m src.flashcards.tools.glossary_audit --check-attribution
 
 ## Adding Glossaries: Checklist
 
-- [ ] Source classified as Tier 1, 2, or 3
-- [ ] All fields in metadata template completed
-- [ ] Fair use justification included (Tier 2 only)
-- [ ] Compliance audit passes: `python -m src.flashcards.tools.glossary_audit --check-tiers`
-- [ ] Attribution audit passes: `python -m src.flashcards.tools.glossary_audit --check-attribution`
+- [ ] Source classified as Tier 1 or 2 (Tier 3 is never stored); metadata passes `tests/unit/test_glossary_sourcing.py`
 - [ ] PR includes rationale for Tier 2 sources
 - [ ] Maintainer review confirms classification
 
